@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -71,8 +71,8 @@
     <div class="summary">リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。
  リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormをコントローラに定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラ内に定義するとよいでしょう。
 まず、UserControllerの冒頭に以下のインポート文を追加します。これでFormの定義や基本的なバリデーションができるようになります。
-import play.api.data._ import play.api.data.Forms._  登録・編集画面からの入力値を受け取るためのFormを定義します。
-object UserController extends Controller { // フォームの値を格納する case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formのデータ⇔ケースクラスの変換を行う val userForm = Form( mapping( &quot;id&quot; -&gt; optional(longNumber), &quot;name&quot; -&gt; nonEmptyText(maxLength = 20), &quot;companyId&quot; -&gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) ...   POINT
+import play.api.data._ import play.api.data.Forms._ 登録・編集画面からの入力値を受け取るためのFormを定義します。
+object UserController extends Controller { // フォームの値を格納する  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formのデータ⇔ケースクラスの変換を行う  val userForm = Form( mapping( &#34;id&#34; -&gt; optional(longNumber), &#34;name&#34; -&gt; nonEmptyText(maxLength = 20), &#34;companyId&#34; -&gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) ...  POINT
  FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したListを受け取ります。
 @(userForm: Form[controllers.UserController.UserForm], companies: List[models.Tables.CompaniesRow]) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper.</div>
   </div>
@@ -92,8 +92,8 @@ object UserController extends Controller { // フォームの値を格納する 
     </ul>
 
     <div class="summary">Bootstrapを使うための準備 play newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。
-@(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;@title&lt;/title&gt; &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;@routes.Assets.at(&quot;stylesheets/main.css&quot;)&quot;&gt; &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;@routes.Assets.at(&quot;images/favicon.png&quot;)&quot;&gt; &lt;script src=&quot;@routes.Assets.at(&quot;javascripts/hello.js&quot;)&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; @* ↓↓↓↓ここから追加↓↓↓↓ *@ &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&quot;&gt; &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;&gt; &lt;script src=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; @* ↑↑↑↑ここまで追加↑↑↑↑ *@ &lt;/head&gt; &lt;body&gt; @content &lt;/body&gt; &lt;/html&gt;  コントローラの雛形を作る controllersパッケージにUserControllerオブジェクトを以下のように作成します。
-package controllers import play.api.mvc._ object UserController extends Controller { /** * 一覧表示 */ def list = TODO /** * 登録・編集画面表示 */ def edit(id: Option[Long]) = TODO /** * 登録実行 */ def create = TODO /** * 更新実行 */ def update = TODO /** * 削除実行 */ def remove(id: Long) = TODO }   POINT</div>
+@(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;@title&lt;/title&gt; &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;@routes.Assets.at(&#34;stylesheets/main.css&#34;)&#34;&gt; &lt;link rel=&#34;shortcut icon&#34; type=&#34;image/png&#34; href=&#34;@routes.Assets.at(&#34;images/favicon.png&#34;)&#34;&gt; &lt;script src=&#34;@routes.Assets.at(&#34;javascripts/hello.js&#34;)&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt; @* ↓↓↓↓ここから追加↓↓↓↓ *@ &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&#34;&gt; &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&#34;&gt; &lt;script src=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt; @* ↑↑↑↑ここまで追加↑↑↑↑ *@ &lt;/head&gt; &lt;body&gt; @content &lt;/body&gt; &lt;/html&gt; コントローラの雛形を作る controllersパッケージにUserControllerオブジェクトを以下のように作成します。
+package controllers import play.api.mvc._ object UserController extends Controller { /** * 一覧表示 */ def list = TODO /** * 登録・編集画面表示 */ def edit(id: Option[Long]) = TODO /** * 登録実行 */ def create = TODO /** * 更新実行 */ def update = TODO /** * 削除実行 */ def remove(id: Long) = TODO }  POINT</div>
   </div>
 </article>
 </div>
@@ -112,9 +112,9 @@ package controllers import play.api.mvc._ object UserController extends Controll
 
     <div class="summary">指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。
 コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。
-def remove(id: Long) = DBAction.transaction { implicit rs =&gt; // ユーザIDを指定して削除 Users.filter(t =&gt; t.id === id.bind).delete // 一覧画面へリダイレクト Redirect(routes.UserController.list) }  上記のコードでは以下の記述でユーザ情報の削除を行っています。
-Users.filter( t =&gt; t.id === id.bind).delete  これは以下のSQLと同じ意味になります。
-DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</div>
+def remove(id: Long) = DBAction.transaction { implicit rs =&gt; // ユーザIDを指定して削除  Users.filter(t =&gt; t.id === id.bind).delete // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } 上記のコードでは以下の記述でユーザ情報の削除を行っています。
+Users.filter( t =&gt; t.id === id.bind).delete これは以下のSQLと同じ意味になります。
+DELETE FROM USERS WHERE ID = ? 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</div>
   </div>
 </article>
 </div>
@@ -134,8 +134,8 @@ DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリ�
     <div class="summary">入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。
  エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。
 入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。
-def create = DBAction.transaction { implicit rs =&gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合は登録画面に戻す error =&gt; BadRequest(views.html.user.edit(error, Companies.sortBy(t =&gt; t.id).list)), // OKの場合は登録を行い一覧画面にリダイレクトする form =&gt; { // ユーザを登録 val user = UsersRow(0, form.name, form.companyId) Users.insert(user) // 一覧画面にリダイレクト Redirect(routes.UserController.list) } ) }  updateメソッドも同じように実装します。
-def update = DBAction.transaction { implicit rs =&gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&gt; BadRequest(views.html.user.edit(error, Companies.</div>
+def create = DBAction.transaction { implicit rs =&gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合は登録画面に戻す  error =&gt; BadRequest(views.html.user.edit(error, Companies.sortBy(t =&gt; t.id).list)), // OKの場合は登録を行い一覧画面にリダイレクトする  form =&gt; { // ユーザを登録  val user = UsersRow(0, form.name, form.companyId) Users.insert(user) // 一覧画面にリダイレクト  Redirect(routes.UserController.list) } ) } updateメソッドも同じように実装します。
+def update = DBAction.transaction { implicit rs =&gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合  error =&gt; BadRequest(views.</div>
   </div>
 </article>
 </div>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -68,21 +68,21 @@
       
     </ul>
 
-    <div class="summary"> ツールプロジェクトの準備 slick-codegen-play2.3-slick2.1.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。
-+-/play2-hands-on | | | +-/app | | | +-/conf | | | +-... | +-/slick-codegen | +-/project | +-/src | +-...  H2の起動 Windowsの場合
+    <div class="summary">ツールプロジェクトの準備 slick-codegen-play2.3-slick2.1.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。
++-/play2-hands-on | | | +-/app | | | +-/conf | | | +-... | +-/slick-codegen | +-/project | +-/src | +-... H2の起動 Windowsの場合
 まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。
 Macの場合
-cd slick-codegen/h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。
+cd slick-codegen/h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。
 モデルの自動生成 SlickではタイプセーフなAPIを使用するために
  タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。
 slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。
 Windowsの場合
-sbt gen-tables  Macの場合
-./sbt.sh gen-tables  するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。
+sbt gen-tables Macの場合
+./sbt.sh gen-tables するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。
 DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のための設定を行います。
 変更前：
-# db.default.driver=org.h2.Driver # db.default.url=&quot;jdbc:h2:mem:play&quot; # db.default.user=sa # db.default.password=&quot;&quot;  変更後：
-db.default.driver=org.h2.Driver db.default.url=&quot;jdbc:h2:tcp://localhost/data&quot; db.default.user=sa db.default.password=sa  </div>
+# db.default.driver=org.h2.Driver # db.default.url=&quot;jdbc:h2:mem:play&quot; # db.default.user=sa # db.default.password=&quot;&quot; 変更後：
+db.default.driver=org.h2.Driver db.default.url=&quot;jdbc:h2:tcp://localhost/data&quot; db.default.user=sa db.default.password=sa </div>
   </div>
 </article>
 </div>
@@ -102,11 +102,11 @@ db.default.driver=org.h2.Driver db.default.url=&quot;jdbc:h2:tcp://localhost/dat
     <div class="summary">プラグインのインストール Java7以降 + Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。
 それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。
 Eclipseの場合：
- メニュー[Help]→[Install New Software&hellip;]→[Add&hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site  全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合：
+ メニュー[Help]→[Install New Software&hellip;]→[Add&hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site   全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合：
  メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。
 プロジェクトのインポート Eclipseの場合：
 play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。
-activator eclipse  build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要があります
+activator eclipse build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要があります
 IntelliJの場合：
 IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。
 インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。
@@ -130,9 +130,9 @@ build.sbtを編集してライブラリを追加した場合、ウィンドウ�
 
     <div class="summary">フロントエンドがAngularJSやスマートフォンアプリの場合、サーバサイドはJSONを返却するAPIを提供する必要があります。ここまでに作成してきたユーザ情報のCRUD処理について、Play2のJSONサポート機能を使ってJSONベースのWeb APIを実装します。
 コントローラの雛形を作る controllersパッケージにJsonControllerオブジェクトを以下の内容で作成します。SlickやPlay2のJSONサポートを使用するためのimport文を予め含めています。
-package controllers import play.api.mvc._ import play.api.db.slick._ import models.Tables._ import profile.simple._ import play.api.libs.json._ object JsonController extends Controller { /** * 一覧表示 */ def list = TODO /** * ユーザ登録 */ def create = TODO /** * ユーザ更新 */ def update = TODO /** * ユーザ削除 */ def remove(id: Long) = TODO }   POINT
+package controllers import play.api.mvc._ import play.api.db.slick._ import models.Tables._ import profile.simple._ import play.api.libs.json._ object JsonController extends Controller { /** * 一覧表示 */ def list = TODO /** * ユーザ登録 */ def create = TODO /** * ユーザ更新 */ def update = TODO /** * ユーザ削除 */ def remove(id: Long) = TODO }  POINT
  play.api.libs.json._はPlay2のJSONサポート機能を使用するために必要なimport文です   ルーティングの定義 conf/routesに以下の内容を追記します。
-# JSON API GET /json/list controllers.</div>
+# JSON API GET /json/list controllers.JsonController.list POST /json/create controllers.</div>
   </div>
 </article>
 </div>
@@ -172,7 +172,7 @@ package controllers import play.api.mvc._ import play.api.db.slick._ import mode
       
     </ul>
 
-    <div class="summary"> Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します  Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました  Play公式サイトのドキュメントは https://www.playframework.com/documentation/ja/2.3.x/Home で日本語訳されています  Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください   IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf  IDEAの外観を変更  スキンの変更（背景を黒に） [Appearance]→[Theme]の箇所を&rdquo;Default&rdquo;から&rdquo;Darcula&rdquo;に変更  IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります [File]→[Project Structure&hellip;]からインストール済みのJDKを選択してください  build.sbtを変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&hellip;」でIntelliJのキャッシュをクリアしてみてください   </div>
+    <div class="summary">Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します   Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました   Play公式サイトのドキュメントは https://www.playframework.com/documentation/ja/2.3.x/Home で日本語訳されています  Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください    IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf   IDEAの外観を変更  スキンの変更（背景を黒に）  [Appearance]→[Theme]の箇所を&quot;Default&quot;から&quot;Darcula&quot;に変更     IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります  [File]→[Project Structure&hellip;]からインストール済みのJDKを選択してください    build.sbtを変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&hellip;」でIntelliJのキャッシュをクリアしてみてください    </div>
   </div>
 </article>
 </div>
@@ -191,8 +191,8 @@ package controllers import play.api.mvc._ import play.api.db.slick._ import mode
 
     <div class="summary">Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.2-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。
 新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。
-activator new play2-hands-on  Play2.3.x用に設定変更 2015/5/26 にPlay 2.4 がリリースされた為、↑のコマンドで作成されるPlayのバージョンも上がっています。このHandsOnでは、まだ 2.3.9 を利用するため、以下の設定を変更してください。また、あわせてORMにSlickを使うため、一緒に設定を変更します。
-build.sbt name := &quot;play2-hands-on&quot; version := &quot;1.0-SNAPSHOT&quot; lazy val root = (project in file(&quot;.&quot;)).enablePlugins(PlayScala) scalaVersion := &quot;2.11.6&quot; libraryDependencies ++= Seq( // jdbcからspec2〜まで消してください // jdbc, // anorm, // cache, // ws, // specs2 % Test &quot;com.typesafe.play&quot; %% &quot;play-slick&quot; % &quot;0.8.1&quot; // &lt;- この行を追加してください。 ) //routesGenerator := InjectedRoutesGenerator　// &lt;- この行は消してください。  project/plugins.sbt // addSbtPlugin(&quot;com.typesafe.play&quot; % &quot;sbt-plugin&quot; % &quot;2.</div>
+activator new play2-hands-on Play2.3.x用に設定変更 2015/5/26 にPlay 2.4 がリリースされた為、↑のコマンドで作成されるPlayのバージョンも上がっています。このHandsOnでは、まだ 2.3.9 を利用するため、以下の設定を変更してください。また、あわせてORMにSlickを使うため、一緒に設定を変更します。
+build.sbt name := &#34;play2-hands-on&#34; version := &#34;1.0-SNAPSHOT&#34; lazy val root = (project in file(&#34;.&#34;)).enablePlugins(PlayScala) scalaVersion := &#34;2.11.6&#34; libraryDependencies ++= Seq( // jdbcからspec2〜まで消してください  // jdbc, // anorm, // cache, // ws, // specs2 % Test  &#34;com.typesafe.play&#34; %% &#34;play-slick&#34; % &#34;0.8.1&#34; // &lt;- この行を追加してください。 ) //routesGenerator := InjectedRoutesGenerator　// &lt;- この行は消してください。 project/plugins.sbt // addSbtPlugin(&quot;com.typesafe.play&quot; % &quot;sbt-plugin&quot; % &quot;2.</div>
   </div>
 </article>
 </div>
@@ -209,15 +209,15 @@ build.sbt name := &quot;play2-hands-on&quot; version := &quot;1.0-SNAPSHOT&quot;
       
     </ul>
 
-    <div class="summary"> USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。
+    <div class="summary">USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。
 Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。
 ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersRowクラスに対応するWritesを定義しておく必要があります。
-object JsonController extends Controller { // UsersRowをJSONに変換するためのWritesを定義 implicit val usersRowWrites = Json.writes[UsersRow] ...   POINT
+object JsonController extends Controller { // UsersRowをJSONに変換するためのWritesを定義  implicit val usersRowWrites = Json.writes[UsersRow] ...  POINT
  Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます Json.writesやJson.readsの代わりにJson.formatでFormatを定義することでWritesとReadsを同時に定義することができます。同じケースクラスを読み込みと書き出しの両方に使う場合はJson.formatを使うとよいでしょう   コントローラ JsonControllerのlistメソッドを以下のように実装します。
-def list = DBAction { implicit rs =&gt; // IDの昇順にすべてのユーザ情報を取得 val users = Users.sortBy(t =&gt; t.id).list // ユーザの一覧をJSONで返す Ok(Json.obj(&quot;users&quot; -&gt; users)) }  Json.objメソッドでケースクラスからJSONへの変換が行われますが、このときにケースクラスに対応したWritesが定義されていないとコンパイルエラーになります。
+def list = DBAction { implicit rs =&gt; // IDの昇順にすべてのユーザ情報を取得  val users = Users.sortBy(t =&gt; t.id).list // ユーザの一覧をJSONで返す  Ok(Json.obj(&#34;users&#34; -&gt; users)) } Json.objメソッドでケースクラスからJSONへの変換が行われますが、このときにケースクラスに対応したWritesが定義されていないとコンパイルエラーになります。
 実行 コマンドラインから以下のコマンドを実行してユーザ一覧がJSONで取得できることを確認してみましょう。
-curl -XGET http://localhost:9000/json/list  結果として以下のようなJSONが表示されるはずです。
-{&quot;users&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;Taro Yamada&quot;,&quot;companyId&quot;:1},{&quot;id&quot;:2,&quot;name&quot;:&quot;Jiro Sato&quot;}]}  </div>
+curl -XGET http://localhost:9000/json/list 結果として以下のようなJSONが表示されるはずです。
+{&#34;users&#34;:[{&#34;id&#34;:1,&#34;name&#34;:&#34;Taro Yamada&#34;,&#34;companyId&#34;:1},{&#34;id&#34;:2,&#34;name&#34;:&#34;Jiro Sato&#34;}]} </div>
   </div>
 </article>
 </div>
@@ -236,7 +236,7 @@ curl -XGET http://localhost:9000/json/list  結果として以下のようなJSO
 
     <div class="summary">USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。
 ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。
-@* このテンプレートの引数 *@ @(users: List[models.Tables.UsersRow]) @* main.scala.htmlを呼び出す *@ @main(&quot;ユーザ一覧&quot;) { &lt;div&gt; &lt;a href=&quot;@routes.UserController.edit()&quot; class=&quot;btn btn-success&quot; role=&quot;button&quot;&gt;新規作成&lt;/a&gt; &lt;/div&gt; &lt;div class=&quot;col-xs-6&quot;&gt; &lt;table class=&quot;table table-hover&quot;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;ID&lt;/th&gt; &lt;th&gt;名前&lt;/th&gt; &lt;th&gt;&amp;nbsp;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&gt; &lt;tr&gt; &lt;td&gt;@user.id&lt;/td&gt; &lt;td&gt;&lt;a href=&quot;@routes.UserController.edit(Some(user.id))&quot;&gt;@user.name&lt;/a&gt;&lt;/td&gt; &lt;td&gt;@helper.form(routes.UserController.remove(user.id)){ &lt;input type=&quot;submit&quot; value=&quot;削除&quot; class=&quot;btn btn-danger btn-xs&quot;/&gt; } &lt;/td&gt; &lt;/tr&gt; } &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; }   POINT
+@* このテンプレートの引数 *@ @(users: List[models.Tables.UsersRow]) @* main.scala.htmlを呼び出す *@ @main(&#34;ユーザ一覧&#34;) { &lt;div&gt; &lt;a href=&#34;@routes.UserController.edit()&#34; class=&#34;btn btn-success&#34; role=&#34;button&#34;&gt;新規作成&lt;/a&gt; &lt;/div&gt; &lt;div class=&#34;col-xs-6&#34;&gt; &lt;table class=&#34;table table-hover&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;ID&lt;/th&gt; &lt;th&gt;名前&lt;/th&gt; &lt;th&gt;&amp;nbsp;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&gt; &lt;tr&gt; &lt;td&gt;@user.id&lt;/td&gt; &lt;td&gt;&lt;a href=&#34;@routes.UserController.edit(Some(user.id))&#34;&gt;@user.name&lt;/a&gt;&lt;/td&gt; &lt;td&gt;@helper.form(routes.UserController.remove(user.id)){ &lt;input type=&#34;submit&#34; value=&#34;削除&#34; class=&#34;btn btn-danger btn-xs&#34;/&gt; } &lt;/td&gt; &lt;/tr&gt; } &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; }  POINT
  テンプレートの1行目にはコントローラから受け取る引数を記述します テンプレートには@でScalaのコードを埋め込むことができます テンプレートには@*...*@でコメントを記述することができます リンクやフォームのURLは、@routes.・・・と記述することでルーティングから生成することができます   コントローラ まずインポートに以下を追加します。これでUserControllerからmodelsパッケージで定義されたモデルクラスを使用したDBアクセスが可能になります。</div>
   </div>
 </article>
@@ -254,10 +254,10 @@ curl -XGET http://localhost:9000/json/list  結果として以下のようなJSO
       
     </ul>
 
-    <div class="summary"> 指定したIDのユーザをUSERSテーブルから削除します。
+    <div class="summary">指定したIDのユーザをUSERSテーブルから削除します。
 コントローラ JsonControllerのremoveメソッドを以下のように実装します。
-def remove(id: Long) = DBAction.transaction { implicit rs =&gt; // ユーザを削除 Users.filter(t =&gt; t.id === id.bind).delete Ok(Json.obj(&quot;result&quot; -&gt; &quot;success&quot;)) }  実行 コマンドラインから以下のコマンドを実行してユーザが削除されることを確認してください。
-curl -XPOST http://localhost:9000/json/remove/1  </div>
+def remove(id: Long) = DBAction.transaction { implicit rs =&gt; // ユーザを削除  Users.filter(t =&gt; t.id === id.bind).delete Ok(Json.obj(&#34;result&#34; -&gt; &#34;success&#34;)) } 実行 コマンドラインから以下のコマンドを実行してユーザが削除されることを確認してください。
+curl -XPOST http://localhost:9000/json/remove/1 </div>
   </div>
 </article>
 </div>
@@ -276,10 +276,10 @@ curl -XPOST http://localhost:9000/json/remove/1  </div>
 
     <div class="summary">ユーザ情報をJSONで受け取り、登録もしくは更新を行います。
 Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。
-object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義 implicit val userFormReads = Json.reads[UserForm] ...  コントローラ JsonControllerのcreateメソッドを以下のように実装します。
+object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義  implicit val userFormReads = Json.reads[UserForm] ... コントローラ JsonControllerのcreateメソッドを以下のように実装します。
 JSONリクエストを受け取る場合は
  DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。
-def create = DBAction.transaction(parse.json) { implicit rs =&gt; rs.body.validate[UserForm].map { form =&gt; // OKの場合はユーザを登録 val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&quot;result&quot; -&gt; &quot;success&quot;)) }.recoverTotal { e =&gt; // NGの場合はバリデーションエラーを返す BadRequest(Json.</div>
+def create = DBAction.transaction(parse.json) { implicit rs =&gt; rs.body.validate[UserForm].map { form =&gt; // OKの場合はユーザを登録  val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&#34;result&#34; -&gt; &#34;success&#34;)) }.recoverTotal { e =&gt; // NGの場合はバリデーションエラーを返す  BadRequest(Json.</div>
   </div>
 </article>
 </div>

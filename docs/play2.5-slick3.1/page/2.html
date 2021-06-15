@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -69,9 +69,9 @@
     </ul>
 
     <div class="summary">Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。
-@(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;@title&lt;/title&gt; &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;@routes.Assets.versioned(&quot;stylesheets/main.css&quot;)&quot;&gt; &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;@routes.Assets.versioned(&quot;images/favicon.png&quot;)&quot;&gt; &lt;script src=&quot;@routes.Assets.versioned(&quot;javascripts/hello.js&quot;)&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; @* ↓↓↓↓ここから追加↓↓↓↓ *@ &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&quot;&gt; &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;&gt; &lt;script src=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; @* ↑↑↑↑ここまで追加↑↑↑↑ *@ &lt;/head&gt; &lt;body&gt; @content &lt;/body&gt; &lt;/html&gt;  また、デフォルトではContent-Security-Policyヘッダがdefault-src 'self'を返すため上記で指定した外部CDNのCSSファイルやJavaScriptファイルを読み込むことができません。そこでconf/application.confに以下の設定を追加してContent-Security-Policyヘッダが出力されないようにしておきます。
-play.filters.headers.contentSecurityPolicy=null  コントローラの雛形を作る controllersパッケージにUserControllerクラスを以下のように作成します。
-package controllers import play.api.mvc._ import play.api.data._ import play.api.data.Forms._ import play.api.libs.concurrent.Execution.Implicits.defaultContext import play.api.i18n.{MessagesApi, I18nSupport} import play.api.db.slick._ import slick.driver.JdbcProfile import models.</div>
+@(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;@title&lt;/title&gt; &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;@routes.Assets.versioned(&#34;stylesheets/main.css&#34;)&#34;&gt; &lt;link rel=&#34;shortcut icon&#34; type=&#34;image/png&#34; href=&#34;@routes.Assets.versioned(&#34;images/favicon.png&#34;)&#34;&gt; &lt;script src=&#34;@routes.Assets.versioned(&#34;javascripts/hello.js&#34;)&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt; @* ↓↓↓↓ここから追加↓↓↓↓ *@ &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&#34;&gt; &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&#34;&gt; &lt;script src=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt; @* ↑↑↑↑ここまで追加↑↑↑↑ *@ &lt;/head&gt; &lt;body&gt; @content &lt;/body&gt; &lt;/html&gt; また、デフォルトではContent-Security-Policyヘッダがdefault-src 'self'を返すため上記で指定した外部CDNのCSSファイルやJavaScriptファイルを読み込むことができません。そこでconf/application.confに以下の設定を追加してContent-Security-Policyヘッダが出力されないようにしておきます。
+play.filters.headers.contentSecurityPolicy=null コントローラの雛形を作る controllersパッケージにUserControllerクラスを以下のように作成します。
+package controllers import play.api.mvc._ import play.api.data._ import play.api.data.Forms._ import play.api.libs.concurrent.Execution.Implicits.defaultContext import play.api.i18n.{MessagesApi, I18nSupport} import play.api.db.slick._ import slick.driver.JdbcProfile import models.Tables._ import javax.</div>
   </div>
 </article>
 </div>
@@ -90,9 +90,9 @@ package controllers import play.api.mvc._ import play.api.data._ import play.api
 
     <div class="summary">指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。
 コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。
-def remove(id: Long) = Action.async { implicit rs =&gt; // ユーザを削除 db.run(Users.filter(t =&gt; t.id === id.bind).delete).map { _ =&gt; // 一覧画面へリダイレクト Redirect(routes.UserController.list) } }  上記のコードでは以下の記述でユーザ情報の削除を行うクエリを生成しています。
-Users.filter(t =&gt; t.id === id.bind).delete  これは以下のSQLと同じ意味になります。
-DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</div>
+def remove(id: Long) = Action.async { implicit rs =&gt; // ユーザを削除  db.run(Users.filter(t =&gt; t.id === id.bind).delete).map { _ =&gt; // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } 上記のコードでは以下の記述でユーザ情報の削除を行うクエリを生成しています。
+Users.filter(t =&gt; t.id === id.bind).delete これは以下のSQLと同じ意味になります。
+DELETE FROM USERS WHERE ID = ? 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</div>
   </div>
 </article>
 </div>
@@ -112,8 +112,7 @@ DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリ�
     <div class="summary">入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。
  エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。
 入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。
-def create = Action.async { implicit rs =&gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&gt; { db.run(Companies.sortBy(t =&gt; t.id).result).map { companies =&gt; BadRequest(views.html.user.edit(error, companies)) } }, // OKの場合 form =&gt; { // ユーザを登録 val user = UsersRow(0, form.name, form.companyId) db.run(Users += user).map { _ =&gt; // 一覧画面へリダイレクト Redirect(routes.UserController.list) } } ) }  updateメソッドも同じように実装します。
-def update = Action.</div>
+def create = Action.async { implicit rs =&gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合  error =&gt; { db.run(Companies.sortBy(t =&gt; t.id).result).map { companies =&gt; BadRequest(views.html.user.edit(error, companies)) } }, // OKの場合  form =&gt; { // ユーザを登録  val user = UsersRow(0, form.name, form.companyId) db.run(Users += user).map { _ =&gt; // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } ) } updateメソッドも同じように実装します。</div>
   </div>
 </article>
 </div>

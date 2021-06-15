@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/h2 | &#43;-create.sql | &#43;-data.mv.db | &#43;-...  H2の起動 Windowsの場合まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。libraryDependencies &#43;= &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.4.196&amp;quot; addSbtPlugin(&amp;quot;org.scalikejdbc&amp;quot; %% &amp;quot;scalikejdbc-mapper-generator&amp;quot; % &amp;quot;3.2.2&amp;quot;)  また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.">
+<meta name="description" content="ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/h2 | &#43;-create.sql | &#43;-data.mv.db | &#43;-... H2の起動 Windowsの場合まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。libraryDependencies &#43;= &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.196&amp;#34; addSbtPlugin(&amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc-mapper-generator&amp;#34; % &amp;#34;3.2.2&amp;#34;) また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.packageName=models # generator.lineBreak: LF/CRLF generator.">
 
 <meta property="og:title" content="DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.6-scalikejdbc3.2/preparation_of_db.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/h2 | &#43;-create.sql | &#43;-data.mv.db | &#43;-...  H2の起動 Windowsの場合まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。libraryDependencies &#43;= &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.4.196&amp;quot; addSbtPlugin(&amp;quot;org.scalikejdbc&amp;quot; %% &amp;quot;scalikejdbc-mapper-generator&amp;quot; % &amp;quot;3.2.2&amp;quot;)  また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.">
+<meta property="og:description" content="ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/h2 | &#43;-create.sql | &#43;-data.mv.db | &#43;-... H2の起動 Windowsの場合まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。libraryDependencies &#43;= &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.196&amp;#34; addSbtPlugin(&amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc-mapper-generator&amp;#34; % &amp;#34;3.2.2&amp;#34;) また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.packageName=models # generator.lineBreak: LF/CRLF generator.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.6-scalikejdbc3.2/preparation_of_db.html">
 <meta name="twitter:title" content="DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/h2 | &#43;-create.sql | &#43;-data.mv.db | &#43;-...  H2の起動 Windowsの場合まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。libraryDependencies &#43;= &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.4.196&amp;quot; addSbtPlugin(&amp;quot;org.scalikejdbc&amp;quot; %% &amp;quot;scalikejdbc-mapper-generator&amp;quot; % &amp;quot;3.2.2&amp;quot;)  また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.">
+<meta name="twitter:description" content="ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/h2 | &#43;-create.sql | &#43;-data.mv.db | &#43;-... H2の起動 Windowsの場合まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。libraryDependencies &#43;= &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.196&amp;#34; addSbtPlugin(&amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc-mapper-generator&amp;#34; % &amp;#34;3.2.2&amp;#34;) また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.packageName=models # generator.lineBreak: LF/CRLF generator.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "DBの準備 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,27 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。
-+-/play2-hands-on | | | +-/app | | | +-/conf | | | +-... | +-/h2 | +-create.sql | +-data.mv.db | +-...  H2の起動 Windowsの場合
-まず、h2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。
-Macの場合
-cd h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。
-モデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。
-play2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project/plugins.sbtに以下の設定を追加します。
-libraryDependencies += &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.196&quot; addSbtPlugin(&quot;org.scalikejdbc&quot; %% &quot;scalikejdbc-mapper-generator&quot; % &quot;3.2.2&quot;)  また、project/scalikejdbc.propertiesというファイルを以下の内容で作成します。
-# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp://localhost/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator."
+    "description": "ツールプロジェクトの準備 h2.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。\n\u002b-\/play2-hands-on | | | \u002b-\/app | | | \u002b-\/conf | | | \u002b-... | \u002b-\/h2 | \u002b-create.sql | \u002b-data.mv.db | \u002b-... H2の起動 Windowsの場合\nまず、h2\/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。\nMacの場合\ncd h2\/ sh start.sh ※起動後、そのターミナルは閉じないでください。\nモデルの自動生成 ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。\nplay2-hands-onプロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。project\/plugins.sbtに以下の設定を追加します。\nlibraryDependencies \u002b= \u0026#34;com.h2database\u0026#34; % \u0026#34;h2\u0026#34; % \u0026#34;1.4.196\u0026#34; addSbtPlugin(\u0026#34;org.scalikejdbc\u0026#34; %% \u0026#34;scalikejdbc-mapper-generator\u0026#34; % \u0026#34;3.2.2\u0026#34;) また、project\/scalikejdbc.propertiesというファイルを以下の内容で作成します。\n# --- # jdbc settings jdbc.driver=org.h2.Driver jdbc.url=jdbc:h2:tcp:\/\/localhost\/data jdbc.username=sa jdbc.password=sa jdbc.schema=PUBLIC # --- # source code generator settings generator.packageName=models # generator.lineBreak: LF\/CRLF generator."
   }
 </script>
 
@@ -136,12 +128,8 @@ libraryDependencies += &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.1
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="ツールプロジェクトの準備">ツールプロジェクトの準備</h2>
-
+          <h2 id="ツールプロジェクトの準備">ツールプロジェクトの準備</h2>
 <p><a href="../downloads/h2.zip">h2.zip</a> をダウンロードし、以下のように<code>play2-hands-on</code>プロジェクトと同じディレクトリに展開します。</p>
-
 <pre><code>+-/play2-hands-on
 |   |
 |   +-/app
@@ -157,37 +145,21 @@ libraryDependencies += &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.1
     +-data.mv.db
     |
     +-...
-</code></pre>
-
-<h2 id="h2の起動">H2の起動</h2>
-
+</code></pre><h2 id="h2の起動">H2の起動</h2>
 <p><strong>Windowsの場合</strong></p>
-
 <p>まず、<code>h2/start.bat</code>をダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。</p>
-
 <p><strong>Macの場合</strong></p>
-
 <pre><code>cd h2/
 sh start.sh
-</code></pre>
-
-<p>※起動後、そのターミナルは閉じないでください。</p>
-
-<p><img src="../images/play2.6-scalikejdbc3.2/er_diagram.png" alt="アプリケーションで使用するER図" /></p>
-
+</code></pre><p>※起動後、そのターミナルは閉じないでください。</p>
+<p><img src="../images/play2.6-scalikejdbc3.2/er_diagram.png" alt="アプリケーションで使用するER図"></p>
 <h2 id="モデルの自動生成">モデルの自動生成</h2>
-
 <p>ScalikeJDBCではタイプセーフなAPIを使用するためにモデルクラスを用意する必要がありますが、ScalikeJDBCがsbtプラグインとして提供しているジェネレータを使用することでDBスキーマから自動生成することができます。</p>
-
 <p><code>play2-hands-on</code>プロジェクトでScalikeJDBCの自動生成ツールを使えるようにします。<code>project/plugins.sbt</code>に以下の設定を追加します。</p>
-
-<pre><code class="language-scala">libraryDependencies += &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.196&quot;
-addSbtPlugin(&quot;org.scalikejdbc&quot; %% &quot;scalikejdbc-mapper-generator&quot; % &quot;3.2.2&quot;)
-</code></pre>
-
-<p>また、<code>project/scalikejdbc.properties</code>というファイルを以下の内容で作成します。</p>
-
-<pre><code class="language-properties"># ---
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">libraryDependencies <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;com.h2database&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;h2&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;1.4.196&#34;</span>
+addSbtPlugin<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;org.scalikejdbc&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;scalikejdbc-mapper-generator&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;3.2.2&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><p>また、<code>project/scalikejdbc.properties</code>というファイルを以下の内容で作成します。</p>
+<pre><code class="language-properties" data-lang="properties"># ---
 # jdbc settings
 
 jdbc.driver=org.h2.Driver
@@ -215,25 +187,14 @@ generator.defaultAutoSession=true
 generator.autoConstruct=false
 # joda-time (org.joda.time.DateTime) or JSR-310 (java.time.ZonedDateTime java.time.OffsetDateTime)
 generator.dateTimeClass=java.time.OffsetDateTime
-</code></pre>
-
-<p>最後に<code>buils.sbt</code>に以下の記述を追加します。これでこのプロジェクトで<code>scalikejdbcGen</code>タスクが使用できるようになります。</p>
-
-<pre><code class="language-scala">enablePlugins(ScalikejdbcPlugin)
-</code></pre>
-
-<p>ではコードを自動生成してみましょう。<code>play2-hands-on</code>プロジェクトのルートディレクトリで以下のコマンドを実行します。</p>
-
+</code></pre><p>最後に<code>buils.sbt</code>に以下の記述を追加します。これでこのプロジェクトで<code>scalikejdbcGen</code>タスクが使用できるようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">enablePlugins<span style="color:#f92672">(</span><span style="color:#a6e22e">ScalikejdbcPlugin</span><span style="color:#f92672">)</span>
+</code></pre></div><p>ではコードを自動生成してみましょう。<code>play2-hands-on</code>プロジェクトのルートディレクトリで以下のコマンドを実行します。</p>
 <pre><code>sbt &quot;scalikejdbcGenAll&quot;
-</code></pre>
-
-<p>すると<code>play2-hands-on</code>プロジェクトの<code>app/models</code>パッケージにモデルクラスが生成されます。</p>
-
+</code></pre><p>すると<code>play2-hands-on</code>プロジェクトの<code>app/models</code>パッケージにモデルクラスが生成されます。</p>
 <h2 id="db接続の設定">DB接続の設定</h2>
-
 <p><code>play2-hands-on</code>プロジェクトの<code>conf/application.conf</code>に以下の設定を追加します。データベースの接続情報に加え、PlayとScalikeJDBCを連携させるための設定が含まれています。</p>
-
-<pre><code class="language-properties"># Database configuration
+<pre><code class="language-properties" data-lang="properties"># Database configuration
 # ~~~~~
 # You can declare as many datasources as you want.
 # By convention, the default datasource is named `default`
@@ -258,7 +219,6 @@ play.modules.enabled += &quot;scalikejdbc.PlayModule&quot;
 # scalikejdbc.PlayModule doesn't depend on Play's DBModule
 play.modules.disabled += &quot;play.api.db.DBModule&quot;
 </code></pre>
-
           <hr>
           <div class="nav">
           

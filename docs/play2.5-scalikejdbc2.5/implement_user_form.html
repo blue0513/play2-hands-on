@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>ユーザ登録・編集画面の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。 リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。object UserController { // フォームの値を格納するケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う val userForm = Form( mapping( &amp;quot;id&amp;quot; -&amp;gt; optional(longNumber), &amp;quot;name&amp;quot; -&amp;gt; nonEmptyText(maxLength = 20), &amp;quot;companyId&amp;quot; -&amp;gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) }  コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。 POINT コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper.">
+<meta name="description" content="リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。 リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。object UserController { // フォームの値を格納するケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う  val userForm = Form( mapping( &amp;#34;id&amp;#34; -&amp;gt; optional(longNumber), &amp;#34;name&amp;#34; -&amp;gt; nonEmptyText(maxLength = 20), &amp;#34;companyId&amp;#34; -&amp;gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) } コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。 POINT コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper.">
 
 <meta property="og:title" content="ユーザ登録・編集画面の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.5-scalikejdbc2.5/implement_user_form.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。 リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。object UserController { // フォームの値を格納するケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う val userForm = Form( mapping( &amp;quot;id&amp;quot; -&amp;gt; optional(longNumber), &amp;quot;name&amp;quot; -&amp;gt; nonEmptyText(maxLength = 20), &amp;quot;companyId&amp;quot; -&amp;gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) }  コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。 POINT コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper.">
+<meta property="og:description" content="リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。 リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。object UserController { // フォームの値を格納するケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う  val userForm = Form( mapping( &amp;#34;id&amp;#34; -&amp;gt; optional(longNumber), &amp;#34;name&amp;#34; -&amp;gt; nonEmptyText(maxLength = 20), &amp;#34;companyId&amp;#34; -&amp;gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) } コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。 POINT コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.5-scalikejdbc2.5/implement_user_form.html">
 <meta name="twitter:title" content="ユーザ登録・編集画面の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。 リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。object UserController { // フォームの値を格納するケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う val userForm = Form( mapping( &amp;quot;id&amp;quot; -&amp;gt; optional(longNumber), &amp;quot;name&amp;quot; -&amp;gt; nonEmptyText(maxLength = 20), &amp;quot;companyId&amp;quot; -&amp;gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) }  コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。 POINT コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper.">
+<meta name="twitter:description" content="リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。 リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。object UserController { // フォームの値を格納するケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う  val userForm = Form( mapping( &amp;#34;id&amp;#34; -&amp;gt; optional(longNumber), &amp;#34;name&amp;#34; -&amp;gt; nonEmptyText(maxLength = 20), &amp;#34;companyId&amp;#34; -&amp;gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) } コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。 POINT コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "ユーザ登録・編集画面の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "ユーザ登録・編集画面の実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,25 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。
- リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。
-ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。
-object UserController { // フォームの値を格納するケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う val userForm = Form( mapping( &quot;id&quot; -&gt; optional(longNumber), &quot;name&quot; -&gt; nonEmptyText(maxLength = 20), &quot;companyId&quot; -&gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) }  コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。
- POINT
- コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。
-@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper."
+    "description": "リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。\n リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。\nここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。\nobject UserController { \/\/ フォームの値を格納するケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) \/\/ formから送信されたデータ ⇔ ケースクラスの変換を行う  val userForm = Form( mapping( \u0026#34;id\u0026#34; -\u0026gt; optional(longNumber), \u0026#34;name\u0026#34; -\u0026gt; nonEmptyText(maxLength = 20), \u0026#34;companyId\u0026#34; -\u0026gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) } コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。\n POINT\n コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。\n@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages) @import helper."
   }
 </script>
 
@@ -134,143 +128,109 @@ object UserController { // フォームの値を格納するケースクラス c
         </ul>
 
         <div class="article-body">
-          
-
-<p>リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。</p>
-
+          <p>リクエストパラメータにIDが指定押されているかどうかに応じて以下の処理を行います。</p>
 <ul>
 <li>リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。</li>
 <li>リクエストパラメータにIDあり ⇒ <code>USERS</code>テーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。</li>
 </ul>
-
 <h2 id="フォーム">フォーム</h2>
-
 <p>画面からの入力値を受け取るための<code>Form</code>を定義します。<code>Form</code>は必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。</p>
-
 <p>ここでは<code>UserController</code>と同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">UserController</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// フォームの値を格納するケースクラス
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserForm</span><span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Option</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Long</span><span style="color:#f92672">],</span> name<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">String</span><span style="color:#f92672">,</span> companyId<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Option</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Int</span><span style="color:#f92672">])</span>
 
-<pre><code class="language-scala">object UserController {
-  // フォームの値を格納するケースクラス
-  case class UserForm(id: Option[Long], name: String, companyId: Option[Int])
-
-  // formから送信されたデータ ⇔ ケースクラスの変換を行う
-  val userForm = Form(
-    mapping(
-      &quot;id&quot;        -&gt; optional(longNumber),
-      &quot;name&quot;      -&gt; nonEmptyText(maxLength = 20),
-      &quot;companyId&quot; -&gt; optional(number)
-    )(UserForm.apply)(UserForm.unapply)
-  )
-}
-</code></pre>
-
-<p>コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。</p>
-
+  <span style="color:#75715e">// formから送信されたデータ ⇔ ケースクラスの変換を行う
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">val</span> userForm <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Form</span><span style="color:#f92672">(</span>
+    mapping<span style="color:#f92672">(</span>
+      <span style="color:#e6db74">&#34;id&#34;</span>        <span style="color:#f92672">-&gt;</span> optional<span style="color:#f92672">(</span>longNumber<span style="color:#f92672">),</span>
+      <span style="color:#e6db74">&#34;name&#34;</span>      <span style="color:#f92672">-&gt;</span> nonEmptyText<span style="color:#f92672">(</span>maxLength <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">),</span>
+      <span style="color:#e6db74">&#34;companyId&#34;</span> <span style="color:#f92672">-&gt;</span> optional<span style="color:#f92672">(</span>number<span style="color:#f92672">)</span>
+    <span style="color:#f92672">)(</span><span style="color:#a6e22e">UserForm</span><span style="color:#f92672">.</span>apply<span style="color:#f92672">)(</span><span style="color:#a6e22e">UserForm</span><span style="color:#f92672">.</span>unapply<span style="color:#f92672">)</span>
+  <span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。</p>
 <blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li>コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです</li>
 <li><code>Form</code>はStrutsのアクションフォームのようなものです</li>
 <li>マッピングに従ってバリデーション（後述）が行われます</li>
 </ul>
 </blockquote>
-
 <h2 id="ビュー">ビュー</h2>
-
 <p>続いて<code>views.user</code>パッケージに<code>edit.scala.html</code>を実装します。引数には<code>Form</code>のインスタンスと、プルダウンで選択する会社情報を格納した<code>Seq</code>を受け取ります。</p>
-
-<pre><code class="language-html">@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: Request[Any], messages: Messages)
 
 @import helper._
 
-@main(&quot;ユーザ作成&quot;) {
+@main(&#34;ユーザ作成&#34;) {
 
   @* IDがある場合は更新処理、ない場合は登録処理を呼ぶ *@
-  @form(CSRF(userForm(&quot;id&quot;).value.map(x =&gt; routes.UserController.update).getOrElse(routes.UserController.create)), 'class -&gt; &quot;container&quot;, 'role -&gt; &quot;form&quot;) {
-    &lt;fieldset&gt;
-      &lt;div class=&quot;form-group&quot;&gt;
-        @inputText(userForm(&quot;name&quot;), '_label -&gt; &quot;名前&quot;)
-      &lt;/div&gt;
-      &lt;div class=&quot;form-group&quot;&gt;
-        @select(userForm(&quot;companyId&quot;), companies.map(x =&gt; x.id.toString -&gt; x.name).toSeq, '_label -&gt; &quot;会社&quot;, '_default -&gt; &quot;-- 会社名を選択してください --&quot;)
-      &lt;/div&gt;
+  @form(CSRF(userForm(&#34;id&#34;).value.map(x =&gt; routes.UserController.update).getOrElse(routes.UserController.create)), &#39;class -&gt; &#34;container&#34;, &#39;role -&gt; &#34;form&#34;) {
+    &lt;<span style="color:#f92672">fieldset</span>&gt;
+      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form-group&#34;</span>&gt;
+        @inputText(userForm(&#34;name&#34;), &#39;_label -&gt; &#34;名前&#34;)
+      &lt;/<span style="color:#f92672">div</span>&gt;
+      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form-group&#34;</span>&gt;
+        @select(userForm(&#34;companyId&#34;), companies.map(x =&gt; x.id.toString -&gt; x.name).toSeq, &#39;_label -&gt; &#34;会社&#34;, &#39;_default -&gt; &#34;-- 会社名を選択してください --&#34;)
+      &lt;/<span style="color:#f92672">div</span>&gt;
       @* IDがある場合（更新の場合）のみhiddenを出力する *@
-      @userForm(&quot;id&quot;).value.map { value =&gt;
-        &lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;@value&quot; /&gt;
+      @userForm(&#34;id&#34;).value.map { value =&gt;
+        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hidden&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@value&#34;</span> /&gt;
       }
-      &lt;div&gt;
-        &lt;input type=&quot;submit&quot; value=&quot;保存&quot; class=&quot;btn btn-success&quot;&gt;
-      &lt;/div&gt;
-    &lt;/fieldset&gt;
+      &lt;<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;保存&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn btn-success&#34;</span>&gt;
+      &lt;/<span style="color:#f92672">div</span>&gt;
+    &lt;/<span style="color:#f92672">fieldset</span>&gt;
   }
 
 }
-</code></pre>
-
-<p>このテンプレートではテンプレートの暗黙的な引数として<code>request</code>だけでなく<code>message</code>を受け取るようになっています。これはテンプレートでテキストフィールドを表示するために使用している<code>inputText</code>ヘルパーがメッセージ等の国際化のために必要とするもので、コントローラにDIした<code>MessagesApi</code>によって暗黙的に渡されます。このハンズオンでは特に使用しませんが、Play2アプリケーションの国際化対応に必要になるものですので覚えておくとよいでしょう。</p>
-
+</code></pre></div><p>このテンプレートではテンプレートの暗黙的な引数として<code>request</code>だけでなく<code>message</code>を受け取るようになっています。これはテンプレートでテキストフィールドを表示するために使用している<code>inputText</code>ヘルパーがメッセージ等の国際化のために必要とするもので、コントローラにDIした<code>MessagesApi</code>によって暗黙的に渡されます。このハンズオンでは特に使用しませんが、Play2アプリケーションの国際化対応に必要になるものですので覚えておくとよいでしょう。</p>
 <h2 id="コントローラ">コントローラ</h2>
-
 <p>最後に<code>UserController</code>の<code>edit</code>メソッドを実装します。引数<code>id</code>が指定されていた場合は空の<code>Form</code>、指定されていた場合は<code>Form#fill</code>メソッドで<code>Form</code>に初期表示する値をセットしたうえでテンプレートを呼び出すようにします。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">// コンパニオンオブジェクトに定義したFormを参照するためにimport文を追加
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> UserController._
 
-<pre><code class="language-scala">// コンパニオンオブジェクトに定義したFormを参照するためにimport文を追加
-import UserController._
+<span style="color:#66d9ef">def</span> edit<span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Option</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Long</span><span style="color:#f92672">])</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Action</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> request <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#66d9ef">val</span> c <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>syntax<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span>
 
-def edit(id: Option[Long]) = Action { implicit request =&gt;
-  val c = Companies.syntax(&quot;c&quot;)
+  <span style="color:#a6e22e">DB</span><span style="color:#f92672">.</span>readOnly <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// リクエストパラメータにIDが存在する場合
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> form <span style="color:#66d9ef">=</span> id <span style="color:#66d9ef">match</span> <span style="color:#f92672">{</span>
+      <span style="color:#75715e">// IDが渡されなかった場合は新規登録フォーム
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">None</span> <span style="color:#66d9ef">=&gt;</span> userForm
+      <span style="color:#75715e">// IDからユーザ情報を1件取得してフォームに詰める
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Some</span><span style="color:#f92672">(</span>id<span style="color:#f92672">)</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">val</span> user <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>find<span style="color:#f92672">(</span>id<span style="color:#f92672">).</span>get
+        userForm<span style="color:#f92672">.</span>fill<span style="color:#f92672">(</span><span style="color:#a6e22e">UserForm</span><span style="color:#f92672">(</span><span style="color:#a6e22e">Some</span><span style="color:#f92672">(</span>user<span style="color:#f92672">.</span>id<span style="color:#f92672">),</span> user<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span> user<span style="color:#f92672">.</span>companyId<span style="color:#f92672">))</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
 
-  DB.readOnly { implicit session =&gt;
-    // リクエストパラメータにIDが存在する場合
-    val form = id match {
-      // IDが渡されなかった場合は新規登録フォーム
-      case None =&gt; userForm
-      // IDからユーザ情報を1件取得してフォームに詰める
-      case Some(id) =&gt; {
-        val user = Users.find(id).get
-        userForm.fill(UserForm(Some(user.id), user.name, user.companyId))
-      }
-    }
+    <span style="color:#75715e">// プルダウンに表示する会社のリストを取得
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> companies <span style="color:#66d9ef">=</span> withSQL <span style="color:#f92672">{</span>
+      select<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Companies</span> as c<span style="color:#f92672">).</span>orderBy<span style="color:#f92672">(</span>c<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>asc<span style="color:#f92672">)</span>
+    <span style="color:#f92672">}.</span>map<span style="color:#f92672">(</span><span style="color:#a6e22e">Companies</span><span style="color:#f92672">(</span>c<span style="color:#f92672">.</span>resultName<span style="color:#f92672">)).</span>list<span style="color:#f92672">().</span>apply<span style="color:#f92672">()</span>
 
-    // プルダウンに表示する会社のリストを取得
-    val companies = withSQL {
-      select.from(Companies as c).orderBy(c.id.asc)
-    }.map(Companies(c.resultName)).list().apply()
-
-    Ok(views.html.user.edit(form, companies))
-  }
-}
-</code></pre>
-
-<p>上記のコードではパラメータ<code>id</code>が指定されていなかった場合（<code>None</code>の場合）は新規登録用の空フォーム、指定されていた場合（<code>Some(id)</code>の場合）は更新用フォームを生成しています。このとき、<code>Users.find(id)</code>で更新用フォームに設定するためのユーザ情報をDBから取得しています。このメソッドはscalikejdbcGenで自動生成された検索用メソッドです。このように基本的なCRUD処理はQueryDSLを使わなくても自動生成されたメソッドで実装することができます。</p>
-
+    <span style="color:#a6e22e">Ok</span><span style="color:#f92672">(</span>views<span style="color:#f92672">.</span>html<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>edit<span style="color:#f92672">(</span>form<span style="color:#f92672">,</span> companies<span style="color:#f92672">))</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>上記のコードではパラメータ<code>id</code>が指定されていなかった場合（<code>None</code>の場合）は新規登録用の空フォーム、指定されていた場合（<code>Some(id)</code>の場合）は更新用フォームを生成しています。このとき、<code>Users.find(id)</code>で更新用フォームに設定するためのユーザ情報をDBから取得しています。このメソッドはscalikejdbcGenで自動生成された検索用メソッドです。このように基本的なCRUD処理はQueryDSLを使わなくても自動生成されたメソッドで実装することができます。</p>
 <p>ちなみにこのメソッドをQueryDSLで書き直すと以下のようになります。</p>
-
-<pre><code class="language-scala">// 1件検索をQueryDSLで書き直した場合
-withSQL {
-  select.from(Users as u).where.eq(u.id, id)
-}.map(Users(u.resultName)).single.apply()
-</code></pre>
-
-<p>また、以下の記述では会社選択用のプルダウンリストに表示する会社情報の一覧を取得しています。</p>
-
-<pre><code class="language-scala">val companies = withSQL {
-  select.from(Companies as c).orderBy(c.id.asc)
-}.map(Companies(c.resultName)).list().apply()
-</code></pre>
-
-<p>上記のコードの<code>select.from(Companies as c).orderBy(c.id.asc)</code>というQueryDSLは以下のSQLと同じ意味になります。</p>
-
-<pre><code class="language-sql">SELECT * FROM COMPANIES ORDER BY ID
-</code></pre>
-
-<h2 id="実行">実行</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">// 1件検索をQueryDSLで書き直した場合
+</span><span style="color:#75715e"></span>withSQL <span style="color:#f92672">{</span>
+  select<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span> as u<span style="color:#f92672">).</span>where<span style="color:#f92672">.</span>eq<span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>id<span style="color:#f92672">,</span> id<span style="color:#f92672">)</span>
+<span style="color:#f92672">}.</span>map<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>resultName<span style="color:#f92672">)).</span>single<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
+</code></pre></div><p>また、以下の記述では会社選択用のプルダウンリストに表示する会社情報の一覧を取得しています。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> companies <span style="color:#66d9ef">=</span> withSQL <span style="color:#f92672">{</span>
+  select<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Companies</span> as c<span style="color:#f92672">).</span>orderBy<span style="color:#f92672">(</span>c<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>asc<span style="color:#f92672">)</span>
+<span style="color:#f92672">}.</span>map<span style="color:#f92672">(</span><span style="color:#a6e22e">Companies</span><span style="color:#f92672">(</span>c<span style="color:#f92672">.</span>resultName<span style="color:#f92672">)).</span>list<span style="color:#f92672">().</span>apply<span style="color:#f92672">()</span>
+</code></pre></div><p>上記のコードの<code>select.from(Companies as c).orderBy(c.id.asc)</code>というQueryDSLは以下のSQLと同じ意味になります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> COMPANIES <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> ID
+</code></pre></div><h2 id="実行">実行</h2>
 <p>ここまで実装したらブラウザで一覧画面から新規作成やユーザ名のリンクをクリックし、以下のように登録画面と編集画面が表示されることを確認します。</p>
-
-<p><img src="../images/play2.5-scalikejdbc2.5/register_form.png" alt="ユーザ登録画面" /></p>
-
-<p><img src="../images/play2.5-scalikejdbc2.5/edit_form.png" alt="ユーザ編集画面" /></p>
+<p><img src="../images/play2.5-scalikejdbc2.5/register_form.png" alt="ユーザ登録画面"></p>
+<p><img src="../images/play2.5-scalikejdbc2.5/edit_form.png" alt="ユーザ編集画面"></p>
 
           <hr>
           <div class="nav">

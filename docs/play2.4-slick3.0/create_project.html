@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。activator new play2-hands-on  play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。name := &amp;quot;play2-hands-on&amp;quot; version := &amp;quot;1.0-SNAPSHOT&amp;quot; lazy val root = (project in file(&amp;quot;.&amp;quot;)).enablePlugins(PlayScala) scalaVersion := &amp;quot;2.11.6&amp;quot; libraryDependencies &#43;&#43;= Seq( // jdbcからspec2〜まで消してください // jdbc, // cache, // ws, // specs2 % Test &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.4.177&amp;quot;, // &amp;lt;- この行を追加してください &amp;quot;com.typesafe.play&amp;quot; %% &amp;quot;play-slick&amp;quot; % &amp;quot;1.0.0&amp;quot; // &amp;lt;- この行を追加してください ) resolvers &#43;= &amp;quot;scalaz-bintray&amp;quot; at &amp;quot;http://dl.bintray.com/scalaz/releases&amp;quot; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically.">
+<meta name="description" content="Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。activator new play2-hands-on play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。name := &amp;#34;play2-hands-on&amp;#34; version := &amp;#34;1.0-SNAPSHOT&amp;#34; lazy val root = (project in file(&amp;#34;.&amp;#34;)).enablePlugins(PlayScala) scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies &#43;&#43;= Seq( // jdbcからspec2〜まで消してください  // jdbc,  // cache,  // ws,  // specs2 % Test  &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.177&amp;#34;, // &amp;lt;- この行を追加してください  &amp;#34;com.typesafe.play&amp;#34; %% &amp;#34;play-slick&amp;#34; % &amp;#34;1.0.0&amp;#34; // &amp;lt;- この行を追加してください ) resolvers &#43;= &amp;#34;scalaz-bintray&amp;#34; at &amp;#34;http://dl.bintray.com/scalaz/releases&amp;#34; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically.">
 
 <meta property="og:title" content="プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.4-slick3.0/create_project.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。activator new play2-hands-on  play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。name := &amp;quot;play2-hands-on&amp;quot; version := &amp;quot;1.0-SNAPSHOT&amp;quot; lazy val root = (project in file(&amp;quot;.&amp;quot;)).enablePlugins(PlayScala) scalaVersion := &amp;quot;2.11.6&amp;quot; libraryDependencies &#43;&#43;= Seq( // jdbcからspec2〜まで消してください // jdbc, // cache, // ws, // specs2 % Test &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.4.177&amp;quot;, // &amp;lt;- この行を追加してください &amp;quot;com.typesafe.play&amp;quot; %% &amp;quot;play-slick&amp;quot; % &amp;quot;1.0.0&amp;quot; // &amp;lt;- この行を追加してください ) resolvers &#43;= &amp;quot;scalaz-bintray&amp;quot; at &amp;quot;http://dl.bintray.com/scalaz/releases&amp;quot; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically.">
+<meta property="og:description" content="Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。activator new play2-hands-on play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。name := &amp;#34;play2-hands-on&amp;#34; version := &amp;#34;1.0-SNAPSHOT&amp;#34; lazy val root = (project in file(&amp;#34;.&amp;#34;)).enablePlugins(PlayScala) scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies &#43;&#43;= Seq( // jdbcからspec2〜まで消してください  // jdbc,  // cache,  // ws,  // specs2 % Test  &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.177&amp;#34;, // &amp;lt;- この行を追加してください  &amp;#34;com.typesafe.play&amp;#34; %% &amp;#34;play-slick&amp;#34; % &amp;#34;1.0.0&amp;#34; // &amp;lt;- この行を追加してください ) resolvers &#43;= &amp;#34;scalaz-bintray&amp;#34; at &amp;#34;http://dl.bintray.com/scalaz/releases&amp;#34; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.4-slick3.0/create_project.html">
 <meta name="twitter:title" content="プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。activator new play2-hands-on  play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。name := &amp;quot;play2-hands-on&amp;quot; version := &amp;quot;1.0-SNAPSHOT&amp;quot; lazy val root = (project in file(&amp;quot;.&amp;quot;)).enablePlugins(PlayScala) scalaVersion := &amp;quot;2.11.6&amp;quot; libraryDependencies &#43;&#43;= Seq( // jdbcからspec2〜まで消してください // jdbc, // cache, // ws, // specs2 % Test &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.4.177&amp;quot;, // &amp;lt;- この行を追加してください &amp;quot;com.typesafe.play&amp;quot; %% &amp;quot;play-slick&amp;quot; % &amp;quot;1.0.0&amp;quot; // &amp;lt;- この行を追加してください ) resolvers &#43;= &amp;quot;scalaz-bintray&amp;quot; at &amp;quot;http://dl.bintray.com/scalaz/releases&amp;quot; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically.">
+<meta name="twitter:description" content="Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。activator new play2-hands-on play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。name := &amp;#34;play2-hands-on&amp;#34; version := &amp;#34;1.0-SNAPSHOT&amp;#34; lazy val root = (project in file(&amp;#34;.&amp;#34;)).enablePlugins(PlayScala) scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies &#43;&#43;= Seq( // jdbcからspec2〜まで消してください  // jdbc,  // cache,  // ws,  // specs2 % Test  &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.177&amp;#34;, // &amp;lt;- この行を追加してください  &amp;#34;com.typesafe.play&amp;#34; %% &amp;#34;play-slick&amp;#34; % &amp;#34;1.0.0&amp;#34; // &amp;lt;- この行を追加してください ) resolvers &#43;= &amp;#34;scalaz-bintray&amp;#34; at &amp;#34;http://dl.bintray.com/scalaz/releases&amp;#34; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "プロジェクトの作成 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,22 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "Play本体のインストール http://www.playframework.com/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。
-新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。
-activator new play2-hands-on  play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。
-name := &quot;play2-hands-on&quot; version := &quot;1.0-SNAPSHOT&quot; lazy val root = (project in file(&quot;.&quot;)).enablePlugins(PlayScala) scalaVersion := &quot;2.11.6&quot; libraryDependencies ++= Seq( // jdbcからspec2〜まで消してください // jdbc, // cache, // ws, // specs2 % Test &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.177&quot;, // &lt;- この行を追加してください &quot;com.typesafe.play&quot; %% &quot;play-slick&quot; % &quot;1.0.0&quot; // &lt;- この行を追加してください ) resolvers += &quot;scalaz-bintray&quot; at &quot;http://dl.bintray.com/scalaz/releases&quot; // Play provides two styles of routers, one expects its actions to be injected, the // other, legacy style, accesses its actions statically."
+    "description": "Play本体のインストール http:\/\/www.playframework.com\/download からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。\n新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。\nactivator new play2-hands-on play2-hands-onディレクトリのbuild.sbtにORMとしてSlickを使用するための設定を行います。\nname := \u0026#34;play2-hands-on\u0026#34; version := \u0026#34;1.0-SNAPSHOT\u0026#34; lazy val root = (project in file(\u0026#34;.\u0026#34;)).enablePlugins(PlayScala) scalaVersion := \u0026#34;2.11.6\u0026#34; libraryDependencies \u002b\u002b= Seq( \/\/ jdbcからspec2〜まで消してください  \/\/ jdbc,  \/\/ cache,  \/\/ ws,  \/\/ specs2 % Test  \u0026#34;com.h2database\u0026#34; % \u0026#34;h2\u0026#34; % \u0026#34;1.4.177\u0026#34;, \/\/ \u0026lt;- この行を追加してください  \u0026#34;com.typesafe.play\u0026#34; %% \u0026#34;play-slick\u0026#34; % \u0026#34;1.0.0\u0026#34; \/\/ \u0026lt;- この行を追加してください ) resolvers \u002b= \u0026#34;scalaz-bintray\u0026#34; at \u0026#34;http:\/\/dl.bintray.com\/scalaz\/releases\u0026#34; \/\/ Play provides two styles of routers, one expects its actions to be injected, the \/\/ other, legacy style, accesses its actions statically."
   }
 </script>
 
@@ -131,65 +128,45 @@ name := &quot;play2-hands-on&quot; version := &quot;1.0-SNAPSHOT&quot; lazy val 
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="play本体のインストール">Play本体のインストール</h2>
-
+          <h2 id="play本体のインストール">Play本体のインストール</h2>
 <p><a href="http://www.playframework.com/download">http://www.playframework.com/download</a> からtypesafe-activator-1.3.5-minimal.zipをダウンロードし、解凍したディレクトリを環境変数PATHに追加します。</p>
-
 <h2 id="新規プロジェクト作成">新規プロジェクト作成</h2>
-
 <p>コマンドプロンプトで以下のコマンドを実行します。途中でScalaアプリケーションとJavaアプリケーションのどちらを作成するかを聞かれるのでScalaアプリケーションを選択します。</p>
-
 <pre><code>activator new play2-hands-on
-</code></pre>
-
-<p><img src="../images/play2.4-slick3.0/create_project.png" alt="プロジェクトの作成" /></p>
-
+</code></pre><p><img src="../images/play2.4-slick3.0/create_project.png" alt="プロジェクトの作成"></p>
 <p><code>play2-hands-on</code>ディレクトリの<code>build.sbt</code>にORMとしてSlickを使用するための設定を行います。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">name <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;play2-hands-on&#34;</span>
 
-<pre><code class="language-scala">name := &quot;play2-hands-on&quot;
+version <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1.0-SNAPSHOT&#34;</span>
 
-version := &quot;1.0-SNAPSHOT&quot;
+<span style="color:#66d9ef">lazy</span> <span style="color:#66d9ef">val</span> root <span style="color:#66d9ef">=</span> <span style="color:#f92672">(</span>project in file<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">)).</span>enablePlugins<span style="color:#f92672">(</span><span style="color:#a6e22e">PlayScala</span><span style="color:#f92672">)</span>
 
-lazy val root = (project in file(&quot;.&quot;)).enablePlugins(PlayScala)
+scalaVersion <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2.11.6&#34;</span>
 
-scalaVersion := &quot;2.11.6&quot;
+libraryDependencies <span style="color:#f92672">++=</span> <span style="color:#a6e22e">Seq</span><span style="color:#f92672">(</span>
+  <span style="color:#75715e">// jdbcからspec2〜まで消してください
+</span><span style="color:#75715e"></span>
+  <span style="color:#75715e">// jdbc,
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// cache,
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// ws,
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// specs2 % Test
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;com.h2database&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;h2&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;1.4.177&#34;</span><span style="color:#f92672">,</span>          <span style="color:#75715e">// &lt;- この行を追加してください
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;com.typesafe.play&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;play-slick&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span> <span style="color:#75715e">// &lt;- この行を追加してください
+</span><span style="color:#75715e"></span><span style="color:#f92672">)</span>
 
-libraryDependencies ++= Seq(
-  // jdbcからspec2〜まで消してください
+resolvers <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;scalaz-bintray&#34;</span> at <span style="color:#e6db74">&#34;http://dl.bintray.com/scalaz/releases&#34;</span>
 
-  // jdbc,
-  // cache,
-  // ws,
-  // specs2 % Test
-  &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.177&quot;,          // &lt;- この行を追加してください
-  &quot;com.typesafe.play&quot; %% &quot;play-slick&quot; % &quot;1.0.0&quot; // &lt;- この行を追加してください
-)
-
-resolvers += &quot;scalaz-bintray&quot; at &quot;http://dl.bintray.com/scalaz/releases&quot;
-
-// Play provides two styles of routers, one expects its actions to be injected, the
-// other, legacy style, accesses its actions statically.
-routesGenerator := InjectedRoutesGenerator
-</code></pre>
-
-<h2 id="起動確認">起動確認</h2>
-
+<span style="color:#75715e">// Play provides two styles of routers, one expects its actions to be injected, the
+</span><span style="color:#75715e">// other, legacy style, accesses its actions statically.
+</span><span style="color:#75715e"></span>routesGenerator <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">InjectedRoutesGenerator</span>
+</code></pre></div><h2 id="起動確認">起動確認</h2>
 <p>作成した<code>play2-hands-on</code>ディレクトリに移動し、以下のコマンドでプロジェクトを実行します。</p>
-
 <pre><code>activator run
-</code></pre>
-
-<p>ブラウザから <a href="http://localhost:9000/">http://localhost:9000/</a> にアクセスし、以下の画面が表示されることを確認します。</p>
-
-<p><img src="../images/play2.4-slick3.0/welcome.png" alt="Play2のウェルカム画面" /></p>
-
+</code></pre><p>ブラウザから http://localhost:9000/ にアクセスし、以下の画面が表示されることを確認します。</p>
+<p><img src="../images/play2.4-slick3.0/welcome.png" alt="Play2のウェルカム画面"></p>
 <p><code>You’re using Play 2.4.2</code> が書かれていることを確認して下さい。</p>
-
 <blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li><code>activator run</code>で実行している間はホットデプロイが有効になっているため、ソースを修正するとすぐに変更が反映されます</li>
 <li>CTRL+Dで<code>activator run</code>での実行を終了することができます</li>

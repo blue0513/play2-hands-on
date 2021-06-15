@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -68,10 +68,10 @@
       
     </ul>
 
-    <div class="summary"> 指定したIDのユーザをUSERSテーブルから削除します。
+    <div class="summary">指定したIDのユーザをUSERSテーブルから削除します。
 コントローラ JsonControllerのremoveメソッドを以下のように実装します。
-def remove(id: Long) = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // ユーザを削除 Users.find(id).foreach { user =&gt; Users.destroy(user) } Ok(Json.obj(&quot;result&quot; -&gt; &quot;success&quot;)) } }  実行 コマンドラインから以下のコマンドを実行してユーザが削除されることを確認してください。
-curl -XPOST http://localhost:9000/json/remove/1  </div>
+def remove(id: Long) = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // ユーザを削除  Users.find(id).foreach { user =&gt; Users.destroy(user) } Ok(Json.obj(&#34;result&#34; -&gt; &#34;success&#34;)) } } 実行 コマンドラインから以下のコマンドを実行してユーザが削除されることを確認してください。
+curl -XPOST http://localhost:9000/json/remove/1 </div>
   </div>
 </article>
 </div>
@@ -90,8 +90,8 @@ curl -XPOST http://localhost:9000/json/remove/1  </div>
 
     <div class="summary">ユーザ情報をJSONで受け取り、登録もしくは更新を行います。
 Readsの定義 JsonControllerのコンパニオンオブジェクトにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。
-object JsonController { ... // ユーザ情報を受け取るためのケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義 implicit val userFormReads = ( (__ \ &quot;id&quot; ).readNullable[Long] and (__ \ &quot;name&quot; ).read[String] and (__ \ &quot;companyId&quot;).readNullable[Int] )(UserForm) }  前述のWritesと同様、DSLを使わずに以下のように記述することもできます。
-implicit val userFormFormat = new Reads[UserForm]{ def reads(js: JsValue): UserForm = { UserForm( id = (js \ &quot;id&quot; ).asOpt[Long], name = (js \ &quot;name&quot; ).as[String], companyId = (js \ &quot;companyId&quot;).</div>
+object JsonController { ... // ユーザ情報を受け取るためのケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義  implicit val userFormReads = ( (__ \ &#34;id&#34; ).readNullable[Long] and (__ \ &#34;name&#34; ).read[String] and (__ \ &#34;companyId&#34;).readNullable[Int] )(UserForm) } 前述のWritesと同様、DSLを使わずに以下のように記述することもできます。
+implicit val userFormFormat = new Reads[UserForm]{ def reads(js: JsValue): UserForm = { UserForm( id = (js \ &#34;id&#34; ).asOpt[Long], name = (js \ &#34;name&#34; ).as[String], companyId = (js \ &#34;companyId&#34;).</div>
   </div>
 </article>
 </div>
@@ -111,10 +111,10 @@ implicit val userFormFormat = new Reads[UserForm]{ def reads(js: JsValue): UserF
     <div class="summary">リクエストパラメータにIDが指定されているかどうかに応じて以下の処理を行います。
  リクエストパラメータにIDなし ⇒ 新規登録画面を表示します。 リクエストパラメータにIDあり ⇒ USERSテーブルを検索し、該当のユーザ情報を初期表示した編集画面を表示します。  フォーム 画面からの入力値を受け取るためのFormを定義します。Formは必ずしもコントローラに定義する必要はないのですが、コントローラでの処理に強く依存するため特に理由がない限りコントローラクラスのコンパニオンオブジェクトに定義するとよいでしょう。
 ここではUserControllerと同じソースファイルに以下のようなコンパニオンオブジェクトを追加します。
-object UserController { // フォームの値を格納するケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う val userForm = Form( mapping( &quot;id&quot; -&gt; optional(longNumber), &quot;name&quot; -&gt; nonEmptyText(maxLength = 20), &quot;companyId&quot; -&gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) }  コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。
+object UserController { // フォームの値を格納するケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // formから送信されたデータ ⇔ ケースクラスの変換を行う  val userForm = Form( mapping( &#34;id&#34; -&gt; optional(longNumber), &#34;name&#34; -&gt; nonEmptyText(maxLength = 20), &#34;companyId&#34; -&gt; optional(number) )(UserForm.apply)(UserForm.unapply) ) } コンパニオンオブジェクトとは、クラスやトレイトと同じファイル内に同じ名前で定義されたオブジェクトのことで、コンパニオンオブジェクトと対応するクラスやトレイトは互いにprivateなメンバーにアクセスできるなどの特徴があります。クラスやトレイトで使用する共通的なメソッドやクラス等を括り出したりするのに使います。
  POINT
  コンパニオンオブジェクトとは、クラスと同じファイル内に同じ名前で定義されたオブジェクトのことです FormはStrutsのアクションフォームのようなものです マッピングに従ってバリデーション（後述）が行われます   ビュー 続いてviews.userパッケージにedit.scala.htmlを実装します。引数にはFormのインスタンスと、プルダウンで選択する会社情報を格納したSeqを受け取ります。
-@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: MessagesRequestHeader) @import helper._ @main(&quot;ユーザ作成&quot;) { @* IDがある場合は更新処理、ない場合は登録処理を呼ぶ *@ @form(CSRF(userForm(&quot;id&quot;).</div>
+@(userForm: Form[controllers.UserController.UserForm], companies: Seq[models.Companies])(implicit request: MessagesRequestHeader) @import helper._ @main(&#34;ユーザ作成&#34;) { @* IDがある場合は更新処理、ない場合は登録処理を呼ぶ *@ @form(CSRF(userForm(&#34;id&#34;).</div>
   </div>
 </article>
 </div>
@@ -132,9 +132,9 @@ object UserController { // フォームの値を格納するケースクラス c
     </ul>
 
     <div class="summary">Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。
-@(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;title&gt;@title&lt;/title&gt; &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;@routes.Assets.versioned(&quot;stylesheets/main.css&quot;)&quot;&gt; &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;@routes.Assets.versioned(&quot;images/favicon.png&quot;)&quot;&gt; @* ↓↓↓↓ここから追加↓↓↓↓ *@ &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&quot;&gt; &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;&gt; &lt;script src=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; @* ↑↑↑↑ここまで追加↑↑↑↑ *@ &lt;/head&gt; &lt;body&gt; @content &lt;script src=&quot;@routes.Assets.versioned(&quot;javascripts/main.js&quot;)&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt;  また、デフォルトではContent-Security-Policyヘッダがdefault-src 'self'を返すため上記で指定した外部CDNのCSSファイルやJavaScriptファイルを読み込むことができません。そこでconf/application.confに以下の設定を追加してContent-Security-Policyヘッダが出力されないようにしておきます。
-play.filters.headers.contentSecurityPolicy=null  コントローラの雛形を作る controllersパッケージにUserControllerクラスを以下のように作成します。
-package controllers import play.api.mvc._ import play.api.data._ import play.api.data.Forms._ import javax.inject.Inject import scalikejdbc._ import models._ class UserController @Inject()(components: MessagesControllerComponents) extends MessagesAbstractController(components) { /** * 一覧表示 */ def list = TODO /** * 編集画面表示 */ def edit(id: Option[Long]) = TODO /** * 登録実行 */ def create = TODO /** * 更新実行 */ def update = TODO /** * 削除実行 */ def remove(id: Long) = TODO }  コンストラクタに@Injectアノテーションと2つの引数が定義されていますが、これはPlay 2.</div>
+@(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;title&gt;@title&lt;/title&gt; &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;@routes.Assets.versioned(&#34;stylesheets/main.css&#34;)&#34;&gt; &lt;link rel=&#34;shortcut icon&#34; type=&#34;image/png&#34; href=&#34;@routes.Assets.versioned(&#34;images/favicon.png&#34;)&#34;&gt; @* ↓↓↓↓ここから追加↓↓↓↓ *@ &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css&#34;&gt; &lt;link rel=&#34;stylesheet&#34; media=&#34;screen&#34; href=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&#34;&gt; &lt;script src=&#34;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt; @* ↑↑↑↑ここまで追加↑↑↑↑ *@ &lt;/head&gt; &lt;body&gt; @content &lt;script src=&#34;@routes.Assets.versioned(&#34;javascripts/main.js&#34;)&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; また、デフォルトではContent-Security-Policyヘッダがdefault-src 'self'を返すため上記で指定した外部CDNのCSSファイルやJavaScriptファイルを読み込むことができません。そこでconf/application.confに以下の設定を追加してContent-Security-Policyヘッダが出力されないようにしておきます。
+play.filters.headers.contentSecurityPolicy=null コントローラの雛形を作る controllersパッケージにUserControllerクラスを以下のように作成します。
+package controllers import play.api.mvc._ import play.api.data._ import play.api.data.Forms._ import javax.inject.Inject import scalikejdbc._ import models._ class UserController @Inject()(components: MessagesControllerComponents) extends MessagesAbstractController(components) { /** * 一覧表示 */ def list = TODO /** * 編集画面表示 */ def edit(id: Option[Long]) = TODO /** * 登録実行 */ def create = TODO /** * 更新実行 */ def update = TODO /** * 削除実行 */ def remove(id: Long) = TODO } コンストラクタに@Injectアノテーションと2つの引数が定義されていますが、これはPlay 2.</div>
   </div>
 </article>
 </div>
@@ -153,8 +153,8 @@ package controllers import play.api.mvc._ import play.api.data._ import play.api
 
     <div class="summary">指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。
 コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。
-def remove(id: Long) = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // ユーザを削除 Users.find(id).foreach { user =&gt; Users.destroy(user) } // 一覧画面へリダイレクト Redirect(routes.UserController.list) } }  ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。
-withSQL { delete.from(Users).where.eq(Users.column.id, entity.id) }.update.apply()  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</div>
+def remove(id: Long) = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // ユーザを削除  Users.find(id).foreach { user =&gt; Users.destroy(user) } // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。
+withSQL { delete.from(Users).where.eq(Users.column.id, entity.id) }.update.apply() 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</div>
   </div>
 </article>
 </div>
@@ -174,8 +174,8 @@ withSQL { delete.from(Users).where.eq(Users.column.id, entity.id) }.update.apply
     <div class="summary">入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。
  エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。
 入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。
-def create = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合 form =&gt; { // ユーザを登録 Users.create(form.name, form.companyId) // 一覧画面へリダイレクト Redirect(routes.UserController.list) } ) } }  updateメソッドも同じように実装します。
-def update = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // リクエストの内容をバインド userForm.</div>
+def create = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合  error =&gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合  form =&gt; { // ユーザを登録  Users.create(form.name, form.companyId) // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } ) } } updateメソッドも同じように実装します。
+def update = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // リクエストの内容をバインド  userForm.</div>
   </div>
 </article>
 </div>

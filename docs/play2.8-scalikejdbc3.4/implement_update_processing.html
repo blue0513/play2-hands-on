@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>登録・更新処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。 エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。def create = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&amp;gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合 form =&amp;gt; { // ユーザを登録 Users.create(form.name, form.companyId) // 一覧画面へリダイレクト Redirect(routes.UserController.list) } ) } }  updateメソッドも同じように実装します。def update = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド userForm.">
+<meta name="description" content="入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。 エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。def create = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合  error =&amp;gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合  form =&amp;gt; { // ユーザを登録  Users.create(form.name, form.companyId) // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } ) } } updateメソッドも同じように実装します。def update = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド  userForm.">
 
 <meta property="og:title" content="登録・更新処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/implement_update_processing.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。 エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。def create = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&amp;gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合 form =&amp;gt; { // ユーザを登録 Users.create(form.name, form.companyId) // 一覧画面へリダイレクト Redirect(routes.UserController.list) } ) } }  updateメソッドも同じように実装します。def update = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド userForm.">
+<meta property="og:description" content="入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。 エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。def create = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合  error =&amp;gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合  form =&amp;gt; { // ユーザを登録  Users.create(form.name, form.companyId) // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } ) } } updateメソッドも同じように実装します。def update = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド  userForm.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/implement_update_processing.html">
 <meta name="twitter:title" content="登録・更新処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。 エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。def create = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&amp;gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合 form =&amp;gt; { // ユーザを登録 Users.create(form.name, form.companyId) // 一覧画面へリダイレクト Redirect(routes.UserController.list) } ) } }  updateメソッドも同じように実装します。def update = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド userForm.">
+<meta name="twitter:description" content="入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。 エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。def create = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド  userForm.bindFromRequest.fold( // エラーの場合  error =&amp;gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合  form =&amp;gt; { // ユーザを登録  Users.create(form.name, form.companyId) // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } ) } } updateメソッドも同じように実装します。def update = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // リクエストの内容をバインド  userForm.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "登録・更新処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "登録・更新処理の実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,23 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。
- エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。
-入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。
-def create = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // リクエストの内容をバインド userForm.bindFromRequest.fold( // エラーの場合 error =&gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, // OKの場合 form =&gt; { // ユーザを登録 Users.create(form.name, form.companyId) // 一覧画面へリダイレクト Redirect(routes.UserController.list) } ) } }  updateメソッドも同じように実装します。
-def update = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // リクエストの内容をバインド userForm."
+    "description": "入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。\n エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。 エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。  コントローラ UserControllerのメソッドのうち、登録処理を行うcreateメソッドと更新処理を行うupdateメソッドを実装します。\n入力フォームの値を受け取るには、userForm.bindFromRequestメソッドでリクエストの内容をFormにバインドし、foldメソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下はcreateメソッドの実装例です。\ndef create = Action { implicit request =\u0026gt; DB.localTx { implicit session =\u0026gt; \/\/ リクエストの内容をバインド  userForm.bindFromRequest.fold( \/\/ エラーの場合  error =\u0026gt; { BadRequest(views.html.user.edit(error, Companies.findAll())) }, \/\/ OKの場合  form =\u0026gt; { \/\/ ユーザを登録  Users.create(form.name, form.companyId) \/\/ 一覧画面へリダイレクト  Redirect(routes.UserController.list) } ) } } updateメソッドも同じように実装します。\ndef update = Action { implicit request =\u0026gt; DB.localTx { implicit session =\u0026gt; \/\/ リクエストの内容をバインド  userForm."
   }
 </script>
 
@@ -132,106 +128,86 @@ def update = Action { implicit request =&gt; DB.localTx { implicit session =&gt;
         </ul>
 
         <div class="article-body">
-          
-
-<p>入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。</p>
-
+          <p>入力値のバリデーションを行い、エラーの有無に応じて以下の処理を行います。</p>
 <ul>
 <li>エラーあり ⇒ フォームにエラー情報をセットして入力フォームに戻ります。</li>
 <li>エラーなし ⇒ DBへの登録・更新処理を行い、一覧画面へリダイレクトします。</li>
 </ul>
-
 <h2 id="コントローラ">コントローラ</h2>
-
 <p><code>UserController</code>のメソッドのうち、登録処理を行う<code>create</code>メソッドと更新処理を行う<code>update</code>メソッドを実装します。</p>
-
 <p>入力フォームの値を受け取るには、<code>userForm.bindFromRequest</code>メソッドでリクエストの内容をFormにバインドし、<code>fold</code>メソッドでエラーがあった場合の処理と、OKの場合の処理を記述します。以下は<code>create</code>メソッドの実装例です。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> create <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Action</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> request <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#a6e22e">DB</span><span style="color:#f92672">.</span>localTx <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// リクエストの内容をバインド
+</span><span style="color:#75715e"></span>    userForm<span style="color:#f92672">.</span>bindFromRequest<span style="color:#f92672">.</span>fold<span style="color:#f92672">(</span>
+      <span style="color:#75715e">// エラーの場合
+</span><span style="color:#75715e"></span>      error <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">BadRequest</span><span style="color:#f92672">(</span>views<span style="color:#f92672">.</span>html<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>edit<span style="color:#f92672">(</span>error<span style="color:#f92672">,</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>findAll<span style="color:#f92672">()))</span>
+      <span style="color:#f92672">},</span>
+      <span style="color:#75715e">// OKの場合
+</span><span style="color:#75715e"></span>      form  <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// ユーザを登録
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>create<span style="color:#f92672">(</span>form<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span> form<span style="color:#f92672">.</span>companyId<span style="color:#f92672">)</span>
+        <span style="color:#75715e">// 一覧画面へリダイレクト
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">Redirect</span><span style="color:#f92672">(</span>routes<span style="color:#f92672">.</span><span style="color:#a6e22e">UserController</span><span style="color:#f92672">.</span>list<span style="color:#f92672">)</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>update</code>メソッドも同じように実装します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> update <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Action</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> request <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#a6e22e">DB</span><span style="color:#f92672">.</span>localTx <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// リクエストの内容をバインド
+</span><span style="color:#75715e"></span>    userForm<span style="color:#f92672">.</span>bindFromRequest<span style="color:#f92672">.</span>fold<span style="color:#f92672">(</span>
+      <span style="color:#75715e">// エラーの場合は編集画面に戻す
+</span><span style="color:#75715e"></span>      error <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">BadRequest</span><span style="color:#f92672">(</span>views<span style="color:#f92672">.</span>html<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>edit<span style="color:#f92672">(</span>error<span style="color:#f92672">,</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>findAll<span style="color:#f92672">()))</span>
+      <span style="color:#f92672">},</span>
+      <span style="color:#75715e">// OKの場合は更新を行い一覧画面にリダイレクトする
+</span><span style="color:#75715e"></span>      form <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// ユーザ情報を更新
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>find<span style="color:#f92672">(</span>form<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>get<span style="color:#f92672">).</span>foreach <span style="color:#f92672">{</span> user <span style="color:#66d9ef">=&gt;</span>
+          <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>save<span style="color:#f92672">(</span>user<span style="color:#f92672">.</span>copy<span style="color:#f92672">(</span>name <span style="color:#66d9ef">=</span> form<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span> companyId <span style="color:#66d9ef">=</span> form<span style="color:#f92672">.</span>companyId<span style="color:#f92672">))</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 一覧画面にリダイレクト
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">Redirect</span><span style="color:#f92672">(</span>routes<span style="color:#f92672">.</span><span style="color:#a6e22e">UserController</span><span style="color:#f92672">.</span>list<span style="color:#f92672">)</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>INSERTに対応する<code>Users.create()</code>や、UPDATEに対応する<code>Users.save()</code>など、ここでもscalikejdbcGenによって自動生成されたメソッドを使用しています。これらをQueryDSLを使って書き直すと以下のようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">// INSERTをQueryDSLで書き直した場合
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> generatedKey <span style="color:#66d9ef">=</span> withSQL <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">val</span> column <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>column
+  insert<span style="color:#f92672">.</span>into<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">).</span>namedValues<span style="color:#f92672">(</span>
+    column<span style="color:#f92672">.</span>name <span style="color:#f92672">-&gt;</span> form<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span>
+    column<span style="color:#f92672">.</span>companyId <span style="color:#f92672">-&gt;</span> form<span style="color:#f92672">.</span>companyId
+  <span style="color:#f92672">)</span>
+<span style="color:#f92672">}.</span>updateAndReturnGeneratedKey<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
 
-<pre><code class="language-scala">def create = Action { implicit request =&gt;
-  DB.localTx { implicit session =&gt;
-    // リクエストの内容をバインド
-    userForm.bindFromRequest.fold(
-      // エラーの場合
-      error =&gt; {
-        BadRequest(views.html.user.edit(error, Companies.findAll()))
-      },
-      // OKの場合
-      form  =&gt; {
-        // ユーザを登録
-        Users.create(form.name, form.companyId)
-        // 一覧画面へリダイレクト
-        Redirect(routes.UserController.list)
-      }
-    )
-  }
-}
-</code></pre>
-
-<p><code>update</code>メソッドも同じように実装します。</p>
-
-<pre><code class="language-scala">def update = Action { implicit request =&gt;
-  DB.localTx { implicit session =&gt;
-    // リクエストの内容をバインド
-    userForm.bindFromRequest.fold(
-      // エラーの場合は編集画面に戻す
-      error =&gt; {
-        BadRequest(views.html.user.edit(error, Companies.findAll()))
-      },
-      // OKの場合は更新を行い一覧画面にリダイレクトする
-      form =&gt; {
-        // ユーザ情報を更新
-        Users.find(form.id.get).foreach { user =&gt;
-          Users.save(user.copy(name = form.name, companyId = form.companyId))
-        }
-        // 一覧画面にリダイレクト
-        Redirect(routes.UserController.list)
-      }
-    )
-  }
-}
-</code></pre>
-
-<p>INSERTに対応する<code>Users.create()</code>や、UPDATEに対応する<code>Users.save()</code>など、ここでもscalikejdbcGenによって自動生成されたメソッドを使用しています。これらをQueryDSLを使って書き直すと以下のようになります。</p>
-
-<pre><code class="language-scala">// INSERTをQueryDSLで書き直した場合
-val generatedKey = withSQL {
-  val column = Users.column
-  insert.into(Users).namedValues(
-    column.name -&gt; form.name,
-    column.companyId -&gt; form.companyId
-  )
-}.updateAndReturnGeneratedKey.apply()
-
-// UPDATEをQueryDSLで書き直した場合
-withSQL {
-  val column = Users.column
-  QueryDSL.update(Users).set(
-    column.name -&gt; form.name,
-    column.companyId -&gt; form.companyId
-  ).where.eq(column.id, user.id)
-}.update.apply()
-</code></pre>
-
-<blockquote>
+<span style="color:#75715e">// UPDATEをQueryDSLで書き直した場合
+</span><span style="color:#75715e"></span>withSQL <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">val</span> column <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>column
+  <span style="color:#a6e22e">QueryDSL</span><span style="color:#f92672">.</span>update<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">).</span>set<span style="color:#f92672">(</span>
+    column<span style="color:#f92672">.</span>name <span style="color:#f92672">-&gt;</span> form<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span>
+    column<span style="color:#f92672">.</span>companyId <span style="color:#f92672">-&gt;</span> form<span style="color:#f92672">.</span>companyId
+  <span style="color:#f92672">).</span>where<span style="color:#f92672">.</span>eq<span style="color:#f92672">(</span>column<span style="color:#f92672">.</span>id<span style="color:#f92672">,</span> user<span style="color:#f92672">.</span>id<span style="color:#f92672">)</span>
+<span style="color:#f92672">}.</span>update<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
+</code></pre></div><blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li>HTMLテンプレートでのリンク先と同様、リダイレクト先も<code>routes.・・・</code>でタイプセーフに指定することができます</li>
 <li><code>DB.localTx { ... }</code>でトランザクション管理されたセッションを取得することができます
-
 <ul>
 <li>この中の処理が正常に終了した場合はコミットされ、例外が発生した場合は自動的にロールバックされます</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </blockquote>
-
 <h2 id="実行">実行</h2>
-
 <p>ここまで実装したら、登録画面や編集画面からユーザ情報の登録、編集を行えることを確認しましょう。ユーザ名を空欄や20文字以上で登録しようとするとエラーメッセージが表示され、バリデーションが効いていることも確認できるはずです。</p>
-
 <p><strong>バリデーションエラー時の表示：</strong></p>
-
-<p><img src="../images/play2.8-scalikejdbc3.4/validation.png" alt="バリデーションエラー時の表示" /></p>
+<p><img src="../images/play2.8-scalikejdbc3.4/validation.png" alt="バリデーションエラー時の表示"></p>
 
           <hr>
           <div class="nav">

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Play2のテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。test/controllersに以下の内容でJsonControllerSpecを作成します。package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &amp;quot;JsonController GET&amp;quot; should { &amp;quot;request users list from the application&amp;quot; in { // Guiceからコントローラーのインスタンスを取得 val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認 status(result) mustBe OK // レスポンスのContent-Typeを確認 contentType(result) mustBe Some(&amp;quot;application/json&amp;quot;) // レスポンスのJSONを確認 val resultJson = contentAsJson(result) val expectedJson = Json.parse( &amp;quot;&amp;quot;&amp;quot;{&amp;quot;users&amp;quot;:[{&amp;quot;id&amp;quot;:1,&amp;quot;name&amp;quot;:&amp;quot;Taro Yamada&amp;quot;,&amp;quot;companyId&amp;quot;:1},{&amp;quot;id&amp;quot;:2,&amp;quot;name&amp;quot;:&amp;quot;Jiro Sato&amp;quot;}]}&amp;quot;&amp;quot;&amp;quot; ) resultJson mustEqual expectedJson } } }  このテストケースでは実際にHTTPリクエストを送信するのではなく、FakeRequestというダミーのリクエストを使用してコントローラーを呼び出しています。テストケース内ではテスト用のヘルパーメソッドでレスポンスの情報を取得することができるので、それらの情報が期待通りかどうかを確認することでテストを行うことができます。">
+<meta name="description" content="Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。test/controllersに以下の内容でJsonControllerSpecを作成します。package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &amp;#34;JsonController GET&amp;#34; should { &amp;#34;request users list from the application&amp;#34; in { // Guiceからコントローラーのインスタンスを取得  val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す  val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認  status(result) mustBe OK // レスポンスのContent-Typeを確認  contentType(result) mustBe Some(&amp;#34;application/json&amp;#34;) // レスポンスのJSONを確認  val resultJson = contentAsJson(result) val expectedJson = Json.">
 
 <meta property="og:title" content="Play2のテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/test_play.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。test/controllersに以下の内容でJsonControllerSpecを作成します。package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &amp;quot;JsonController GET&amp;quot; should { &amp;quot;request users list from the application&amp;quot; in { // Guiceからコントローラーのインスタンスを取得 val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認 status(result) mustBe OK // レスポンスのContent-Typeを確認 contentType(result) mustBe Some(&amp;quot;application/json&amp;quot;) // レスポンスのJSONを確認 val resultJson = contentAsJson(result) val expectedJson = Json.parse( &amp;quot;&amp;quot;&amp;quot;{&amp;quot;users&amp;quot;:[{&amp;quot;id&amp;quot;:1,&amp;quot;name&amp;quot;:&amp;quot;Taro Yamada&amp;quot;,&amp;quot;companyId&amp;quot;:1},{&amp;quot;id&amp;quot;:2,&amp;quot;name&amp;quot;:&amp;quot;Jiro Sato&amp;quot;}]}&amp;quot;&amp;quot;&amp;quot; ) resultJson mustEqual expectedJson } } }  このテストケースでは実際にHTTPリクエストを送信するのではなく、FakeRequestというダミーのリクエストを使用してコントローラーを呼び出しています。テストケース内ではテスト用のヘルパーメソッドでレスポンスの情報を取得することができるので、それらの情報が期待通りかどうかを確認することでテストを行うことができます。">
+<meta property="og:description" content="Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。test/controllersに以下の内容でJsonControllerSpecを作成します。package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &amp;#34;JsonController GET&amp;#34; should { &amp;#34;request users list from the application&amp;#34; in { // Guiceからコントローラーのインスタンスを取得  val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す  val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認  status(result) mustBe OK // レスポンスのContent-Typeを確認  contentType(result) mustBe Some(&amp;#34;application/json&amp;#34;) // レスポンスのJSONを確認  val resultJson = contentAsJson(result) val expectedJson = Json.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/test_play.html">
 <meta name="twitter:title" content="Play2のテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。test/controllersに以下の内容でJsonControllerSpecを作成します。package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &amp;quot;JsonController GET&amp;quot; should { &amp;quot;request users list from the application&amp;quot; in { // Guiceからコントローラーのインスタンスを取得 val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認 status(result) mustBe OK // レスポンスのContent-Typeを確認 contentType(result) mustBe Some(&amp;quot;application/json&amp;quot;) // レスポンスのJSONを確認 val resultJson = contentAsJson(result) val expectedJson = Json.parse( &amp;quot;&amp;quot;&amp;quot;{&amp;quot;users&amp;quot;:[{&amp;quot;id&amp;quot;:1,&amp;quot;name&amp;quot;:&amp;quot;Taro Yamada&amp;quot;,&amp;quot;companyId&amp;quot;:1},{&amp;quot;id&amp;quot;:2,&amp;quot;name&amp;quot;:&amp;quot;Jiro Sato&amp;quot;}]}&amp;quot;&amp;quot;&amp;quot; ) resultJson mustEqual expectedJson } } }  このテストケースでは実際にHTTPリクエストを送信するのではなく、FakeRequestというダミーのリクエストを使用してコントローラーを呼び出しています。テストケース内ではテスト用のヘルパーメソッドでレスポンスの情報を取得することができるので、それらの情報が期待通りかどうかを確認することでテストを行うことができます。">
+<meta name="twitter:description" content="Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。test/controllersに以下の内容でJsonControllerSpecを作成します。package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &amp;#34;JsonController GET&amp;#34; should { &amp;#34;request users list from the application&amp;#34; in { // Guiceからコントローラーのインスタンスを取得  val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す  val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認  status(result) mustBe OK // レスポンスのContent-Typeを確認  contentType(result) mustBe Some(&amp;#34;application/json&amp;#34;) // レスポンスのJSONを確認  val resultJson = contentAsJson(result) val expectedJson = Json.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "Play2のテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "Play2のテスト - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,21 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。
-test/controllersに以下の内容でJsonControllerSpecを作成します。
-package controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { &quot;JsonController GET&quot; should { &quot;request users list from the application&quot; in { // Guiceからコントローラーのインスタンスを取得 val controller = inject[JsonController] // FakeRequestを使ってコントローラーのメソッドを呼び出す val result = controller.list.apply(FakeRequest()) // レスポンスのステータスを確認 status(result) mustBe OK // レスポンスのContent-Typeを確認 contentType(result) mustBe Some(&quot;application/json&quot;) // レスポンスのJSONを確認 val resultJson = contentAsJson(result) val expectedJson = Json.parse( &quot;&quot;&quot;{&quot;users&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;Taro Yamada&quot;,&quot;companyId&quot;:1},{&quot;id&quot;:2,&quot;name&quot;:&quot;Jiro Sato&quot;}]}&quot;&quot;&quot; ) resultJson mustEqual expectedJson } } }  このテストケースでは実際にHTTPリクエストを送信するのではなく、FakeRequestというダミーのリクエストを使用してコントローラーを呼び出しています。テストケース内ではテスト用のヘルパーメソッドでレスポンスの情報を取得することができるので、それらの情報が期待通りかどうかを確認することでテストを行うことができます。"
+    "description": "Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトでHomeControllerに対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。\ntest\/controllersに以下の内容でJsonControllerSpecを作成します。\npackage controllers import org.scalatestplus.play._ import org.scalatestplus.play.guice._ import play.api.libs.json._ import play.api.test._ import play.api.test.Helpers._ class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting { \u0026#34;JsonController GET\u0026#34; should { \u0026#34;request users list from the application\u0026#34; in { \/\/ Guiceからコントローラーのインスタンスを取得  val controller = inject[JsonController] \/\/ FakeRequestを使ってコントローラーのメソッドを呼び出す  val result = controller.list.apply(FakeRequest()) \/\/ レスポンスのステータスを確認  status(result) mustBe OK \/\/ レスポンスのContent-Typeを確認  contentType(result) mustBe Some(\u0026#34;application\/json\u0026#34;) \/\/ レスポンスのJSONを確認  val resultJson = contentAsJson(result) val expectedJson = Json."
   }
 </script>
 
@@ -131,63 +129,48 @@ package controllers import org.scalatestplus.play._ import org.scalatestplus.pla
 
         <div class="article-body">
           <p>Play2はPlay2で開発されたアプリケーションのユニットテストのための機能を提供しています。デフォルトで<code>HomeController</code>に対するテストケースが生成されていますが、ここではハンズオンで作成したJSON APIに対するテストを作成してみましょう。</p>
-
 <p><code>test/controllers</code>に以下の内容で<code>JsonControllerSpec</code>を作成します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">package</span> controllers
 
-<pre><code class="language-scala">package controllers
+<span style="color:#66d9ef">import</span> org.scalatestplus.play._
+<span style="color:#66d9ef">import</span> org.scalatestplus.play.guice._
+<span style="color:#66d9ef">import</span> play.api.libs.json._
+<span style="color:#66d9ef">import</span> play.api.test._
+<span style="color:#66d9ef">import</span> play.api.test.Helpers._
 
-import org.scalatestplus.play._
-import org.scalatestplus.play.guice._
-import play.api.libs.json._
-import play.api.test._
-import play.api.test.Helpers._
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JsonControllerSpec</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PlaySpec</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">GuiceOneAppPerSuite</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">Injecting</span> <span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;JsonController GET&#34;</span> should <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;request users list from the application&#34;</span> in <span style="color:#f92672">{</span>
+      <span style="color:#75715e">// Guiceからコントローラーのインスタンスを取得
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">val</span> controller <span style="color:#66d9ef">=</span> inject<span style="color:#f92672">[</span><span style="color:#66d9ef">JsonController</span><span style="color:#f92672">]</span>
+      <span style="color:#75715e">// FakeRequestを使ってコントローラーのメソッドを呼び出す
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">val</span> result <span style="color:#66d9ef">=</span> controller<span style="color:#f92672">.</span>list<span style="color:#f92672">.</span>apply<span style="color:#f92672">(</span><span style="color:#a6e22e">FakeRequest</span><span style="color:#f92672">())</span>
 
-class JsonControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Injecting {
-  &quot;JsonController GET&quot; should {
-    &quot;request users list from the application&quot; in {
-      // Guiceからコントローラーのインスタンスを取得
-      val controller = inject[JsonController]
-      // FakeRequestを使ってコントローラーのメソッドを呼び出す
-      val result = controller.list.apply(FakeRequest())
-
-      // レスポンスのステータスを確認
-      status(result) mustBe OK
-      // レスポンスのContent-Typeを確認
-      contentType(result) mustBe Some(&quot;application/json&quot;)
-      //  レスポンスのJSONを確認
-      val resultJson = contentAsJson(result)
-      val expectedJson = Json.parse(
-        &quot;&quot;&quot;{&quot;users&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;Taro Yamada&quot;,&quot;companyId&quot;:1},{&quot;id&quot;:2,&quot;name&quot;:&quot;Jiro Sato&quot;}]}&quot;&quot;&quot;
-      )
+      <span style="color:#75715e">// レスポンスのステータスを確認
+</span><span style="color:#75715e"></span>      status<span style="color:#f92672">(</span>result<span style="color:#f92672">)</span> mustBe <span style="color:#a6e22e">OK</span>
+      <span style="color:#75715e">// レスポンスのContent-Typeを確認
+</span><span style="color:#75715e"></span>      contentType<span style="color:#f92672">(</span>result<span style="color:#f92672">)</span> mustBe <span style="color:#a6e22e">Some</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;application/json&#34;</span><span style="color:#f92672">)</span>
+      <span style="color:#75715e">//  レスポンスのJSONを確認
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">val</span> resultJson <span style="color:#66d9ef">=</span> contentAsJson<span style="color:#f92672">(</span>result<span style="color:#f92672">)</span>
+      <span style="color:#66d9ef">val</span> expectedJson <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>parse<span style="color:#f92672">(</span>
+        <span style="color:#e6db74">&#34;&#34;&#34;{&#34;users&#34;:[{&#34;id&#34;:1,&#34;name&#34;:&#34;Taro Yamada&#34;,&#34;companyId&#34;:1},{&#34;id&#34;:2,&#34;name&#34;:&#34;Jiro Sato&#34;}]}&#34;&#34;&#34;</span>
+      <span style="color:#f92672">)</span>
       resultJson mustEqual expectedJson
-    }
-  }
-}
-</code></pre>
-
-<p>このテストケースでは実際にHTTPリクエストを送信するのではなく、<code>FakeRequest</code>というダミーのリクエストを使用してコントローラーを呼び出しています。テストケース内ではテスト用のヘルパーメソッドでレスポンスの情報を取得することができるので、それらの情報が期待通りかどうかを確認することでテストを行うことができます。</p>
-
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>このテストケースでは実際にHTTPリクエストを送信するのではなく、<code>FakeRequest</code>というダミーのリクエストを使用してコントローラーを呼び出しています。テストケース内ではテスト用のヘルパーメソッドでレスポンスの情報を取得することができるので、それらの情報が期待通りかどうかを確認することでテストを行うことができます。</p>
 <p>以下のようにしてテストを実行します。</p>
-
 <pre><code>sbt test
-</code></pre>
-
-<p>テストが成功すると以下のように表示されるはずです。</p>
-
+</code></pre><p>テストが成功すると以下のように表示されるはずです。</p>
 <pre><code>[info] Total number of tests run: 24
 [info] Suites: completed 4, aborted 0
 [info] Tests: succeeded 24, failed 0, canceled 0, ignored 0, pending 0
 [info] All tests passed.
 [info] Passed: Total 24, Failed 0, Errors 0, Passed 24
-</code></pre>
-
-<p>特定のテストのみ実行することもできます。</p>
-
+</code></pre><p>特定のテストのみ実行することもできます。</p>
 <pre><code>sbt &quot;testOnly controllers.JsonControllerSpec&quot;
-</code></pre>
-
-<p>テスト用のDBが初期状態から変わっているとテストが失敗してしまうので、実際にはテスト毎に変更内容をロールバックするといった工夫も必要になってきます。ScalikeJDBCにはPlay2のアプリケーション向けのテストフィクスチャが提供されていますので、このようなライブラリを活用するのもよいでしょう。</p>
-
+</code></pre><p>テスト用のDBが初期状態から変わっているとテストが失敗してしまうので、実際にはテスト毎に変更内容をロールバックするといった工夫も必要になってきます。ScalikeJDBCにはPlay2のアプリケーション向けのテストフィクスチャが提供されていますので、このようなライブラリを活用するのもよいでしょう。</p>
 <ul>
 <li><a href="https://github.com/scalikejdbc/scalikejdbc-cookbook/blob/master/ja/10_play.md#scalikejdbc-play-fixture">https://github.com/scalikejdbc/scalikejdbc-cookbook/blob/master/ja/10_play.md#scalikejdbc-play-fixture</a></li>
 </ul>

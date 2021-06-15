@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>ScalikeJDBCのテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。まず、build.sbtにscalikejdbc-testライブラリを追加します。libraryDependencies &#43;= &amp;quot;org.scalikejdbc&amp;quot; %% &amp;quot;scalikejdbc-test&amp;quot; % &amp;quot;3.4.0&amp;quot; % Test  次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。include &amp;quot;application.conf&amp;quot; db.default.url=&amp;quot;jdbc:h2:tcp://localhost/test&amp;quot;  テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。javaOptions in Test &#43;= &amp;quot;-Dconfig.file=conf/test.conf&amp;quot;  初期化処理をテストコードに追加します。class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val u = Users.syntax(&amp;quot;u&amp;quot;) ... }  class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val c = Companies.syntax(&amp;quot;c&amp;quot;) ... }  最後に、テストケースをハンズオンの形式に合わせて修正します。UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。it should &amp;quot;save a record&amp;quot; in { implicit session =&amp;gt; val entity = Users.">
+<meta name="description" content="scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。まず、build.sbtにscalikejdbc-testライブラリを追加します。libraryDependencies &#43;= &amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc-test&amp;#34; % &amp;#34;3.4.0&amp;#34; % Test 次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。include &amp;quot;application.conf&amp;quot; db.default.url=&amp;quot;jdbc:h2:tcp://localhost/test&amp;quot; テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。javaOptions in Test &#43;= &amp;#34;-Dconfig.file=conf/test.conf&amp;#34; 初期化処理をテストコードに追加します。class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加  config.DBs.setup() val u = Users.syntax(&amp;#34;u&amp;#34;) ... } class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加  config.DBs.setup() val c = Companies.syntax(&amp;#34;c&amp;#34;) ... } 最後に、テストケースをハンズオンの形式に合わせて修正します。UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。it should &amp;#34;save a record&amp;#34; in { implicit session =&amp;gt; val entity = Users.">
 
 <meta property="og:title" content="ScalikeJDBCのテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/test_scalikejdbc.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。まず、build.sbtにscalikejdbc-testライブラリを追加します。libraryDependencies &#43;= &amp;quot;org.scalikejdbc&amp;quot; %% &amp;quot;scalikejdbc-test&amp;quot; % &amp;quot;3.4.0&amp;quot; % Test  次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。include &amp;quot;application.conf&amp;quot; db.default.url=&amp;quot;jdbc:h2:tcp://localhost/test&amp;quot;  テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。javaOptions in Test &#43;= &amp;quot;-Dconfig.file=conf/test.conf&amp;quot;  初期化処理をテストコードに追加します。class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val u = Users.syntax(&amp;quot;u&amp;quot;) ... }  class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val c = Companies.syntax(&amp;quot;c&amp;quot;) ... }  最後に、テストケースをハンズオンの形式に合わせて修正します。UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。it should &amp;quot;save a record&amp;quot; in { implicit session =&amp;gt; val entity = Users.">
+<meta property="og:description" content="scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。まず、build.sbtにscalikejdbc-testライブラリを追加します。libraryDependencies &#43;= &amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc-test&amp;#34; % &amp;#34;3.4.0&amp;#34; % Test 次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。include &amp;quot;application.conf&amp;quot; db.default.url=&amp;quot;jdbc:h2:tcp://localhost/test&amp;quot; テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。javaOptions in Test &#43;= &amp;#34;-Dconfig.file=conf/test.conf&amp;#34; 初期化処理をテストコードに追加します。class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加  config.DBs.setup() val u = Users.syntax(&amp;#34;u&amp;#34;) ... } class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加  config.DBs.setup() val c = Companies.syntax(&amp;#34;c&amp;#34;) ... } 最後に、テストケースをハンズオンの形式に合わせて修正します。UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。it should &amp;#34;save a record&amp;#34; in { implicit session =&amp;gt; val entity = Users.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/test_scalikejdbc.html">
 <meta name="twitter:title" content="ScalikeJDBCのテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。まず、build.sbtにscalikejdbc-testライブラリを追加します。libraryDependencies &#43;= &amp;quot;org.scalikejdbc&amp;quot; %% &amp;quot;scalikejdbc-test&amp;quot; % &amp;quot;3.4.0&amp;quot; % Test  次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。include &amp;quot;application.conf&amp;quot; db.default.url=&amp;quot;jdbc:h2:tcp://localhost/test&amp;quot;  テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。javaOptions in Test &#43;= &amp;quot;-Dconfig.file=conf/test.conf&amp;quot;  初期化処理をテストコードに追加します。class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val u = Users.syntax(&amp;quot;u&amp;quot;) ... }  class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val c = Companies.syntax(&amp;quot;c&amp;quot;) ... }  最後に、テストケースをハンズオンの形式に合わせて修正します。UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。it should &amp;quot;save a record&amp;quot; in { implicit session =&amp;gt; val entity = Users.">
+<meta name="twitter:description" content="scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。まず、build.sbtにscalikejdbc-testライブラリを追加します。libraryDependencies &#43;= &amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc-test&amp;#34; % &amp;#34;3.4.0&amp;#34; % Test 次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。include &amp;quot;application.conf&amp;quot; db.default.url=&amp;quot;jdbc:h2:tcp://localhost/test&amp;quot; テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。javaOptions in Test &#43;= &amp;#34;-Dconfig.file=conf/test.conf&amp;#34; 初期化処理をテストコードに追加します。class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加  config.DBs.setup() val u = Users.syntax(&amp;#34;u&amp;#34;) ... } class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加  config.DBs.setup() val c = Companies.syntax(&amp;#34;c&amp;#34;) ... } 最後に、テストケースをハンズオンの形式に合わせて修正します。UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。it should &amp;#34;save a record&amp;#34; in { implicit session =&amp;gt; val entity = Users.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "ScalikeJDBCのテスト - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "ScalikeJDBCのテスト - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,27 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest/modelsパッケージにあります。
-このテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2/test.mv.dbを用意していますので、こちらを使うようにします。
-まず、build.sbtにscalikejdbc-testライブラリを追加します。
-libraryDependencies += &quot;org.scalikejdbc&quot; %% &quot;scalikejdbc-test&quot; % &quot;3.4.0&quot; % Test  次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf/test.confというファイルを以下の内容で作成します。
-include &quot;application.conf&quot; db.default.url=&quot;jdbc:h2:tcp://localhost/test&quot;  テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。
-javaOptions in Test += &quot;-Dconfig.file=conf/test.conf&quot;  初期化処理をテストコードに追加します。
-class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val u = Users.syntax(&quot;u&quot;) ... }  class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { // 初期化処理を追加 config.DBs.setup() val c = Companies.syntax(&quot;c&quot;) ... }  最後に、テストケースをハンズオンの形式に合わせて修正します。
-UsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。
-it should &quot;save a record&quot; in { implicit session =&gt; val entity = Users."
+    "description": "scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードはtest\/modelsパッケージにあります。\nこのテストコードを少し編集して、実際にテストを動かしてみましょう。 今回はテスト用のDBh2\/test.mv.dbを用意していますので、こちらを使うようにします。\nまず、build.sbtにscalikejdbc-testライブラリを追加します。\nlibraryDependencies \u002b= \u0026#34;org.scalikejdbc\u0026#34; %% \u0026#34;scalikejdbc-test\u0026#34; % \u0026#34;3.4.0\u0026#34; % Test 次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回はconf\/test.confというファイルを以下の内容で作成します。\ninclude \u0026quot;application.conf\u0026quot; db.default.url=\u0026quot;jdbc:h2:tcp:\/\/localhost\/test\u0026quot; テストではこちらの設定を読み込むようbuild.sbtに以下を追加します。\njavaOptions in Test \u002b= \u0026#34;-Dconfig.file=conf\/test.conf\u0026#34; 初期化処理をテストコードに追加します。\nclass UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback { \/\/ 初期化処理を追加  config.DBs.setup() val u = Users.syntax(\u0026#34;u\u0026#34;) ... } class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback { \/\/ 初期化処理を追加  config.DBs.setup() val c = Companies.syntax(\u0026#34;c\u0026#34;) ... } 最後に、テストケースをハンズオンの形式に合わせて修正します。\nUsersSpecにあるsaveメソッドのテストは、以下のようにTODOになっているところがあります。\nit should \u0026#34;save a record\u0026#34; in { implicit session =\u0026gt; val entity = Users."
   }
 </script>
 
@@ -137,143 +129,104 @@ it should &quot;save a record&quot; in { implicit session =&gt; val entity = Use
 
         <div class="article-body">
           <p>scalikejdbcGenではソースコード生成時に対応するテストコードも自動生成してくれます。テストコードは<code>test/models</code>パッケージにあります。</p>
-
 <p>このテストコードを少し編集して、実際にテストを動かしてみましょう。
 今回はテスト用のDB<code>h2/test.mv.db</code>を用意していますので、こちらを使うようにします。</p>
-
 <p>まず、<code>build.sbt</code>にscalikejdbc-testライブラリを追加します。</p>
-
-<pre><code class="language-scala">libraryDependencies += &quot;org.scalikejdbc&quot; %% &quot;scalikejdbc-test&quot; % &quot;3.4.0&quot; % Test
-</code></pre>
-
-<p>次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回は<code>conf/test.conf</code>というファイルを以下の内容で作成します。</p>
-
-<pre><code class="language-properties">include &quot;application.conf&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">libraryDependencies <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;org.scalikejdbc&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;scalikejdbc-test&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;3.4.0&#34;</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">Test</span>
+</code></pre></div><p>次に、テスト用のDBを読み込む準備をします。方法はいくつかありますが、今回は<code>conf/test.conf</code>というファイルを以下の内容で作成します。</p>
+<pre><code class="language-properties" data-lang="properties">include &quot;application.conf&quot;
 
 db.default.url=&quot;jdbc:h2:tcp://localhost/test&quot;
-</code></pre>
+</code></pre><p>テストではこちらの設定を読み込むよう<code>build.sbt</code>に以下を追加します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">javaOptions in <span style="color:#a6e22e">Test</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;-Dconfig.file=conf/test.conf&#34;</span>
+</code></pre></div><p>初期化処理をテストコードに追加します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsersSpec</span> <span style="color:#66d9ef">extends</span> fixture<span style="color:#f92672">.</span><span style="color:#a6e22e">FlatSpec</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">Matchers</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">AutoRollback</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 初期化処理を追加
+</span><span style="color:#75715e"></span>  config<span style="color:#f92672">.</span><span style="color:#a6e22e">DBs</span><span style="color:#f92672">.</span>setup<span style="color:#f92672">()</span>
 
-<p>テストではこちらの設定を読み込むよう<code>build.sbt</code>に以下を追加します。</p>
+  <span style="color:#66d9ef">val</span> u <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>syntax<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;u&#34;</span><span style="color:#f92672">)</span>
+  <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CompaniesSpec</span> <span style="color:#66d9ef">extends</span> fixture<span style="color:#f92672">.</span><span style="color:#a6e22e">FlatSpec</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">Matchers</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">AutoRollback</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 初期化処理を追加
+</span><span style="color:#75715e"></span>  config<span style="color:#f92672">.</span><span style="color:#a6e22e">DBs</span><span style="color:#f92672">.</span>setup<span style="color:#f92672">()</span>
 
-<pre><code class="language-scala">javaOptions in Test += &quot;-Dconfig.file=conf/test.conf&quot;
-</code></pre>
-
-<p>初期化処理をテストコードに追加します。</p>
-
-<pre><code class="language-scala">class UsersSpec extends fixture.FlatSpec with Matchers with AutoRollback {
-  // 初期化処理を追加
-  config.DBs.setup()
-
-  val u = Users.syntax(&quot;u&quot;)
-  ...
-}
-</code></pre>
-
-<pre><code class="language-scala">class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback {
-  // 初期化処理を追加
-  config.DBs.setup()
-
-  val c = Companies.syntax(&quot;c&quot;)
-  ...
-}
-</code></pre>
-
-<p>最後に、テストケースをハンズオンの形式に合わせて修正します。</p>
-
+  <span style="color:#66d9ef">val</span> c <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>syntax<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span>
+  <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>最後に、テストケースをハンズオンの形式に合わせて修正します。</p>
 <p><code>UsersSpec</code>にある<code>save</code>メソッドのテストは、以下のようにTODOになっているところがあります。</p>
-
-<pre><code class="language-scala">it should &quot;save a record&quot; in { implicit session =&gt;
-  val entity = Users.findAll().head
-  // TODO modify something
-  val modified = entity
-  val updated = Users.save(modified)
-  updated should not equal(entity)
-}
-</code></pre>
-
-<p>値を変更するように修正します。</p>
-
-<pre><code class="language-scala">it should &quot;save a record&quot; in { implicit session =&gt;
-  val entity = Users.findAll().head
-  // nameを変更
-  val modified = entity.copy(name = &quot;modify&quot;)
-  val updated = Users.save(modified)
-  updated should not equal(entity)
-}
-</code></pre>
-
-<p><code>CompaniesSpec</code>も同様に修正します。</p>
-
-<pre><code class="language-scala">it should &quot;save a record&quot; in { implicit session =&gt;
-  val entity = Companies.findAll().head
-  // nameを変更
-  val modified = entity.copy(name = &quot;modify&quot;)
-  val updated = Companies.save(modified)
-  updated should not equal(entity)
-}
-</code></pre>
-
-<p>加えて<code>CompaniesSpec</code>には、存在しないIDで検索するなど既存のままでは失敗するテストがいくつかあるので、テストフィクスチャを使ってこれを解消します。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">it should <span style="color:#e6db74">&#34;save a record&#34;</span> in <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#66d9ef">val</span> entity <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>findAll<span style="color:#f92672">().</span>head
+  <span style="color:#75715e">// TODO modify something
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">val</span> modified <span style="color:#66d9ef">=</span> entity
+  <span style="color:#66d9ef">val</span> updated <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>save<span style="color:#f92672">(</span>modified<span style="color:#f92672">)</span>
+  updated should not equal<span style="color:#f92672">(</span>entity<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>値を変更するように修正します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">it should <span style="color:#e6db74">&#34;save a record&#34;</span> in <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#66d9ef">val</span> entity <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>findAll<span style="color:#f92672">().</span>head
+  <span style="color:#75715e">// nameを変更
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">val</span> modified <span style="color:#66d9ef">=</span> entity<span style="color:#f92672">.</span>copy<span style="color:#f92672">(</span>name <span style="color:#66d9ef">=</span> <span style="color:#e6db74">&#34;modify&#34;</span><span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">val</span> updated <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>save<span style="color:#f92672">(</span>modified<span style="color:#f92672">)</span>
+  updated should not equal<span style="color:#f92672">(</span>entity<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>CompaniesSpec</code>も同様に修正します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">it should <span style="color:#e6db74">&#34;save a record&#34;</span> in <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#66d9ef">val</span> entity <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>findAll<span style="color:#f92672">().</span>head
+  <span style="color:#75715e">// nameを変更
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">val</span> modified <span style="color:#66d9ef">=</span> entity<span style="color:#f92672">.</span>copy<span style="color:#f92672">(</span>name <span style="color:#66d9ef">=</span> <span style="color:#e6db74">&#34;modify&#34;</span><span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">val</span> updated <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>save<span style="color:#f92672">(</span>modified<span style="color:#f92672">)</span>
+  updated should not equal<span style="color:#f92672">(</span>entity<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>加えて<code>CompaniesSpec</code>には、存在しないIDで検索するなど既存のままでは失敗するテストがいくつかあるので、テストフィクスチャを使ってこれを解消します。
 ScalikeJDBCでは以下のように<code>fixture</code>メソッドをoverrideすることでテストフィクスチャを設定できます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CompaniesSpec</span> <span style="color:#66d9ef">extends</span> fixture<span style="color:#f92672">.</span><span style="color:#a6e22e">FlatSpec</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">Matchers</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">AutoRollback</span> <span style="color:#f92672">{</span>
+  config<span style="color:#f92672">.</span><span style="color:#a6e22e">DBs</span><span style="color:#f92672">.</span>setup<span style="color:#f92672">()</span>
 
-<pre><code class="language-scala">class CompaniesSpec extends fixture.FlatSpec with Matchers with AutoRollback {
-  config.DBs.setup()
+  <span style="color:#75715e">// テスト終了時にすべてロールバックしてくれる
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">def</span> fixture<span style="color:#f92672">(</span><span style="color:#66d9ef">implicit</span> session<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">DBSession</span><span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Unit</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">SQL</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;insert into COMPANIES values (?, ?)&#34;</span><span style="color:#f92672">).</span>bind<span style="color:#f92672">(</span><span style="color:#ae81ff">123</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;test_company1&#34;</span><span style="color:#f92672">).</span>update<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
+    <span style="color:#a6e22e">SQL</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;insert into COMPANIES values (?, ?)&#34;</span><span style="color:#f92672">).</span>bind<span style="color:#f92672">(</span><span style="color:#ae81ff">234</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;test_company2&#34;</span><span style="color:#f92672">).</span>update<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
+  <span style="color:#f92672">}</span>
 
-  // テスト終了時にすべてロールバックしてくれる
-  override def fixture(implicit session: DBSession): Unit = {
-    SQL(&quot;insert into COMPANIES values (?, ?)&quot;).bind(123, &quot;test_company1&quot;).update.apply()
-    SQL(&quot;insert into COMPANIES values (?, ?)&quot;).bind(234, &quot;test_company2&quot;).update.apply()
-  }
+  <span style="color:#f92672">...</span>
 
-  ...
+  it should <span style="color:#e6db74">&#34;create new record&#34;</span> in <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// 一意なIDを指定
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> created <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>create<span style="color:#f92672">(</span>id <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">999</span><span style="color:#f92672">,</span> name <span style="color:#66d9ef">=</span> <span style="color:#e6db74">&#34;MyString&#34;</span><span style="color:#f92672">)</span>
+    created should not be<span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
 
-  it should &quot;create new record&quot; in { implicit session =&gt;
-    // 一意なIDを指定
-    val created = Companies.create(id = 999, name = &quot;MyString&quot;)
-    created should not be(null)
-  }
+  <span style="color:#f92672">...</span>
 
-  ...
-
-  it should &quot;destroy a record&quot; in { implicit session =&gt;
-    // フィクスチャで生成したデータが削除対象
-    val entity = Companies.find(123).get
-    val deleted = Companies.destroy(entity)
-    deleted should be(1)
-    val shouldBeNone = Companies.find(123)
-    shouldBeNone.isDefined should be(false)
-  }
-  it should &quot;perform batch insert&quot; in { implicit session =&gt;
-    // フィクスチャで生成したデータをバッチ更新
-    val entities = Companies.findAllBy(sqls.in(c.id, Seq(123, 234)))
-    entities.foreach(e =&gt; Companies.destroy(e))
-    val batchInserted = Companies.batchInsert(entities)
-    batchInserted.size should be &gt;(0)
-  }
-}
-</code></pre>
-
-<p>ここまで修正したらテストを実行します。</p>
-
+  it should <span style="color:#e6db74">&#34;destroy a record&#34;</span> in <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// フィクスチャで生成したデータが削除対象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> entity <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>find<span style="color:#f92672">(</span><span style="color:#ae81ff">123</span><span style="color:#f92672">).</span>get
+    <span style="color:#66d9ef">val</span> deleted <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>destroy<span style="color:#f92672">(</span>entity<span style="color:#f92672">)</span>
+    deleted should be<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">val</span> shouldBeNone <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>find<span style="color:#f92672">(</span><span style="color:#ae81ff">123</span><span style="color:#f92672">)</span>
+    shouldBeNone<span style="color:#f92672">.</span>isDefined should be<span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
+  it should <span style="color:#e6db74">&#34;perform batch insert&#34;</span> in <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// フィクスチャで生成したデータをバッチ更新
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> entities <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>findAllBy<span style="color:#f92672">(</span>sqls<span style="color:#f92672">.</span>in<span style="color:#f92672">(</span>c<span style="color:#f92672">.</span>id<span style="color:#f92672">,</span> <span style="color:#a6e22e">Seq</span><span style="color:#f92672">(</span><span style="color:#ae81ff">123</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">234</span><span style="color:#f92672">)))</span>
+    entities<span style="color:#f92672">.</span>foreach<span style="color:#f92672">(</span>e <span style="color:#66d9ef">=&gt;</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>destroy<span style="color:#f92672">(</span>e<span style="color:#f92672">))</span>
+    <span style="color:#66d9ef">val</span> batchInserted <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Companies</span><span style="color:#f92672">.</span>batchInsert<span style="color:#f92672">(</span>entities<span style="color:#f92672">)</span>
+    batchInserted<span style="color:#f92672">.</span>size should be <span style="color:#f92672">&gt;(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>ここまで修正したらテストを実行します。</p>
 <pre><code>sbt test
-</code></pre>
-
-<p>すると以下のようにすべてのテストが成功するはずです。</p>
-
+</code></pre><p>すると以下のようにすべてのテストが成功するはずです。</p>
 <pre><code>[info] Total number of tests run: 23
 [info] Suites: completed 3, aborted 0
 [info] Tests: succeeded 23, failed 0, canceled 0, ignored 0, pending 0
 [info] All tests passed.
 [info] Passed: Total 23, Failed 0, Errors 0, Passed 23
-</code></pre>
-
-<p>特定のテストクラスのみ実行することもできます。</p>
-
+</code></pre><p>特定のテストクラスのみ実行することもできます。</p>
 <pre><code>sbt &quot;testOnly models.CompaniesSpec&quot;
-</code></pre>
-
-<p>ScalikeJDBCのユニットテストについては以下のドキュメントが参考になります。</p>
-
+</code></pre><p>ScalikeJDBCのユニットテストについては以下のドキュメントが参考になります。</p>
 <ul>
 <li><a href="https://github.com/scalikejdbc/scalikejdbc-cookbook/blob/master/ja/08_unittest.md">https://github.com/scalikejdbc/scalikejdbc-cookbook/blob/master/ja/08_unittest.md</a></li>
 </ul>

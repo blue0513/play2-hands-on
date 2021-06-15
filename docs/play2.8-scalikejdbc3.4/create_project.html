@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。Windowsの場合以下のリンクから最新のmsiファイルをダウンロードしてインストールします。https://github.com/sbt/sbt/releasesMacの場合Homebrewでインストールします。brew update brew install sbt  どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。sbt sbtVersion [info] 1.3.4  新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。sbt new playframework/play-scala-seed.g8 --branch 2.8.x  プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。name := &amp;quot;&amp;quot;&amp;quot;play2-hands-on&amp;quot;&amp;quot;&amp;quot; organization := &amp;quot;com.example&amp;quot; version := &amp;quot;1.0-SNAPSHOT&amp;quot; lazy val root = (project in file(&amp;quot;.&amp;quot;)).enablePlugins(PlayScala) scalaVersion := &amp;quot;2.13.1&amp;quot; libraryDependencies &#43;= guice libraryDependencies &#43;= &amp;quot;org.scalatestplus.play&amp;quot; %% &amp;quot;scalatestplus-play&amp;quot; % &amp;quot;5.0.0&amp;quot; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies &#43;&#43;= Seq( &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.">
+<meta name="description" content="sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。Windowsの場合以下のリンクから最新のmsiファイルをダウンロードしてインストールします。https://github.com/sbt/sbt/releasesMacの場合Homebrewでインストールします。brew update brew install sbt どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。sbt sbtVersion [info] 1.3.4 新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。sbt new playframework/play-scala-seed.g8 --branch 2.8.x プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。name := &amp;#34;&amp;#34;&amp;#34;play2-hands-on&amp;#34;&amp;#34;&amp;#34; organization := &amp;#34;com.example&amp;#34; version := &amp;#34;1.0-SNAPSHOT&amp;#34; lazy val root = (project in file(&amp;#34;.&amp;#34;)).enablePlugins(PlayScala) scalaVersion := &amp;#34;2.13.1&amp;#34; libraryDependencies &#43;= guice libraryDependencies &#43;= &amp;#34;org.scalatestplus.play&amp;#34; %% &amp;#34;scalatestplus-play&amp;#34; % &amp;#34;5.0.0&amp;#34; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies &#43;&#43;= Seq( &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.200&amp;#34;, &amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc&amp;#34; % &amp;#34;3.">
 
 <meta property="og:title" content="プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/create_project.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。Windowsの場合以下のリンクから最新のmsiファイルをダウンロードしてインストールします。https://github.com/sbt/sbt/releasesMacの場合Homebrewでインストールします。brew update brew install sbt  どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。sbt sbtVersion [info] 1.3.4  新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。sbt new playframework/play-scala-seed.g8 --branch 2.8.x  プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。name := &amp;quot;&amp;quot;&amp;quot;play2-hands-on&amp;quot;&amp;quot;&amp;quot; organization := &amp;quot;com.example&amp;quot; version := &amp;quot;1.0-SNAPSHOT&amp;quot; lazy val root = (project in file(&amp;quot;.&amp;quot;)).enablePlugins(PlayScala) scalaVersion := &amp;quot;2.13.1&amp;quot; libraryDependencies &#43;= guice libraryDependencies &#43;= &amp;quot;org.scalatestplus.play&amp;quot; %% &amp;quot;scalatestplus-play&amp;quot; % &amp;quot;5.0.0&amp;quot; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies &#43;&#43;= Seq( &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.">
+<meta property="og:description" content="sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。Windowsの場合以下のリンクから最新のmsiファイルをダウンロードしてインストールします。https://github.com/sbt/sbt/releasesMacの場合Homebrewでインストールします。brew update brew install sbt どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。sbt sbtVersion [info] 1.3.4 新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。sbt new playframework/play-scala-seed.g8 --branch 2.8.x プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。name := &amp;#34;&amp;#34;&amp;#34;play2-hands-on&amp;#34;&amp;#34;&amp;#34; organization := &amp;#34;com.example&amp;#34; version := &amp;#34;1.0-SNAPSHOT&amp;#34; lazy val root = (project in file(&amp;#34;.&amp;#34;)).enablePlugins(PlayScala) scalaVersion := &amp;#34;2.13.1&amp;#34; libraryDependencies &#43;= guice libraryDependencies &#43;= &amp;#34;org.scalatestplus.play&amp;#34; %% &amp;#34;scalatestplus-play&amp;#34; % &amp;#34;5.0.0&amp;#34; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies &#43;&#43;= Seq( &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.200&amp;#34;, &amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc&amp;#34; % &amp;#34;3.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/create_project.html">
 <meta name="twitter:title" content="プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。Windowsの場合以下のリンクから最新のmsiファイルをダウンロードしてインストールします。https://github.com/sbt/sbt/releasesMacの場合Homebrewでインストールします。brew update brew install sbt  どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。sbt sbtVersion [info] 1.3.4  新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。sbt new playframework/play-scala-seed.g8 --branch 2.8.x  プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。name := &amp;quot;&amp;quot;&amp;quot;play2-hands-on&amp;quot;&amp;quot;&amp;quot; organization := &amp;quot;com.example&amp;quot; version := &amp;quot;1.0-SNAPSHOT&amp;quot; lazy val root = (project in file(&amp;quot;.&amp;quot;)).enablePlugins(PlayScala) scalaVersion := &amp;quot;2.13.1&amp;quot; libraryDependencies &#43;= guice libraryDependencies &#43;= &amp;quot;org.scalatestplus.play&amp;quot; %% &amp;quot;scalatestplus-play&amp;quot; % &amp;quot;5.0.0&amp;quot; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies &#43;&#43;= Seq( &amp;quot;com.h2database&amp;quot; % &amp;quot;h2&amp;quot; % &amp;quot;1.">
+<meta name="twitter:description" content="sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。Windowsの場合以下のリンクから最新のmsiファイルをダウンロードしてインストールします。https://github.com/sbt/sbt/releasesMacの場合Homebrewでインストールします。brew update brew install sbt どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。sbt sbtVersion [info] 1.3.4 新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。sbt new playframework/play-scala-seed.g8 --branch 2.8.x プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。name := &amp;#34;&amp;#34;&amp;#34;play2-hands-on&amp;#34;&amp;#34;&amp;#34; organization := &amp;#34;com.example&amp;#34; version := &amp;#34;1.0-SNAPSHOT&amp;#34; lazy val root = (project in file(&amp;#34;.&amp;#34;)).enablePlugins(PlayScala) scalaVersion := &amp;#34;2.13.1&amp;#34; libraryDependencies &#43;= guice libraryDependencies &#43;= &amp;#34;org.scalatestplus.play&amp;#34; %% &amp;#34;scalatestplus-play&amp;#34; % &amp;#34;5.0.0&amp;#34; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies &#43;&#43;= Seq( &amp;#34;com.h2database&amp;#34; % &amp;#34;h2&amp;#34; % &amp;#34;1.4.200&amp;#34;, &amp;#34;org.scalikejdbc&amp;#34; %% &amp;#34;scalikejdbc&amp;#34; % &amp;#34;3.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "プロジェクトの作成 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "プロジェクトの作成 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,29 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。
-Windowsの場合
-以下のリンクから最新のmsiファイルをダウンロードしてインストールします。
-https://github.com/sbt/sbt/releases
-Macの場合
-Homebrewでインストールします。
-brew update brew install sbt  どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。
-sbt sbtVersion [info] 1.3.4  新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。
-sbt new playframework/play-scala-seed.g8 --branch 2.8.x  プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。
-play2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。
-name := &quot;&quot;&quot;play2-hands-on&quot;&quot;&quot; organization := &quot;com.example&quot; version := &quot;1.0-SNAPSHOT&quot; lazy val root = (project in file(&quot;.&quot;)).enablePlugins(PlayScala) scalaVersion := &quot;2.13.1&quot; libraryDependencies += guice libraryDependencies += &quot;org.scalatestplus.play&quot; %% &quot;scalatestplus-play&quot; % &quot;5.0.0&quot; % Test // ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies ++= Seq( &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1."
+    "description": "sbtのインストール まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。\nWindowsの場合\n以下のリンクから最新のmsiファイルをダウンロードしてインストールします。\nhttps:\/\/github.com\/sbt\/sbt\/releases\nMacの場合\nHomebrewでインストールします。\nbrew update brew install sbt どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。\nsbt sbtVersion [info] 1.3.4 新規プロジェクト作成 コマンドプロンプトで以下のコマンドを実行します。\nsbt new playframework\/play-scala-seed.g8 --branch 2.8.x プロジェクト名などを聞かれますが、ここではプロジェクト名をplay2-hands-onとし、他の項目は初期値のままプロジェクトを作成するものとします。\nplay2-hands-onディレクトリのbuild.sbtにORMとしてScalikeJDBCを使用するための設定を行います。\nname := \u0026#34;\u0026#34;\u0026#34;play2-hands-on\u0026#34;\u0026#34;\u0026#34; organization := \u0026#34;com.example\u0026#34; version := \u0026#34;1.0-SNAPSHOT\u0026#34; lazy val root = (project in file(\u0026#34;.\u0026#34;)).enablePlugins(PlayScala) scalaVersion := \u0026#34;2.13.1\u0026#34; libraryDependencies \u002b= guice libraryDependencies \u002b= \u0026#34;org.scalatestplus.play\u0026#34; %% \u0026#34;scalatestplus-play\u0026#34; % \u0026#34;5.0.0\u0026#34; % Test \/\/ ↓↓↓↓ここから追加↓↓↓↓ libraryDependencies \u002b\u002b= Seq( \u0026#34;com.h2database\u0026#34; % \u0026#34;h2\u0026#34; % \u0026#34;1.4.200\u0026#34;, \u0026#34;org.scalikejdbc\u0026#34; %% \u0026#34;scalikejdbc\u0026#34; % \u0026#34;3."
   }
 </script>
 
@@ -138,89 +128,58 @@ name := &quot;&quot;&quot;play2-hands-on&quot;&quot;&quot; organization := &quot
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="sbtのインストール">sbtのインストール</h2>
-
+          <h2 id="sbtのインストール">sbtのインストール</h2>
 <p>まずはsbtをインストールします。sbtはScalaの標準的なビルドツールです。</p>
-
 <p><strong>Windowsの場合</strong></p>
-
 <p>以下のリンクから最新のmsiファイルをダウンロードしてインストールします。</p>
-
 <p><a href="https://github.com/sbt/sbt/releases">https://github.com/sbt/sbt/releases</a></p>
-
 <p><strong>Macの場合</strong></p>
-
 <p>Homebrewでインストールします。</p>
-
 <pre><code>brew update
 brew install sbt
-</code></pre>
-
-<p>どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。</p>
-
+</code></pre><p>どちらの場合もインストール後以下のようにしてsbtコマンドが使えること、sbtのバージョンが1.3以降であることを確認してください。</p>
 <pre><code>sbt sbtVersion
 [info] 1.3.4
-</code></pre>
-
-<h2 id="新規プロジェクト作成">新規プロジェクト作成</h2>
-
+</code></pre><h2 id="新規プロジェクト作成">新規プロジェクト作成</h2>
 <p>コマンドプロンプトで以下のコマンドを実行します。</p>
-
 <pre><code>sbt new playframework/play-scala-seed.g8 --branch 2.8.x
-</code></pre>
-
-<p>プロジェクト名などを聞かれますが、ここではプロジェクト名を<code>play2-hands-on</code>とし、他の項目は初期値のままプロジェクトを作成するものとします。</p>
-
-<p><img src="../images/play2.8-scalikejdbc3.4/create_project.png" alt="プロジェクトの作成" /></p>
-
+</code></pre><p>プロジェクト名などを聞かれますが、ここではプロジェクト名を<code>play2-hands-on</code>とし、他の項目は初期値のままプロジェクトを作成するものとします。</p>
+<p><img src="../images/play2.8-scalikejdbc3.4/create_project.png" alt="プロジェクトの作成"></p>
 <p><code>play2-hands-on</code>ディレクトリの<code>build.sbt</code>にORMとしてScalikeJDBCを使用するための設定を行います。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">name <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;play2-hands-on&#34;&#34;&#34;</span>
+organization <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;com.example&#34;</span>
 
-<pre><code class="language-scala">name := &quot;&quot;&quot;play2-hands-on&quot;&quot;&quot;
-organization := &quot;com.example&quot;
+version <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1.0-SNAPSHOT&#34;</span>
 
-version := &quot;1.0-SNAPSHOT&quot;
+<span style="color:#66d9ef">lazy</span> <span style="color:#66d9ef">val</span> root <span style="color:#66d9ef">=</span> <span style="color:#f92672">(</span>project in file<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">)).</span>enablePlugins<span style="color:#f92672">(</span><span style="color:#a6e22e">PlayScala</span><span style="color:#f92672">)</span>
 
-lazy val root = (project in file(&quot;.&quot;)).enablePlugins(PlayScala)
+scalaVersion <span style="color:#66d9ef">:</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2.13.1&#34;</span>
 
-scalaVersion := &quot;2.13.1&quot;
+libraryDependencies <span style="color:#f92672">+=</span> guice
+libraryDependencies <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;org.scalatestplus.play&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;scalatestplus-play&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;5.0.0&#34;</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">Test</span>
 
-libraryDependencies += guice
-libraryDependencies += &quot;org.scalatestplus.play&quot; %% &quot;scalatestplus-play&quot; % &quot;5.0.0&quot; % Test
-
-// ↓↓↓↓ここから追加↓↓↓↓
-libraryDependencies ++= Seq(
-  &quot;com.h2database&quot; % &quot;h2&quot; % &quot;1.4.200&quot;,
-  &quot;org.scalikejdbc&quot; %% &quot;scalikejdbc&quot; % &quot;3.4.0&quot;,
-  &quot;org.scalikejdbc&quot; %% &quot;scalikejdbc-config&quot; % &quot;3.4.0&quot;,
-  &quot;org.scalikejdbc&quot; %% &quot;scalikejdbc-play-initializer&quot; % &quot;2.8.0-scalikejdbc-3.4&quot;
-)
-// ↑↑↑↑ここまで追加↑↑↑↑
-
-// Adds additional packages into Twirl
-//TwirlKeys.templateImports += &quot;com.example.controllers._&quot;
-
-// Adds additional packages into conf/routes
-// play.sbt.routes.RoutesKeys.routesImport += &quot;com.example.binders._&quot;
-</code></pre>
-
-<h2 id="起動確認">起動確認</h2>
-
+<span style="color:#75715e">// ↓↓↓↓ここから追加↓↓↓↓
+</span><span style="color:#75715e"></span>libraryDependencies <span style="color:#f92672">++=</span> <span style="color:#a6e22e">Seq</span><span style="color:#f92672">(</span>
+  <span style="color:#e6db74">&#34;com.h2database&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;h2&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;1.4.200&#34;</span><span style="color:#f92672">,</span>
+  <span style="color:#e6db74">&#34;org.scalikejdbc&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;scalikejdbc&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;3.4.0&#34;</span><span style="color:#f92672">,</span>
+  <span style="color:#e6db74">&#34;org.scalikejdbc&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;scalikejdbc-config&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;3.4.0&#34;</span><span style="color:#f92672">,</span>
+  <span style="color:#e6db74">&#34;org.scalikejdbc&#34;</span> <span style="color:#f92672">%%</span> <span style="color:#e6db74">&#34;scalikejdbc-play-initializer&#34;</span> <span style="color:#f92672">%</span> <span style="color:#e6db74">&#34;2.8.0-scalikejdbc-3.4&#34;</span>
+<span style="color:#f92672">)</span>
+<span style="color:#75715e">// ↑↑↑↑ここまで追加↑↑↑↑
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Adds additional packages into Twirl
+</span><span style="color:#75715e">//TwirlKeys.templateImports += &#34;com.example.controllers._&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Adds additional packages into conf/routes
+</span><span style="color:#75715e">// play.sbt.routes.RoutesKeys.routesImport += &#34;com.example.binders._&#34;
+</span></code></pre></div><h2 id="起動確認">起動確認</h2>
 <p>作成した<code>play2-hands-on</code>ディレクトリに移動し、以下のコマンドでプロジェクトを実行します。</p>
-
 <pre><code>sbt run
-</code></pre>
-
-<p>ブラウザから <a href="http://localhost:9000/">http://localhost:9000/</a> にアクセスし、以下の画面が表示されることを確認します。</p>
-
-<p><img src="../images/play2.8-scalikejdbc3.4/welcome.png" alt="Play2のウェルカム画面" /></p>
-
+</code></pre><p>ブラウザから http://localhost:9000/ にアクセスし、以下の画面が表示されることを確認します。</p>
+<p><img src="../images/play2.8-scalikejdbc3.4/welcome.png" alt="Play2のウェルカム画面"></p>
 <p><code>Welcome to Play!</code> が書かれていることを確認して下さい。</p>
-
 <blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li><code>sbt run</code>で実行している間はホットデプロイが有効になっているため、ソースを修正するとすぐに変更が反映されます</li>
 <li>CTRL+Dで<code>sbt run</code>での実行を終了することができます</li>

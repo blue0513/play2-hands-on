@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content=" ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/slick-codegen | &#43;-/project | &#43;-/src | &#43;-...  H2の起動 Windowsの場合まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd slick-codegen/h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。モデルの自動生成 SlickではタイプセーフなAPIを使用するために タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。Windowsの場合sbt gen-tables  Macの場合./sbt.sh gen-tables  するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。slick.dbs.default.driver=&amp;quot;slick.driver.H2Driver$&amp;quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&amp;quot;jdbc:h2:tcp://localhost/data&amp;quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa  ">
+<meta name="description" content="ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/slick-codegen | &#43;-/project | &#43;-/src | &#43;-... H2の起動 Windowsの場合まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd slick-codegen/h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。モデルの自動生成 SlickではタイプセーフなAPIを使用するために タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。Windowsの場合sbt gen-tables Macの場合./sbt.sh gen-tables するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。slick.dbs.default.driver=&amp;quot;slick.driver.H2Driver$&amp;quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&amp;quot;jdbc:h2:tcp://localhost/data&amp;quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa ">
 
 <meta property="og:title" content="DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.4-slick3.0/preparation_of_db.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content=" ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/slick-codegen | &#43;-/project | &#43;-/src | &#43;-...  H2の起動 Windowsの場合まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd slick-codegen/h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。モデルの自動生成 SlickではタイプセーフなAPIを使用するために タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。Windowsの場合sbt gen-tables  Macの場合./sbt.sh gen-tables  するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。slick.dbs.default.driver=&amp;quot;slick.driver.H2Driver$&amp;quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&amp;quot;jdbc:h2:tcp://localhost/data&amp;quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa  ">
+<meta property="og:description" content="ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/slick-codegen | &#43;-/project | &#43;-/src | &#43;-... H2の起動 Windowsの場合まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd slick-codegen/h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。モデルの自動生成 SlickではタイプセーフなAPIを使用するために タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。Windowsの場合sbt gen-tables Macの場合./sbt.sh gen-tables するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。slick.dbs.default.driver=&amp;quot;slick.driver.H2Driver$&amp;quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&amp;quot;jdbc:h2:tcp://localhost/data&amp;quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa ">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.4-slick3.0/preparation_of_db.html">
 <meta name="twitter:title" content="DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content=" ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/slick-codegen | &#43;-/project | &#43;-/src | &#43;-...  H2の起動 Windowsの場合まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd slick-codegen/h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。モデルの自動生成 SlickではタイプセーフなAPIを使用するために タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。Windowsの場合sbt gen-tables  Macの場合./sbt.sh gen-tables  するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。slick.dbs.default.driver=&amp;quot;slick.driver.H2Driver$&amp;quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&amp;quot;jdbc:h2:tcp://localhost/data&amp;quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa  ">
+<meta name="twitter:description" content="ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。&#43;-/play2-hands-on | | | &#43;-/app | | | &#43;-/conf | | | &#43;-... | &#43;-/slick-codegen | &#43;-/project | &#43;-/src | &#43;-... H2の起動 Windowsの場合まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。Macの場合cd slick-codegen/h2/ sh start.sh ※起動後、そのターミナルは閉じないでください。モデルの自動生成 SlickではタイプセーフなAPIを使用するために タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。Windowsの場合sbt gen-tables Macの場合./sbt.sh gen-tables するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。slick.dbs.default.driver=&amp;quot;slick.driver.H2Driver$&amp;quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&amp;quot;jdbc:h2:tcp://localhost/data&amp;quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa ">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "DBの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "DBの準備 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,31 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": " ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。
-+-/play2-hands-on | | | +-/app | | | +-/conf | | | +-... | +-/slick-codegen | +-/project | +-/src | +-...  H2の起動 Windowsの場合
-まず、slick-codegenプロジェクトのh2/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。
-Macの場合
-cd slick-codegen/h2/ sh start.sh  ※起動後、そのターミナルは閉じないでください。
-モデルの自動生成 SlickではタイプセーフなAPIを使用するために
- タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。
-slick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。
-Windowsの場合
-sbt gen-tables  Macの場合
-./sbt.sh gen-tables  するとplay2-hands-onプロジェクトのapp/modelsパッケージにモデルクラスが生成されます。
-DB接続の設定 play2-hands-onプロジェクトのconf/application.confにDB接続のため以下の設定を追加します。
-slick.dbs.default.driver=&quot;slick.driver.H2Driver$&quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=&quot;jdbc:h2:tcp://localhost/data&quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa  "
+    "description": "ツールプロジェクトの準備 slick-codegen-play2.4-slick3.0.zip をダウンロードし、以下のようにplay2-hands-onプロジェクトと同じディレクトリに展開します。\n\u002b-\/play2-hands-on | | | \u002b-\/app | | | \u002b-\/conf | | | \u002b-... | \u002b-\/slick-codegen | \u002b-\/project | \u002b-\/src | \u002b-... H2の起動 Windowsの場合\nまず、slick-codegenプロジェクトのh2\/start.batをダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。\nMacの場合\ncd slick-codegen\/h2\/ sh start.sh ※起動後、そのターミナルは閉じないでください。\nモデルの自動生成 SlickではタイプセーフなAPIを使用するために\n タイプセーフなクエリで使うテーブル定義 エンティティオブジェクト  を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。\nslick-codegenプロジェクトのルートディレクトリで以下のコマンドを実行します。\nWindowsの場合\nsbt gen-tables Macの場合\n.\/sbt.sh gen-tables するとplay2-hands-onプロジェクトのapp\/modelsパッケージにモデルクラスが生成されます。\nDB接続の設定 play2-hands-onプロジェクトのconf\/application.confにDB接続のため以下の設定を追加します。\nslick.dbs.default.driver=\u0026quot;slick.driver.H2Driver$\u0026quot; slick.dbs.default.db.driver=org.h2.Driver slick.dbs.default.db.url=\u0026quot;jdbc:h2:tcp:\/\/localhost\/data\u0026quot; slick.dbs.default.db.user=sa slick.dbs.default.db.password=sa "
   }
 </script>
 
@@ -140,12 +128,8 @@ slick.dbs.default.driver=&quot;slick.driver.H2Driver$&quot; slick.dbs.default.db
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="ツールプロジェクトの準備">ツールプロジェクトの準備</h2>
-
+          <h2 id="ツールプロジェクトの準備">ツールプロジェクトの準備</h2>
 <p><a href="../downloads/slick-codegen-play2.4-slick3.0.zip">slick-codegen-play2.4-slick3.0.zip</a> をダウンロードし、以下のように<code>play2-hands-on</code>プロジェクトと同じディレクトリに展開します。</p>
-
 <pre><code>+-/play2-hands-on
 |   |
 |   +-/app
@@ -161,62 +145,36 @@ slick.dbs.default.driver=&quot;slick.driver.H2Driver$&quot; slick.dbs.default.db
     +-/src
     |
     +-...
-</code></pre>
-
-<h2 id="h2の起動">H2の起動</h2>
-
+</code></pre><h2 id="h2の起動">H2の起動</h2>
 <p><strong>Windowsの場合</strong></p>
-
 <p>まず、<code>slick-codegen</code>プロジェクトの<code>h2/start.bat</code>をダブルクリックしてH2データベースを起動します。データベースには以下のスキーマのテーブルが作成済みの状態になっています。</p>
-
 <p><strong>Macの場合</strong></p>
-
 <pre><code>cd slick-codegen/h2/
 sh start.sh
-</code></pre>
-
-<p>※起動後、そのターミナルは閉じないでください。</p>
-
-<p><img src="../images/play2.4-slick3.0/er_diagram.png" alt="アプリケーションで使用するER図" /></p>
-
+</code></pre><p>※起動後、そのターミナルは閉じないでください。</p>
+<p><img src="../images/play2.4-slick3.0/er_diagram.png" alt="アプリケーションで使用するER図"></p>
 <h2 id="モデルの自動生成">モデルの自動生成</h2>
-
 <p>SlickではタイプセーフなAPIを使用するために</p>
-
 <ul>
 <li>タイプセーフなクエリで使うテーブル定義</li>
 <li>エンティティオブジェクト</li>
 </ul>
-
 <p>を用意する必要がありますが、これらはSlickが標準で提供しているジェネレータを使用することでDBスキーマから自動生成することができます。</p>
-
 <p><code>slick-codegen</code>プロジェクトのルートディレクトリで以下のコマンドを実行します。</p>
-
 <p><strong>Windowsの場合</strong></p>
-
 <pre><code>sbt gen-tables
-</code></pre>
-
-<p><strong>Macの場合</strong></p>
-
+</code></pre><p><strong>Macの場合</strong></p>
 <pre><code>./sbt.sh gen-tables
-</code></pre>
-
-<p>すると<code>play2-hands-on</code>プロジェクトの<code>app/models</code>パッケージにモデルクラスが生成されます。</p>
-
-<p><img src="../images/play2.4-slick3.0/gen_model.png" alt="生成されたモデル" /></p>
-
+</code></pre><p>すると<code>play2-hands-on</code>プロジェクトの<code>app/models</code>パッケージにモデルクラスが生成されます。</p>
+<p><img src="../images/play2.4-slick3.0/gen_model.png" alt="生成されたモデル"></p>
 <h2 id="db接続の設定">DB接続の設定</h2>
-
 <p><code>play2-hands-on</code>プロジェクトの<code>conf/application.conf</code>にDB接続のため以下の設定を追加します。</p>
-
-<pre><code class="language-properties">slick.dbs.default.driver=&quot;slick.driver.H2Driver$&quot;
+<pre><code class="language-properties" data-lang="properties">slick.dbs.default.driver=&quot;slick.driver.H2Driver$&quot;
 slick.dbs.default.db.driver=org.h2.Driver
 slick.dbs.default.db.url=&quot;jdbc:h2:tcp://localhost/data&quot;
 slick.dbs.default.db.user=sa
 slick.dbs.default.db.password=sa
 </code></pre>
-
           <hr>
           <div class="nav">
           

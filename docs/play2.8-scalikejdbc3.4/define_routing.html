@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>ルーティングの定義 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; @* Here&#39;s where we render the page title `String`.">
+<meta name="description" content="Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; @* Here&amp;#39;s where we render the page title `String`. *@ &amp;lt;title&amp;gt;@title&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; media=&amp;#34;screen&amp;#34; href=&amp;#34;@routes.">
 
 <meta property="og:title" content="ルーティングの定義 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/define_routing.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; @* Here&#39;s where we render the page title `String`.">
+<meta property="og:description" content="Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; @* Here&amp;#39;s where we render the page title `String`. *@ &amp;lt;title&amp;gt;@title&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; media=&amp;#34;screen&amp;#34; href=&amp;#34;@routes.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/define_routing.html">
 <meta name="twitter:title" content="ルーティングの定義 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; @* Here&#39;s where we render the page title `String`.">
+<meta name="twitter:description" content="Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; @* Here&amp;#39;s where we render the page title `String`. *@ &amp;lt;title&amp;gt;@title&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; media=&amp;#34;screen&amp;#34; href=&amp;#34;@routes.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "ルーティングの定義 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "ルーティングの定義 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,20 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp/views/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。
-@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) &lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; @* Here's where we render the page title `String`."
+    "description": "Bootstrapを使うための準備 sbt newコマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとしてapp\/views\/main.scala.htmlが生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。\n@* * This template is called from the `index` template. This template * handles the rendering of the page header and body tags. It takes * two arguments, a `String` for the title of the page and an `Html` * object to insert into the body of the page. *@ @(title: String)(content: Html) \u0026lt;!DOCTYPE html\u0026gt; \u0026lt;html lang=\u0026#34;en\u0026#34;\u0026gt; \u0026lt;head\u0026gt; @* Here\u0026#39;s where we render the page title `String`. *@ \u0026lt;title\u0026gt;@title\u0026lt;\/title\u0026gt; \u0026lt;link rel=\u0026#34;stylesheet\u0026#34; media=\u0026#34;screen\u0026#34; href=\u0026#34;@routes."
   }
 </script>
 
@@ -129,13 +128,9 @@
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="bootstrapを使うための準備">Bootstrapを使うための準備</h2>
-
+          <h2 id="bootstrapを使うための準備">Bootstrapを使うための準備</h2>
 <p><code>sbt new</code>コマンドで作成されたプロジェクトにはデフォルトのレイアウトテンプレートとして<code>app/views/main.scala.html</code>が生成されています。ここにBootstrapで使用するCSSとJavaScriptを追加します。</p>
-
-<pre><code class="language-html">@*
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">@*
  * This template is called from the `index` template. This template
  * handles the rendering of the page header and body tags. It takes
  * two arguments, a `String` for the title of the page and an `Html`
@@ -143,117 +138,97 @@
  *@
 @(title: String)(content: Html)
 
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-    &lt;head&gt;
-        @* Here's where we render the page title `String`. *@
-        &lt;title&gt;@title&lt;/title&gt;
-        &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;@routes.Assets.versioned(&quot;stylesheets/main.css&quot;)&quot;&gt;
-        &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href=&quot;@routes.Assets.versioned(&quot;images/favicon.png&quot;)&quot;&gt;
+<span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+    &lt;<span style="color:#f92672">head</span>&gt;
+        @* Here&#39;s where we render the page title `String`. *@
+        &lt;<span style="color:#f92672">title</span>&gt;@title&lt;/<span style="color:#f92672">title</span>&gt;
+        &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">media</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;screen&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@routes.Assets.versioned(&#34;</span><span style="color:#a6e22e">stylesheets</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">main</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">css</span><span style="color:#960050;background-color:#1e0010">&#34;)&#34;</span>&gt;
+        &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;shortcut icon&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;image/png&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@routes.Assets.versioned(&#34;</span><span style="color:#a6e22e">images</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">favicon</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">png</span><span style="color:#960050;background-color:#1e0010">&#34;)&#34;</span>&gt;
         @* ↓↓↓↓ここから追加↓↓↓↓ *@
-        &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot;&gt;
+        &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">media</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;screen&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&#34;</span>&gt;
         @* ↑↑↑↑ここまで追加↑↑↑↑ *@
 
-    &lt;/head&gt;
-    &lt;body&gt;
-        @* And here's where we render the `Html` object containing
+    &lt;/<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">body</span>&gt;
+        @* And here&#39;s where we render the `Html` object containing
          * the page content. *@
         @content
 
-      &lt;script src=&quot;@routes.Assets.versioned(&quot;javascripts/main.js&quot;)&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-<p>また、デフォルトでは<code>Content-Security-Policy</code>ヘッダが<code>default-src 'self'</code>を返すため上記で指定した外部CDNのCSSファイルやJavaScriptファイルを読み込むことができません。そこで<code>conf/application.conf</code>に以下の設定を追加して<code>Content-Security-Policy</code>ヘッダが出力されないようにしておきます。</p>
-
+      &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@routes.Assets.versioned(&#34;</span><span style="color:#a6e22e">javascripts</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">main</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">js</span><span style="color:#960050;background-color:#1e0010">&#34;)&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+    &lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>また、デフォルトでは<code>Content-Security-Policy</code>ヘッダが<code>default-src 'self'</code>を返すため上記で指定した外部CDNのCSSファイルやJavaScriptファイルを読み込むことができません。そこで<code>conf/application.conf</code>に以下の設定を追加して<code>Content-Security-Policy</code>ヘッダが出力されないようにしておきます。</p>
 <pre><code>play.filters.headers.contentSecurityPolicy=null
-</code></pre>
-
-<h2 id="コントローラの雛形を作る">コントローラの雛形を作る</h2>
-
+</code></pre><h2 id="コントローラの雛形を作る">コントローラの雛形を作る</h2>
 <p><code>controllers</code>パッケージに<code>UserController</code>クラスを以下のように作成します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">package</span> controllers
 
-<pre><code class="language-scala">package controllers
+<span style="color:#66d9ef">import</span> play.api.mvc._
+<span style="color:#66d9ef">import</span> play.api.data._
+<span style="color:#66d9ef">import</span> play.api.data.Forms._
+<span style="color:#66d9ef">import</span> javax.inject.Inject
+<span style="color:#66d9ef">import</span> scalikejdbc._
+<span style="color:#66d9ef">import</span> models._
 
-import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
-import javax.inject.Inject
-import scalikejdbc._
-import models._
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserController</span> <span style="color:#a6e22e">@Inject</span><span style="color:#f92672">()(</span>components<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">MessagesControllerComponents</span><span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">MessagesAbstractController</span><span style="color:#f92672">(</span>components<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 
-class UserController @Inject()(components: MessagesControllerComponents)
-  extends MessagesAbstractController(components) {
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * 一覧表示
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">def</span> list <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">TODO</span>
 
-  /**
-   * 一覧表示
-   */
-  def list = TODO
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * 編集画面表示
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">def</span> edit<span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Option</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Long</span><span style="color:#f92672">])</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">TODO</span>
 
-  /**
-   * 編集画面表示
-   */
-  def edit(id: Option[Long]) = TODO
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * 登録実行
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">def</span> create <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">TODO</span>
 
-  /**
-   * 登録実行
-   */
-  def create = TODO
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * 更新実行
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">def</span> update <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">TODO</span>
 
-  /**
-   * 更新実行
-   */
-  def update = TODO
+  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * 削除実行
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">def</span> remove<span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Long</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">TODO</span>
 
-  /**
-   * 削除実行
-   */
-  def remove(id: Long) = TODO
-
-}
-</code></pre>
-
-<p>コンストラクタに<code>@Inject</code>アノテーションと2つの引数が定義されていますが、これはPlay 2.4から導入されたGoogle GuiceによるDI機能を使用するためのものです。</p>
-
+<span style="color:#f92672">}</span>
+</code></pre></div><p>コンストラクタに<code>@Inject</code>アノテーションと2つの引数が定義されていますが、これはPlay 2.4から導入されたGoogle GuiceによるDI機能を使用するためのものです。</p>
 <p>上記のコントローラではDI機能を以下の目的で使用しています。</p>
-
 <ul>
 <li><code>MessagesControllerComponents</code> &hellip; Playの国際化機能を使用するため（本ハンズオンで作成するアプリケーションでは国際化機能は使用しませんが、後述するテンプレート内で使用するヘルパーがi18n関連のインスタンスを必要とするため）</li>
 </ul>
-
 <p>また、実際にコントローラ内でデータベースアクセスや国際化機能を利用するために、<code>MessagesAbstractController</code>クラスを継承します。</p>
-
 <blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li><code>@Inject</code>はDIのためのアノテーションです</li>
 <li>国際化機能を使用するにはコントローラに<code>MessagesControllerComponents</code>をDIし、<code>MessagesAbstractController</code>クラスを継承します</li>
 <li><code>TODO</code>メソッドは<code>Action not implemented yet.</code>という<code>501 NOT_IMPLEMENTED</code>レスポンスを返します</li>
 </ul>
 </blockquote>
-
 <h2 id="ルーティングの設定">ルーティングの設定</h2>
-
 <p>クライアントから送信されたリクエストは、<code>conf/routes</code>の設定に従ってコントローラのメソッドへルーティングされます。
 以下の設定を追記します。</p>
-
-<pre><code class="language-bash"># Mapping to /user/list
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Mapping to /user/list</span>
 GET     /user/list                  controllers.UserController.list
-# Mapping to /user/edit or /user/edit?id=&lt;number&gt;
-GET     /user/edit                  controllers.UserController.edit(id: Option[Long] ?= None)
-# Mapping to /user/create
+<span style="color:#75715e"># Mapping to /user/edit or /user/edit?id=&lt;number&gt;</span>
+GET     /user/edit                  controllers.UserController.edit<span style="color:#f92672">(</span>id: Option<span style="color:#f92672">[</span>Long<span style="color:#f92672">]</span> ?<span style="color:#f92672">=</span> None<span style="color:#f92672">)</span>
+<span style="color:#75715e"># Mapping to /user/create</span>
 POST    /user/create                controllers.UserController.create
-# Mapping to /user/update
+<span style="color:#75715e"># Mapping to /user/update</span>
 POST    /user/update                controllers.UserController.update
-# Mapping to /user/remove/&lt;number&gt;
-POST    /user/remove/:id            controllers.UserController.remove(id: Long)
-</code></pre>
-
-<blockquote>
+<span style="color:#75715e"># Mapping to /user/remove/&lt;number&gt;</span>
+POST    /user/remove/:id            controllers.UserController.remove<span style="color:#f92672">(</span>id: Long<span style="color:#f92672">)</span>
+</code></pre></div><blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li>マッピング定義で引数の型を省略すると、<code>String</code>になります</li>
 <li>routesのコメントに日本語を記述するとコンパイルエラーになることがあります</li>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>ユーザ一覧APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。object JsonController { // UsersをJSONに変換するためのWritesを定義 implicit val usersWrites = ( (__ \ &amp;quot;id&amp;quot; ).write[Long] and (__ \ &amp;quot;name&amp;quot; ).write[String] and (__ \ &amp;quot;companyId&amp;quot;).writeNullable[Int] )(unlift(Users.unapply)) }  Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &amp;quot;id&amp;quot; -&amp;gt; user.id, &amp;quot;name&amp;quot; -&amp;gt; user.name, &amp;quot;companyId&amp;quot; -&amp;gt; user.companyId ) } }   POINT Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController.">
+<meta name="description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。object JsonController { // UsersをJSONに変換するためのWritesを定義  implicit val usersWrites = ( (__ \ &amp;#34;id&amp;#34; ).write[Long] and (__ \ &amp;#34;name&amp;#34; ).write[String] and (__ \ &amp;#34;companyId&amp;#34;).writeNullable[Int] )(unlift(Users.unapply)) } Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &amp;#34;id&amp;#34; -&amp;gt; user.id, &amp;#34;name&amp;#34; -&amp;gt; user.name, &amp;#34;companyId&amp;#34; -&amp;gt; user.companyId ) } }  POINT Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController._ def list = Action { implicit request =&amp;gt; val u = Users.">
 
 <meta property="og:title" content="ユーザ一覧APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.5-scalikejdbc2.5/implement_list_api.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。object JsonController { // UsersをJSONに変換するためのWritesを定義 implicit val usersWrites = ( (__ \ &amp;quot;id&amp;quot; ).write[Long] and (__ \ &amp;quot;name&amp;quot; ).write[String] and (__ \ &amp;quot;companyId&amp;quot;).writeNullable[Int] )(unlift(Users.unapply)) }  Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &amp;quot;id&amp;quot; -&amp;gt; user.id, &amp;quot;name&amp;quot; -&amp;gt; user.name, &amp;quot;companyId&amp;quot; -&amp;gt; user.companyId ) } }   POINT Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController.">
+<meta property="og:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。object JsonController { // UsersをJSONに変換するためのWritesを定義  implicit val usersWrites = ( (__ \ &amp;#34;id&amp;#34; ).write[Long] and (__ \ &amp;#34;name&amp;#34; ).write[String] and (__ \ &amp;#34;companyId&amp;#34;).writeNullable[Int] )(unlift(Users.unapply)) } Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &amp;#34;id&amp;#34; -&amp;gt; user.id, &amp;#34;name&amp;#34; -&amp;gt; user.name, &amp;#34;companyId&amp;#34; -&amp;gt; user.companyId ) } }  POINT Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController._ def list = Action { implicit request =&amp;gt; val u = Users.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.5-scalikejdbc2.5/implement_list_api.html">
 <meta name="twitter:title" content="ユーザ一覧APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。object JsonController { // UsersをJSONに変換するためのWritesを定義 implicit val usersWrites = ( (__ \ &amp;quot;id&amp;quot; ).write[Long] and (__ \ &amp;quot;name&amp;quot; ).write[String] and (__ \ &amp;quot;companyId&amp;quot;).writeNullable[Int] )(unlift(Users.unapply)) }  Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &amp;quot;id&amp;quot; -&amp;gt; user.id, &amp;quot;name&amp;quot; -&amp;gt; user.name, &amp;quot;companyId&amp;quot; -&amp;gt; user.companyId ) } }   POINT Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController.">
+<meta name="twitter:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。object JsonController { // UsersをJSONに変換するためのWritesを定義  implicit val usersWrites = ( (__ \ &amp;#34;id&amp;#34; ).write[Long] and (__ \ &amp;#34;name&amp;#34; ).write[String] and (__ \ &amp;#34;companyId&amp;#34;).writeNullable[Int] )(unlift(Users.unapply)) } Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &amp;#34;id&amp;#34; -&amp;gt; user.id, &amp;#34;name&amp;#34; -&amp;gt; user.name, &amp;#34;companyId&amp;#34; -&amp;gt; user.companyId ) } }  POINT Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController._ def list = Action { implicit request =&amp;gt; val u = Users.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "ユーザ一覧APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "ユーザ一覧APIの実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,25 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。
-Writesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。
-ここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。
-object JsonController { // UsersをJSONに変換するためのWritesを定義 implicit val usersWrites = ( (__ \ &quot;id&quot; ).write[Long] and (__ \ &quot;name&quot; ).write[String] and (__ \ &quot;companyId&quot;).writeNullable[Int] )(unlift(Users.unapply)) }  Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。
-implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( &quot;id&quot; -&gt; user.id, &quot;name&quot; -&gt; user.name, &quot;companyId&quot; -&gt; user.companyId ) } }   POINT
- Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。
-// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController."
+    "description": "USERSテーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。\nWritesの定義 Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するにはWrites、JSONをScalaオブジェクトに変換するためにはReadsを定義する必要があります。\nここではUSERSテーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、USERSテーブルに対応するUsersクラスに対応するWritesを定義しておく必要があります。画面から値を受け取るFormと同様、該当のコントローラ（ここではJsonController）のコンパニオンオブジェクトとして以下の内容を追加します。\nobject JsonController { \/\/ UsersをJSONに変換するためのWritesを定義  implicit val usersWrites = ( (__ \\ \u0026#34;id\u0026#34; ).write[Long] and (__ \\ \u0026#34;name\u0026#34; ).write[String] and (__ \\ \u0026#34;companyId\u0026#34;).writeNullable[Int] )(unlift(Users.unapply)) } Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。\nimplicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsValue = { Json.obj( \u0026#34;id\u0026#34; -\u0026gt; user.id, \u0026#34;name\u0026#34; -\u0026gt; user.name, \u0026#34;companyId\u0026#34; -\u0026gt; user.companyId ) } }  POINT\n Play2のJSONサポートではオブジェクトとJSONの変換を行うためにReadsやWritesでマッピングを定義する必要があります Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます   コントローラ JsonControllerのlistメソッドを以下のように実装します。\n\/\/ コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加 import JsonController._ def list = Action { implicit request =\u0026gt; val u = Users."
   }
 </script>
 
@@ -134,84 +128,60 @@ implicit val usersWritesFormat = new Writes[Users]{ def writes(user: Users): JsV
         </ul>
 
         <div class="article-body">
-          
-
-<p><code>USERS</code>テーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。</p>
-
+          <p><code>USERS</code>テーブルからIDの昇順に全件取得し、ユーザ一覧をJSONで返します。</p>
 <h2 id="writesの定義">Writesの定義</h2>
-
 <p>Play2のJSONサポートでは、ScalaオブジェクトをJSONに変換するには<code>Writes</code>、JSONをScalaオブジェクトに変換するためには<code>Reads</code>を定義する必要があります。</p>
-
 <p>ここでは<code>USERS</code>テーブルを検索して取得したケースクラスのリストをJSONに変換して返却するので、<code>USERS</code>テーブルに対応する<code>Users</code>クラスに対応する<code>Writes</code>を定義しておく必要があります。画面から値を受け取る<code>Form</code>と同様、該当のコントローラ（ここでは<code>JsonController</code>）のコンパニオンオブジェクトとして以下の内容を追加します。</p>
-
-<pre><code class="language-scala">object JsonController {
-  // UsersをJSONに変換するためのWritesを定義
-  implicit val usersWrites = (
-    (__ \ &quot;id&quot;       ).write[Long]   and
-    (__ \ &quot;name&quot;     ).write[String] and
-    (__ \ &quot;companyId&quot;).writeNullable[Int]
-  )(unlift(Users.unapply))
-}
-</code></pre>
-
-<p>Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。</p>
-
-<pre><code class="language-scala">implicit val usersWritesFormat = new Writes[Users]{
-  def writes(user: Users): JsValue = {
-    Json.obj(
-      &quot;id&quot;        -&gt; user.id,
-      &quot;name&quot;      -&gt; user.name,
-      &quot;companyId&quot; -&gt; user.companyId
-    )
-  }
-}
-</code></pre>
-
-<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">JsonController</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// UsersをJSONに変換するためのWritesを定義
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">implicit</span> <span style="color:#66d9ef">val</span> usersWrites <span style="color:#66d9ef">=</span> <span style="color:#f92672">(</span>
+    <span style="color:#f92672">(</span><span style="color:#a6e22e">__</span> \ <span style="color:#e6db74">&#34;id&#34;</span>       <span style="color:#f92672">).</span>write<span style="color:#f92672">[</span><span style="color:#66d9ef">Long</span><span style="color:#f92672">]</span>   and
+    <span style="color:#f92672">(</span><span style="color:#a6e22e">__</span> \ <span style="color:#e6db74">&#34;name&#34;</span>     <span style="color:#f92672">).</span>write<span style="color:#f92672">[</span><span style="color:#66d9ef">String</span><span style="color:#f92672">]</span> and
+    <span style="color:#f92672">(</span><span style="color:#a6e22e">__</span> \ <span style="color:#e6db74">&#34;companyId&#34;</span><span style="color:#f92672">).</span>writeNullable<span style="color:#f92672">[</span><span style="color:#66d9ef">Int</span><span style="color:#f92672">]</span>
+  <span style="color:#f92672">)(</span>unlift<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>unapply<span style="color:#f92672">))</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Play2のJSONサポートが提供するDSLを使用してマッピングを定義していますが、DSLを使わずに以下のように記述することもできます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">implicit</span> <span style="color:#66d9ef">val</span> usersWritesFormat <span style="color:#66d9ef">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Writes</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Users</span><span style="color:#f92672">]{</span>
+  <span style="color:#66d9ef">def</span> writes<span style="color:#f92672">(</span>user<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Users</span><span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">JsValue</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>obj<span style="color:#f92672">(</span>
+      <span style="color:#e6db74">&#34;id&#34;</span>        <span style="color:#f92672">-&gt;</span> user<span style="color:#f92672">.</span>id<span style="color:#f92672">,</span>
+      <span style="color:#e6db74">&#34;name&#34;</span>      <span style="color:#f92672">-&gt;</span> user<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span>
+      <span style="color:#e6db74">&#34;companyId&#34;</span> <span style="color:#f92672">-&gt;</span> user<span style="color:#f92672">.</span>companyId
+    <span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li>Play2のJSONサポートではオブジェクトとJSONの変換を行うために<code>Reads</code>や<code>Writes</code>でマッピングを定義する必要があります</li>
 <li>Play2のJSONサポートは単純なケースクラスの変換だけでなく、より複雑な変換やバリデーションなどを行うこともできます</li>
 </ul>
 </blockquote>
-
 <h2 id="コントローラ">コントローラ</h2>
-
 <p><code>JsonController</code>の<code>list</code>メソッドを以下のように実装します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> JsonController._
 
-<pre><code class="language-scala">// コンパニオンオブジェクトに定義したReads、Writesを参照するためにimport文を追加
-import JsonController._
+<span style="color:#66d9ef">def</span> list <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Action</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> request <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#66d9ef">val</span> u <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>syntax<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;u&#34;</span><span style="color:#f92672">)</span>
 
-def list = Action { implicit request =&gt;
-  val u = Users.syntax(&quot;u&quot;)
+  <span style="color:#a6e22e">DB</span><span style="color:#f92672">.</span>readOnly <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// ユーザのリストを取得
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> users <span style="color:#66d9ef">=</span> withSQL <span style="color:#f92672">{</span>
+      select<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span> as u<span style="color:#f92672">).</span>orderBy<span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>asc<span style="color:#f92672">)</span>
+    <span style="color:#f92672">}.</span>map<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>resultName<span style="color:#f92672">)).</span>list<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
 
-  DB.readOnly { implicit session =&gt;
-    // ユーザのリストを取得
-    val users = withSQL {
-      select.from(Users as u).orderBy(u.id.asc)
-    }.map(Users(u.resultName)).list.apply()
-
-    // ユーザの一覧をJSONで返す
-    Ok(Json.obj(&quot;users&quot; -&gt; users))
-  }
-}
-</code></pre>
-
-<p><code>Json.obj</code>メソッドでケースクラスからJSONへの変換が行われますが、このときにケースクラスに対応した<code>Writes</code>が定義されていないとコンパイルエラーになります。</p>
-
+    <span style="color:#75715e">// ユーザの一覧をJSONで返す
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Ok</span><span style="color:#f92672">(</span><span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>obj<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;users&#34;</span> <span style="color:#f92672">-&gt;</span> users<span style="color:#f92672">))</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>Json.obj</code>メソッドでケースクラスからJSONへの変換が行われますが、このときにケースクラスに対応した<code>Writes</code>が定義されていないとコンパイルエラーになります。</p>
 <h2 id="実行">実行</h2>
-
 <p>コマンドラインから以下のコマンドを実行してユーザ一覧がJSONで取得できることを確認してみましょう。</p>
-
 <pre><code>curl -XGET http://localhost:9000/json/list
-</code></pre>
-
-<p>結果として以下のようなJSONが表示されるはずです。</p>
-
-<pre><code class="language-json">{&quot;users&quot;:[{&quot;id&quot;:1,&quot;name&quot;:&quot;Taro Yamada&quot;,&quot;companyId&quot;:1},{&quot;id&quot;:2,&quot;name&quot;:&quot;Jiro Sato&quot;}]}
-</code></pre>
-
+</code></pre><p>結果として以下のようなJSONが表示されるはずです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;users&#34;</span>:[{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">1</span>,<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Taro Yamada&#34;</span>,<span style="color:#f92672">&#34;companyId&#34;</span>:<span style="color:#ae81ff">1</span>},{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#ae81ff">2</span>,<span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Jiro Sato&#34;</span>}]}
+</code></pre></div>
           <hr>
           <div class="nav">
           

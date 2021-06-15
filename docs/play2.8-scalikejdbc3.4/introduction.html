@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "Play 2.8 &#43; ScalikeJDBC 3.4 ハンズオン - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "Play 2.8 \u002b ScalikeJDBC 3.4 ハンズオン - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,25 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "目的 Play2 + ScalikeJDBC を使ってWebアプリケーションを作成するハンズオンです。
-主な目的は以下の通りです。
- Scalaに触れてもらう 数時間でとりあえず動くものを作ってみる  そのため、なるべくフレームワークが提供する機能をそのまま使います。
-構成 使用するフレームワークおよびバージョンは以下の通りです。
- Play 2.8.x ScalikeJDBC 3.4.x  前提条件 このハンズオンを実施するにあたっての前提条件は以下の通りです。
- JavaおよびWebアプリケーションの開発に関する基本的な知識を持っていること JDK 1.8がインストールされていること IntelliJ IDEAの最新版がインストールされていること  内容 ユーザ情報のCRUDを行う簡単なアプリケーションを作成します。
- ユーザ一覧を表示する 新規ユーザ登録を行う ユーザ情報を編集する ユーザを削除する  また、後半ではこのアプリケーションと同じCRUD処理を行うJSONベースのWeb APIも作成します。"
+    "description": "目的 Play2 \u002b ScalikeJDBC を使ってWebアプリケーションを作成するハンズオンです。\n主な目的は以下の通りです。\n Scalaに触れてもらう 数時間でとりあえず動くものを作ってみる  そのため、なるべくフレームワークが提供する機能をそのまま使います。\n構成 使用するフレームワークおよびバージョンは以下の通りです。\n Play 2.8.x ScalikeJDBC 3.4.x  前提条件 このハンズオンを実施するにあたっての前提条件は以下の通りです。\n JavaおよびWebアプリケーションの開発に関する基本的な知識を持っていること JDK 1.8がインストールされていること IntelliJ IDEAの最新版がインストールされていること  内容 ユーザ情報のCRUDを行う簡単なアプリケーションを作成します。\n ユーザ一覧を表示する 新規ユーザ登録を行う ユーザ情報を編集する ユーザを削除する  また、後半ではこのアプリケーションと同じCRUD処理を行うJSONベースのWeb APIも作成します。"
   }
 </script>
 
@@ -134,53 +128,36 @@
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="目的">目的</h2>
-
+          <h2 id="目的">目的</h2>
 <p>Play2 + ScalikeJDBC を使ってWebアプリケーションを作成するハンズオンです。</p>
-
 <p>主な目的は以下の通りです。</p>
-
 <ul>
 <li>Scalaに触れてもらう</li>
 <li>数時間でとりあえず動くものを作ってみる</li>
 </ul>
-
 <p>そのため、なるべくフレームワークが提供する機能をそのまま使います。</p>
-
 <h2 id="構成">構成</h2>
-
 <p>使用するフレームワークおよびバージョンは以下の通りです。</p>
-
 <ul>
 <li>Play 2.8.x</li>
 <li>ScalikeJDBC 3.4.x</li>
 </ul>
-
 <h2 id="前提条件">前提条件</h2>
-
 <p>このハンズオンを実施するにあたっての前提条件は以下の通りです。</p>
-
 <ul>
 <li>JavaおよびWebアプリケーションの開発に関する基本的な知識を持っていること</li>
 <li>JDK 1.8がインストールされていること</li>
 <li>IntelliJ IDEAの最新版がインストールされていること</li>
 </ul>
-
 <h2 id="内容">内容</h2>
-
 <p>ユーザ情報のCRUDを行う簡単なアプリケーションを作成します。</p>
-
 <ul>
 <li>ユーザ一覧を表示する</li>
 <li>新規ユーザ登録を行う</li>
 <li>ユーザ情報を編集する</li>
 <li>ユーザを削除する</li>
 </ul>
-
-<p><img src="../images/play2.8-scalikejdbc3.4/flow.png" alt="作成するアプリケーションの画面遷移図" /></p>
-
+<p><img src="../images/play2.8-scalikejdbc3.4/flow.png" alt="作成するアプリケーションの画面遷移図"></p>
 <p>また、後半ではこのアプリケーションと同じCRUD処理を行うJSONベースのWeb APIも作成します。</p>
 
           <hr>

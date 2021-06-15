@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>ユーザ一覧の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&amp;quot;ユーザ一覧&amp;quot;) { &amp;lt;div&amp;gt; &amp;lt;a href=&amp;quot;@routes.UserController.edit()&amp;quot; class=&amp;quot;btn btn-success&amp;quot; role=&amp;quot;button&amp;quot;&amp;gt;新規作成&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-6&amp;quot;&amp;gt; &amp;lt;table class=&amp;quot;table table-hover&amp;quot;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;名前&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;&amp;amp;nbsp;&amp;lt;/th&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/thead&amp;gt; &amp;lt;tbody&amp;gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;@user.id&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot;@routes.UserController.edit(Some(user.id))&amp;quot;&amp;gt;@user.name&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;削除&amp;quot; class=&amp;quot;btn btn-danger btn-sm&amp;quot;/&amp;gt; } &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; } &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; }  テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.">
+<meta name="description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&amp;#34;ユーザ一覧&amp;#34;) { &amp;lt;div&amp;gt; &amp;lt;a href=&amp;#34;@routes.UserController.edit()&amp;#34; class=&amp;#34;btn btn-success&amp;#34; role=&amp;#34;button&amp;#34;&amp;gt;新規作成&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col-6&amp;#34;&amp;gt; &amp;lt;table class=&amp;#34;table table-hover&amp;#34;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;名前&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;&amp;amp;nbsp;&amp;lt;/th&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/thead&amp;gt; &amp;lt;tbody&amp;gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;@user.id&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;@routes.UserController.edit(Some(user.id))&amp;#34;&amp;gt;@user.name&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;削除&amp;#34; class=&amp;#34;btn btn-danger btn-sm&amp;#34;/&amp;gt; } &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; } &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; } テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.form(CSRF(...))のように指定するだけで自動的にトークンを使用したCSRF機能を利用することができます（CSRFヘルパーを指定しないとフォームの送信時に403エラーになってしまいます）。 POINT">
 
 <meta property="og:title" content="ユーザ一覧の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/implement_user_list.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&amp;quot;ユーザ一覧&amp;quot;) { &amp;lt;div&amp;gt; &amp;lt;a href=&amp;quot;@routes.UserController.edit()&amp;quot; class=&amp;quot;btn btn-success&amp;quot; role=&amp;quot;button&amp;quot;&amp;gt;新規作成&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-6&amp;quot;&amp;gt; &amp;lt;table class=&amp;quot;table table-hover&amp;quot;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;名前&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;&amp;amp;nbsp;&amp;lt;/th&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/thead&amp;gt; &amp;lt;tbody&amp;gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;@user.id&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot;@routes.UserController.edit(Some(user.id))&amp;quot;&amp;gt;@user.name&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;削除&amp;quot; class=&amp;quot;btn btn-danger btn-sm&amp;quot;/&amp;gt; } &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; } &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; }  テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.">
+<meta property="og:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&amp;#34;ユーザ一覧&amp;#34;) { &amp;lt;div&amp;gt; &amp;lt;a href=&amp;#34;@routes.UserController.edit()&amp;#34; class=&amp;#34;btn btn-success&amp;#34; role=&amp;#34;button&amp;#34;&amp;gt;新規作成&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col-6&amp;#34;&amp;gt; &amp;lt;table class=&amp;#34;table table-hover&amp;#34;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;名前&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;&amp;amp;nbsp;&amp;lt;/th&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/thead&amp;gt; &amp;lt;tbody&amp;gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;@user.id&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;@routes.UserController.edit(Some(user.id))&amp;#34;&amp;gt;@user.name&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;削除&amp;#34; class=&amp;#34;btn btn-danger btn-sm&amp;#34;/&amp;gt; } &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; } &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; } テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.form(CSRF(...))のように指定するだけで自動的にトークンを使用したCSRF機能を利用することができます（CSRFヘルパーを指定しないとフォームの送信時に403エラーになってしまいます）。 POINT">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.8-scalikejdbc3.4/implement_user_list.html">
 <meta name="twitter:title" content="ユーザ一覧の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&amp;quot;ユーザ一覧&amp;quot;) { &amp;lt;div&amp;gt; &amp;lt;a href=&amp;quot;@routes.UserController.edit()&amp;quot; class=&amp;quot;btn btn-success&amp;quot; role=&amp;quot;button&amp;quot;&amp;gt;新規作成&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-6&amp;quot;&amp;gt; &amp;lt;table class=&amp;quot;table table-hover&amp;quot;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;名前&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;&amp;amp;nbsp;&amp;lt;/th&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/thead&amp;gt; &amp;lt;tbody&amp;gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;@user.id&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot;@routes.UserController.edit(Some(user.id))&amp;quot;&amp;gt;@user.name&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;削除&amp;quot; class=&amp;quot;btn btn-danger btn-sm&amp;quot;/&amp;gt; } &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; } &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; }  テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.">
+<meta name="twitter:description" content="USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&amp;#34;ユーザ一覧&amp;#34;) { &amp;lt;div&amp;gt; &amp;lt;a href=&amp;#34;@routes.UserController.edit()&amp;#34; class=&amp;#34;btn btn-success&amp;#34; role=&amp;#34;button&amp;#34;&amp;gt;新規作成&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col-6&amp;#34;&amp;gt; &amp;lt;table class=&amp;#34;table table-hover&amp;#34;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;名前&amp;lt;/th&amp;gt; &amp;lt;th&amp;gt;&amp;amp;nbsp;&amp;lt;/th&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/thead&amp;gt; &amp;lt;tbody&amp;gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;@user.id&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&amp;lt;a href=&amp;#34;@routes.UserController.edit(Some(user.id))&amp;#34;&amp;gt;@user.name&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;削除&amp;#34; class=&amp;#34;btn btn-danger btn-sm&amp;#34;/&amp;gt; } &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; } &amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt; &amp;lt;/div&amp;gt; } テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.form(CSRF(...))のように指定するだけで自動的にトークンを使用したCSRF機能を利用することができます（CSRFヘルパーを指定しないとフォームの送信時に403エラーになってしまいます）。 POINT">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "ユーザ一覧の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "ユーザ一覧の実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,21 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。
-ビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。
-@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(&quot;ユーザ一覧&quot;) { &lt;div&gt; &lt;a href=&quot;@routes.UserController.edit()&quot; class=&quot;btn btn-success&quot; role=&quot;button&quot;&gt;新規作成&lt;/a&gt; &lt;/div&gt; &lt;div class=&quot;col-6&quot;&gt; &lt;table class=&quot;table table-hover&quot;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;ID&lt;/th&gt; &lt;th&gt;名前&lt;/th&gt; &lt;th&gt;&amp;nbsp;&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; @* ユーザの一覧をループで出力 *@ @users.map { user =&gt; &lt;tr&gt; &lt;td&gt;@user.id&lt;/td&gt; &lt;td&gt;&lt;a href=&quot;@routes.UserController.edit(Some(user.id))&quot;&gt;@user.name&lt;/a&gt;&lt;/td&gt; &lt;td&gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ &lt;input type=&quot;submit&quot; value=&quot;削除&quot; class=&quot;btn btn-danger btn-sm&quot;/&gt; } &lt;/td&gt; &lt;/tr&gt; } &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; }  テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper."
+    "description": "USERSテーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。\nビュー テンプレートはviewsパッケージに作成します。appディレクトリ配下にviews.userパッケージを作成し、以下の内容でlist.scala.htmlを作成します。\n@* このテンプレートの引数 *@ @(users: Seq[models.Users])(implicit request: RequestHeader) @* テンプレートで利用可能なヘルパーをインポート *@ @import helper._ @* main.scala.htmlを呼び出す *@ @main(\u0026#34;ユーザ一覧\u0026#34;) { \u0026lt;div\u0026gt; \u0026lt;a href=\u0026#34;@routes.UserController.edit()\u0026#34; class=\u0026#34;btn btn-success\u0026#34; role=\u0026#34;button\u0026#34;\u0026gt;新規作成\u0026lt;\/a\u0026gt; \u0026lt;\/div\u0026gt; \u0026lt;div class=\u0026#34;col-6\u0026#34;\u0026gt; \u0026lt;table class=\u0026#34;table table-hover\u0026#34;\u0026gt; \u0026lt;thead\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;th\u0026gt;ID\u0026lt;\/th\u0026gt; \u0026lt;th\u0026gt;名前\u0026lt;\/th\u0026gt; \u0026lt;th\u0026gt;\u0026amp;nbsp;\u0026lt;\/th\u0026gt; \u0026lt;\/tr\u0026gt; \u0026lt;\/thead\u0026gt; \u0026lt;tbody\u0026gt; @* ユーザの一覧をループで出力 *@ @users.map { user =\u0026gt; \u0026lt;tr\u0026gt; \u0026lt;td\u0026gt;@user.id\u0026lt;\/td\u0026gt; \u0026lt;td\u0026gt;\u0026lt;a href=\u0026#34;@routes.UserController.edit(Some(user.id))\u0026#34;\u0026gt;@user.name\u0026lt;\/a\u0026gt;\u0026lt;\/td\u0026gt; \u0026lt;td\u0026gt;@helper.form(CSRF(routes.UserController.remove(user.id))){ \u0026lt;input type=\u0026#34;submit\u0026#34; value=\u0026#34;削除\u0026#34; class=\u0026#34;btn btn-danger btn-sm\u0026#34;\/\u0026gt; } \u0026lt;\/td\u0026gt; \u0026lt;\/tr\u0026gt; } \u0026lt;\/tbody\u0026gt; \u0026lt;\/table\u0026gt; \u0026lt;\/div\u0026gt; } テンプレート一行目に(implicit request: RequestHeader)という引数が定義されていますが、これはテンプレート中で使用しているCSRFというヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に@helper.form(CSRF(...))のように指定するだけで自動的にトークンを使用したCSRF機能を利用することができます（CSRFヘルパーを指定しないとフォームの送信時に403エラーになってしまいます）。\n POINT"
   }
 </script>
 
@@ -130,60 +128,51 @@
         </ul>
 
         <div class="article-body">
-          
-
-<p><code>USERS</code>テーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。</p>
-
+          <p><code>USERS</code>テーブルからIDの昇順に全件取得し、ユーザ一覧画面を表示します。</p>
 <h2 id="ビュー">ビュー</h2>
-
 <p>テンプレートは<code>views</code>パッケージに作成します。appディレクトリ配下に<code>views.user</code>パッケージを作成し、以下の内容で<code>list.scala.html</code>を作成します。</p>
-
-<pre><code class="language-html">@* このテンプレートの引数 *@
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">@* このテンプレートの引数 *@
 @(users: Seq[models.Users])(implicit request: RequestHeader)
 
 @* テンプレートで利用可能なヘルパーをインポート *@
 @import helper._
 
 @* main.scala.htmlを呼び出す *@
-@main(&quot;ユーザ一覧&quot;) {
+@main(&#34;ユーザ一覧&#34;) {
 
-&lt;div&gt;
-  &lt;a href=&quot;@routes.UserController.edit()&quot; class=&quot;btn btn-success&quot; role=&quot;button&quot;&gt;新規作成&lt;/a&gt;
-&lt;/div&gt;
+&lt;<span style="color:#f92672">div</span>&gt;
+  &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@routes.UserController.edit()&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn btn-success&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span>&gt;新規作成&lt;/<span style="color:#f92672">a</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
 
-&lt;div class=&quot;col-6&quot;&gt;
-  &lt;table class=&quot;table table-hover&quot;&gt;
-    &lt;thead&gt;
-      &lt;tr&gt;
-        &lt;th&gt;ID&lt;/th&gt;
-        &lt;th&gt;名前&lt;/th&gt;
-        &lt;th&gt;&amp;nbsp;&lt;/th&gt;
-      &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;col-6&#34;</span>&gt;
+  &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table table-hover&#34;</span>&gt;
+    &lt;<span style="color:#f92672">thead</span>&gt;
+      &lt;<span style="color:#f92672">tr</span>&gt;
+        &lt;<span style="color:#f92672">th</span>&gt;ID&lt;/<span style="color:#f92672">th</span>&gt;
+        &lt;<span style="color:#f92672">th</span>&gt;名前&lt;/<span style="color:#f92672">th</span>&gt;
+        &lt;<span style="color:#f92672">th</span>&gt;&amp;nbsp;&lt;/<span style="color:#f92672">th</span>&gt;
+      &lt;/<span style="color:#f92672">tr</span>&gt;
+    &lt;/<span style="color:#f92672">thead</span>&gt;
+    &lt;<span style="color:#f92672">tbody</span>&gt;
     @* ユーザの一覧をループで出力 *@
     @users.map { user =&gt;
-      &lt;tr&gt;
-        &lt;td&gt;@user.id&lt;/td&gt;
-        &lt;td&gt;&lt;a href=&quot;@routes.UserController.edit(Some(user.id))&quot;&gt;@user.name&lt;/a&gt;&lt;/td&gt;
-        &lt;td&gt;@helper.form(CSRF(routes.UserController.remove(user.id))){
-          &lt;input type=&quot;submit&quot; value=&quot;削除&quot; class=&quot;btn btn-danger btn-sm&quot;/&gt;
+      &lt;<span style="color:#f92672">tr</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;@user.id&lt;/<span style="color:#f92672">td</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@routes.UserController.edit(Some(user.id))&#34;</span>&gt;@user.name&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">td</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;@helper.form(CSRF(routes.UserController.remove(user.id))){
+          &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;削除&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn btn-danger btn-sm&#34;</span>/&gt;
         }
-        &lt;/td&gt;
-      &lt;/tr&gt;
+        &lt;/<span style="color:#f92672">td</span>&gt;
+      &lt;/<span style="color:#f92672">tr</span>&gt;
     }
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-&lt;/div&gt;
+    &lt;/<span style="color:#f92672">tbody</span>&gt;
+  &lt;/<span style="color:#f92672">table</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
 
 }
-</code></pre>
-
-<p>テンプレート一行目に<code>(implicit request: RequestHeader)</code>という引数が定義されていますが、これはテンプレート中で使用している<code>CSRF</code>というヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に<code>@helper.form(CSRF(...))</code>のように指定するだけで自動的にトークンを使用したCSRF機能を利用することができます（<code>CSRF</code>ヘルパーを指定しないとフォームの送信時に403エラーになってしまいます）。</p>
-
+</code></pre></div><p>テンプレート一行目に<code>(implicit request: RequestHeader)</code>という引数が定義されていますが、これはテンプレート中で使用している<code>CSRF</code>というヘルパーを使用するために必要なものです。PlayではデフォルトでCSRF対策のためのフィルタが有効になっており、フォームの送信先を指定する際に<code>@helper.form(CSRF(...))</code>のように指定するだけで自動的にトークンを使用したCSRF機能を利用することができます（<code>CSRF</code>ヘルパーを指定しないとフォームの送信時に403エラーになってしまいます）。</p>
 <blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li>テンプレートの1行目にはコントローラから受け取る引数を記述します</li>
 <li>テンプレートには<code>@</code>でScalaのコードを埋め込むことができます</li>
@@ -193,74 +182,54 @@
 <li>デフォルトでCSRFフィルタが有効になっているため、フォームの送信先は<code>CSRF(...)</code>で囲む必要があります</li>
 </ul>
 </blockquote>
-
 <h2 id="コントローラ">コントローラ</h2>
-
 <p><code>UserController</code>の<code>list</code>メソッドを以下のように実装します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> list <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Action</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> request <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#66d9ef">val</span> u <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>syntax<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;u&#34;</span><span style="color:#f92672">)</span>
 
-<pre><code class="language-scala">def list = Action { implicit request =&gt;
-  val u = Users.syntax(&quot;u&quot;)
+  <span style="color:#a6e22e">DB</span><span style="color:#f92672">.</span>readOnly <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// ユーザのリストを取得
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> users <span style="color:#66d9ef">=</span> withSQL <span style="color:#f92672">{</span>
+      select<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span> as u<span style="color:#f92672">).</span>orderBy<span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>asc<span style="color:#f92672">)</span>
+    <span style="color:#f92672">}.</span>map<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>resultName<span style="color:#f92672">)).</span>list<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
 
-  DB.readOnly { implicit session =&gt;
-    // ユーザのリストを取得
-    val users = withSQL {
-      select.from(Users as u).orderBy(u.id.asc)
-    }.map(Users(u.resultName)).list.apply()
+    <span style="color:#75715e">// 一覧画面を表示
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Ok</span><span style="color:#f92672">(</span>views<span style="color:#f92672">.</span>html<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>list<span style="color:#f92672">(</span>users<span style="color:#f92672">))</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>val u = Users.syntax(&quot;u&quot;)</code>はScalikeJDBCのQueryDSL（SQLをタイプセーフに記述するためのDSL）を使用する際にテーブル毎に必要となるものです。クラス内の様々なメソッドで同じものを使用する場合は以下のようにクラスのフィールドとして定義するようにしてもよいでしょう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserController</span> <span style="color:#a6e22e">@Inject</span><span style="color:#f92672">()(</span>components<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">MessagesControllerComponents</span><span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">MessagesAbstractController</span><span style="color:#f92672">(</span>components<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 
-    // 一覧画面を表示
-    Ok(views.html.user.list(users))
-  }
-}
-</code></pre>
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> u <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>syntax<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;u&#34;</span><span style="color:#f92672">)</span>
 
-<p><code>val u = Users.syntax(&quot;u&quot;)</code>はScalikeJDBCのQueryDSL（SQLをタイプセーフに記述するためのDSL）を使用する際にテーブル毎に必要となるものです。クラス内の様々なメソッドで同じものを使用する場合は以下のようにクラスのフィールドとして定義するようにしてもよいでしょう。</p>
-
-<pre><code class="language-scala">class UserController @Inject()(components: MessagesControllerComponents)
-  extends MessagesAbstractController(components) {
-
-  private val u = Users.syntax(&quot;u&quot;)
-
-  ...
-}
-</code></pre>
-
-<pre><code class="language-scala">val users = withSQL {
-  select.from(Users as u).orderBy(u.id.asc)
-}.map(Users(u.resultName)).list.apply()
-</code></pre>
-
-<p>このコードの<code>select.from(Users as u).orderBy(u.id.asc)</code>という部分は以下のSQLと同じ意味になります。</p>
-
-<pre><code class="language-sql">SELECT * FROM USERS ORDER BY ID
-</code></pre>
-
-<blockquote>
+  <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> users <span style="color:#66d9ef">=</span> withSQL <span style="color:#f92672">{</span>
+  select<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span> as u<span style="color:#f92672">).</span>orderBy<span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>asc<span style="color:#f92672">)</span>
+<span style="color:#f92672">}.</span>map<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">(</span>u<span style="color:#f92672">.</span>resultName<span style="color:#f92672">)).</span>list<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
+</code></pre></div><p>このコードの<code>select.from(Users as u).orderBy(u.id.asc)</code>という部分は以下のSQLと同じ意味になります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> USERS <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> ID
+</code></pre></div><blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li>Playでは<code>Action { ... }</code>の中に処理を記述します
-
 <ul>
 <li><code>implicit request</code>はアクションの処理の中でHTTPリクエストを暗黙的に使用するために必要になる記述です</li>
-</ul></li>
+</ul>
+</li>
 <li><code>Ok</code>に<code>views.html.・・・</code>と記述することで、表示したいHTMLのテンプレートを指定できます
-
 <ul>
 <li>引数にはテンプレートに渡すパラメータを指定します</li>
-</ul></li>
-<li>ScalikeJDBCでは<code>DB.readOnly { ... }</code>で参照専用のセッションを取得することができます
-
-<ul>
+</ul>
+</li>
+<li>ScalikeJDBCでは<code>DB.readOnly { ... }</code>で参照専用のセッションを取得することができます</li>
 <li><code>withSQL { ... }</code>でSQLをタイプセーフに記述するQueryDSLを使用することができます</li>
-</ul></li>
 </ul>
 </blockquote>
-
 <h2 id="実行">実行</h2>
-
-<p>ここまで実装したらブラウザから <a href="http://localhost:9000/user/list">http://localhost:9000/user/list</a> にアクセスします（<code>sbt run</code>を実行していない場合は実行してください）。すると以下のような画面が表示されるはずです。</p>
-
-<p><img src="../images/play2.8-scalikejdbc3.4/user_list.png" alt="ユーザ一覧画面" /></p>
+<p>ここまで実装したらブラウザから http://localhost:9000/user/list にアクセスします（<code>sbt run</code>を実行していない場合は実行してください）。すると以下のような画面が表示されるはずです。</p>
+<p><img src="../images/play2.8-scalikejdbc3.4/user_list.png" alt="ユーザ一覧画面"></p>
 
           <hr>
           <div class="nav">

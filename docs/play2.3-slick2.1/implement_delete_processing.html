@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = DBAction.transaction { implicit rs =&amp;gt; // ユーザIDを指定して削除 Users.filter(t =&amp;gt; t.id === id.bind).delete // 一覧画面へリダイレクト Redirect(routes.UserController.list) }  上記のコードでは以下の記述でユーザ情報の削除を行っています。Users.filter( t =&amp;gt; t.id === id.bind).delete  これは以下のSQLと同じ意味になります。DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
+<meta name="description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = DBAction.transaction { implicit rs =&amp;gt; // ユーザIDを指定して削除  Users.filter(t =&amp;gt; t.id === id.bind).delete // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } 上記のコードでは以下の記述でユーザ情報の削除を行っています。Users.filter( t =&amp;gt; t.id === id.bind).delete これは以下のSQLと同じ意味になります。DELETE FROM USERS WHERE ID = ? 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
 
 <meta property="og:title" content="削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.3-slick2.1/implement_delete_processing.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = DBAction.transaction { implicit rs =&amp;gt; // ユーザIDを指定して削除 Users.filter(t =&amp;gt; t.id === id.bind).delete // 一覧画面へリダイレクト Redirect(routes.UserController.list) }  上記のコードでは以下の記述でユーザ情報の削除を行っています。Users.filter( t =&amp;gt; t.id === id.bind).delete  これは以下のSQLと同じ意味になります。DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
+<meta property="og:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = DBAction.transaction { implicit rs =&amp;gt; // ユーザIDを指定して削除  Users.filter(t =&amp;gt; t.id === id.bind).delete // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } 上記のコードでは以下の記述でユーザ情報の削除を行っています。Users.filter( t =&amp;gt; t.id === id.bind).delete これは以下のSQLと同じ意味になります。DELETE FROM USERS WHERE ID = ? 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.3-slick2.1/implement_delete_processing.html">
 <meta name="twitter:title" content="削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = DBAction.transaction { implicit rs =&amp;gt; // ユーザIDを指定して削除 Users.filter(t =&amp;gt; t.id === id.bind).delete // 一覧画面へリダイレクト Redirect(routes.UserController.list) }  上記のコードでは以下の記述でユーザ情報の削除を行っています。Users.filter( t =&amp;gt; t.id === id.bind).delete  これは以下のSQLと同じ意味になります。DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
+<meta name="twitter:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = DBAction.transaction { implicit rs =&amp;gt; // ユーザIDを指定して削除  Users.filter(t =&amp;gt; t.id === id.bind).delete // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } 上記のコードでは以下の記述でユーザ情報の削除を行っています。Users.filter( t =&amp;gt; t.id === id.bind).delete これは以下のSQLと同じ意味になります。DELETE FROM USERS WHERE ID = ? 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "削除処理の実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,23 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。
-コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。
-def remove(id: Long) = DBAction.transaction { implicit rs =&gt; // ユーザIDを指定して削除 Users.filter(t =&gt; t.id === id.bind).delete // 一覧画面へリダイレクト Redirect(routes.UserController.list) }  上記のコードでは以下の記述でユーザ情報の削除を行っています。
-Users.filter( t =&gt; t.id === id.bind).delete  これは以下のSQLと同じ意味になります。
-DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。"
+    "description": "指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。\nコントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。\ndef remove(id: Long) = DBAction.transaction { implicit rs =\u0026gt; \/\/ ユーザIDを指定して削除  Users.filter(t =\u0026gt; t.id === id.bind).delete \/\/ 一覧画面へリダイレクト  Redirect(routes.UserController.list) } 上記のコードでは以下の記述でユーザ情報の削除を行っています。\nUsers.filter( t =\u0026gt; t.id === id.bind).delete これは以下のSQLと同じ意味になります。\nDELETE FROM USERS WHERE ID = ? 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。"
   }
 </script>
 
@@ -132,35 +128,21 @@ DELETE FROM USERS WHERE ID = ?  実行 一覧画面から「削除」をクリ�
         </ul>
 
         <div class="article-body">
-          
-
-<p>指定したIDのユーザを<code>USERS</code>テーブルから削除し、一覧画面へリダイレクトします。</p>
-
+          <p>指定したIDのユーザを<code>USERS</code>テーブルから削除し、一覧画面へリダイレクトします。</p>
 <h2 id="コントローラ">コントローラ</h2>
-
 <p>すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> remove<span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Long</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">DBAction</span><span style="color:#f92672">.</span>transaction <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> rs <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#75715e">// ユーザIDを指定して削除
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>filter<span style="color:#f92672">(</span>t <span style="color:#66d9ef">=&gt;</span> t<span style="color:#f92672">.</span>id <span style="color:#f92672">===</span> id<span style="color:#f92672">.</span>bind<span style="color:#f92672">).</span>delete
 
-<pre><code class="language-scala">def remove(id: Long) = DBAction.transaction { implicit rs =&gt;
-  // ユーザIDを指定して削除
-  Users.filter(t =&gt; t.id === id.bind).delete
-
-  // 一覧画面へリダイレクト
-  Redirect(routes.UserController.list)
-}
-</code></pre>
-
-<p>上記のコードでは以下の記述でユーザ情報の削除を行っています。</p>
-
-<pre><code class="language-scala">Users.filter( t =&gt; t.id === id.bind).delete
-</code></pre>
-
-<p>これは以下のSQLと同じ意味になります。</p>
-
-<pre><code class="language-sql">DELETE FROM USERS WHERE ID = ?
-</code></pre>
-
-<h2 id="実行">実行</h2>
-
+  <span style="color:#75715e">// 一覧画面へリダイレクト
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Redirect</span><span style="color:#f92672">(</span>routes<span style="color:#f92672">.</span><span style="color:#a6e22e">UserController</span><span style="color:#f92672">.</span>list<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>上記のコードでは以下の記述でユーザ情報の削除を行っています。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>filter<span style="color:#f92672">(</span> t <span style="color:#66d9ef">=&gt;</span> t<span style="color:#f92672">.</span>id <span style="color:#f92672">===</span> id<span style="color:#f92672">.</span>bind<span style="color:#f92672">).</span>delete
+</code></pre></div><p>これは以下のSQLと同じ意味になります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> USERS <span style="color:#66d9ef">WHERE</span> ID <span style="color:#f92672">=</span> <span style="color:#f92672">?</span>
+</code></pre></div><h2 id="実行">実行</h2>
 <p>一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</p>
 
           <hr>

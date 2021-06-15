@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // ユーザを削除 Users.find(id).foreach { user =&amp;gt; Users.destroy(user) } // 一覧画面へリダイレクト Redirect(routes.UserController.list) } }  ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply()  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
+<meta name="description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // ユーザを削除  Users.find(id).foreach { user =&amp;gt; Users.destroy(user) } // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply() 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
 
 <meta property="og:title" content="削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.5-scalikejdbc2.5/implement_delete_processing.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // ユーザを削除 Users.find(id).foreach { user =&amp;gt; Users.destroy(user) } // 一覧画面へリダイレクト Redirect(routes.UserController.list) } }  ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply()  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
+<meta property="og:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // ユーザを削除  Users.find(id).foreach { user =&amp;gt; Users.destroy(user) } // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply() 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.5-scalikejdbc2.5/implement_delete_processing.html">
 <meta name="twitter:title" content="削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // ユーザを削除 Users.find(id).foreach { user =&amp;gt; Users.destroy(user) } // 一覧画面へリダイレクト Redirect(routes.UserController.list) } }  ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply()  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
+<meta name="twitter:description" content="指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。def remove(id: Long) = Action { implicit request =&amp;gt; DB.localTx { implicit session =&amp;gt; // ユーザを削除  Users.find(id).foreach { user =&amp;gt; Users.destroy(user) } // 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply() 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "削除処理の実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "削除処理の実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,22 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。
-コントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。
-def remove(id: Long) = Action { implicit request =&gt; DB.localTx { implicit session =&gt; // ユーザを削除 Users.find(id).foreach { user =&gt; Users.destroy(user) } // 一覧画面へリダイレクト Redirect(routes.UserController.list) } }  ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。
-withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply()  実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。"
+    "description": "指定したIDのユーザをUSERSテーブルから削除し、一覧画面へリダイレクトします。\nコントローラ すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。\ndef remove(id: Long) = Action { implicit request =\u0026gt; DB.localTx { implicit session =\u0026gt; \/\/ ユーザを削除  Users.find(id).foreach { user =\u0026gt; Users.destroy(user) } \/\/ 一覧画面へリダイレクト  Redirect(routes.UserController.list) } } ここでもscalikejdbcGenで自動生成されたUsers.destroy()メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。\nwithSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply() 実行 一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。"
   }
 </script>
 
@@ -131,35 +128,24 @@ withSQL { delete.from(Users).where.eq(column.id, entity.id) }.update.apply()  �
         </ul>
 
         <div class="article-body">
-          
-
-<p>指定したIDのユーザを<code>USERS</code>テーブルから削除し、一覧画面へリダイレクトします。</p>
-
+          <p>指定したIDのユーザを<code>USERS</code>テーブルから削除し、一覧画面へリダイレクトします。</p>
 <h2 id="コントローラ">コントローラ</h2>
-
 <p>すでに一覧画面に「削除」ボタンは表示されているので、そこから呼び出されるコントローラのメソッドのみ実装します。</p>
-
-<pre><code class="language-scala">def remove(id: Long) = Action { implicit request =&gt;
-  DB.localTx { implicit session =&gt;
-    // ユーザを削除
-    Users.find(id).foreach { user =&gt;
-      Users.destroy(user)
-    }
-    // 一覧画面へリダイレクト
-    Redirect(routes.UserController.list)
-  }
-}
-</code></pre>
-
-<p>ここでもscalikejdbcGenで自動生成された<code>Users.destroy()</code>メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。</p>
-
-<pre><code class="language-scala">withSQL {
-  delete.from(Users).where.eq(column.id, entity.id)
-}.update.apply()
-</code></pre>
-
-<h2 id="実行">実行</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> remove<span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Long</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Action</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> request <span style="color:#66d9ef">=&gt;</span>
+  <span style="color:#a6e22e">DB</span><span style="color:#f92672">.</span>localTx <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> session <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// ユーザを削除
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>find<span style="color:#f92672">(</span>id<span style="color:#f92672">).</span>foreach <span style="color:#f92672">{</span> user <span style="color:#66d9ef">=&gt;</span>
+      <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>destroy<span style="color:#f92672">(</span>user<span style="color:#f92672">)</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 一覧画面へリダイレクト
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Redirect</span><span style="color:#f92672">(</span>routes<span style="color:#f92672">.</span><span style="color:#a6e22e">UserController</span><span style="color:#f92672">.</span>list<span style="color:#f92672">)</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>ここでもscalikejdbcGenで自動生成された<code>Users.destroy()</code>メソッドを使用して削除処理を行っています。これをQueryDSLで書き直すと以下のようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">withSQL <span style="color:#f92672">{</span>
+  delete<span style="color:#f92672">.</span>from<span style="color:#f92672">(</span><span style="color:#a6e22e">Users</span><span style="color:#f92672">).</span>where<span style="color:#f92672">.</span>eq<span style="color:#f92672">(</span>column<span style="color:#f92672">.</span>id<span style="color:#f92672">,</span> entity<span style="color:#f92672">.</span>id<span style="color:#f92672">)</span>
+<span style="color:#f92672">}.</span>update<span style="color:#f92672">.</span>apply<span style="color:#f92672">()</span>
+</code></pre></div><h2 id="実行">実行</h2>
 <p>一覧画面から「削除」をクリックしてユーザ情報が削除されることを確認してください。</p>
 
           <hr>

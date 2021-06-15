@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>ユーザ登録・更新APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="ユーザ情報をJSONで受け取り、登録もしくは更新を行います。Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義 implicit val userFormReads = Json.reads[UserForm] ...  コントローラ JsonControllerのcreateメソッドを以下のように実装します。JSONリクエストを受け取る場合は DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。def create = DBAction.transaction(parse.json) { implicit rs =&amp;gt; rs.body.validate[UserForm].map { form =&amp;gt; // OKの場合はユーザを登録 val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&amp;quot;result&amp;quot; -&amp;gt; &amp;quot;success&amp;quot;)) }.recoverTotal { e =&amp;gt; // NGの場合はバリデーションエラーを返す BadRequest(Json.">
+<meta name="description" content="ユーザ情報をJSONで受け取り、登録もしくは更新を行います。Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義  implicit val userFormReads = Json.reads[UserForm] ... コントローラ JsonControllerのcreateメソッドを以下のように実装します。JSONリクエストを受け取る場合は DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。def create = DBAction.transaction(parse.json) { implicit rs =&amp;gt; rs.body.validate[UserForm].map { form =&amp;gt; // OKの場合はユーザを登録  val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&amp;#34;result&amp;#34; -&amp;gt; &amp;#34;success&amp;#34;)) }.recoverTotal { e =&amp;gt; // NGの場合はバリデーションエラーを返す  BadRequest(Json.">
 
 <meta property="og:title" content="ユーザ登録・更新APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.3-slick2.1/implement_update_api.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="ユーザ情報をJSONで受け取り、登録もしくは更新を行います。Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義 implicit val userFormReads = Json.reads[UserForm] ...  コントローラ JsonControllerのcreateメソッドを以下のように実装します。JSONリクエストを受け取る場合は DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。def create = DBAction.transaction(parse.json) { implicit rs =&amp;gt; rs.body.validate[UserForm].map { form =&amp;gt; // OKの場合はユーザを登録 val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&amp;quot;result&amp;quot; -&amp;gt; &amp;quot;success&amp;quot;)) }.recoverTotal { e =&amp;gt; // NGの場合はバリデーションエラーを返す BadRequest(Json.">
+<meta property="og:description" content="ユーザ情報をJSONで受け取り、登録もしくは更新を行います。Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義  implicit val userFormReads = Json.reads[UserForm] ... コントローラ JsonControllerのcreateメソッドを以下のように実装します。JSONリクエストを受け取る場合は DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。def create = DBAction.transaction(parse.json) { implicit rs =&amp;gt; rs.body.validate[UserForm].map { form =&amp;gt; // OKの場合はユーザを登録  val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&amp;#34;result&amp;#34; -&amp;gt; &amp;#34;success&amp;#34;)) }.recoverTotal { e =&amp;gt; // NGの場合はバリデーションエラーを返す  BadRequest(Json.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.3-slick2.1/implement_update_api.html">
 <meta name="twitter:title" content="ユーザ登録・更新APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="ユーザ情報をJSONで受け取り、登録もしくは更新を行います。Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義 implicit val userFormReads = Json.reads[UserForm] ...  コントローラ JsonControllerのcreateメソッドを以下のように実装します。JSONリクエストを受け取る場合は DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。def create = DBAction.transaction(parse.json) { implicit rs =&amp;gt; rs.body.validate[UserForm].map { form =&amp;gt; // OKの場合はユーザを登録 val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&amp;quot;result&amp;quot; -&amp;gt; &amp;quot;success&amp;quot;)) }.recoverTotal { e =&amp;gt; // NGの場合はバリデーションエラーを返す BadRequest(Json.">
+<meta name="twitter:description" content="ユーザ情報をJSONで受け取り、登録もしくは更新を行います。Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義  implicit val userFormReads = Json.reads[UserForm] ... コントローラ JsonControllerのcreateメソッドを以下のように実装します。JSONリクエストを受け取る場合は DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。def create = DBAction.transaction(parse.json) { implicit rs =&amp;gt; rs.body.validate[UserForm].map { form =&amp;gt; // OKの場合はユーザを登録  val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&amp;#34;result&amp;#34; -&amp;gt; &amp;#34;success&amp;#34;)) }.recoverTotal { e =&amp;gt; // NGの場合はバリデーションエラーを返す  BadRequest(Json.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "ユーザ登録・更新APIの実装 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "ユーザ登録・更新APIの実装 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,24 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "ユーザ情報をJSONで受け取り、登録もしくは更新を行います。
-Readsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。
-object JsonController extends Controller { ... // ユーザ情報を受け取るためのケースクラス case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) // JSONをUserFormに変換するためのReadsを定義 implicit val userFormReads = Json.reads[UserForm] ...  コントローラ JsonControllerのcreateメソッドを以下のように実装します。
-JSONリクエストを受け取る場合は
- DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。
-def create = DBAction.transaction(parse.json) { implicit rs =&gt; rs.body.validate[UserForm].map { form =&gt; // OKの場合はユーザを登録 val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(&quot;result&quot; -&gt; &quot;success&quot;)) }.recoverTotal { e =&gt; // NGの場合はバリデーションエラーを返す BadRequest(Json."
+    "description": "ユーザ情報をJSONで受け取り、登録もしくは更新を行います。\nReadsの定義 JsonControllerにユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するためのReadsを定義します。\nobject JsonController extends Controller { ... \/\/ ユーザ情報を受け取るためのケースクラス  case class UserForm(id: Option[Long], name: String, companyId: Option[Int]) \/\/ JSONをUserFormに変換するためのReadsを定義  implicit val userFormReads = Json.reads[UserForm] ... コントローラ JsonControllerのcreateメソッドを以下のように実装します。\nJSONリクエストを受け取る場合は\n DBAction(parse.json) { ... } DBAction.transaction(parse.json) { ... }  のようにアクションにparse.jsonを指定します。rs.body.validateメソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理をrecoverTotalメソッドで行うことができます。\ndef create = DBAction.transaction(parse.json) { implicit rs =\u0026gt; rs.body.validate[UserForm].map { form =\u0026gt; \/\/ OKの場合はユーザを登録  val user = UsersRow(0, form.name, form.companyId) Users.insert(user) Ok(Json.obj(\u0026#34;result\u0026#34; -\u0026gt; \u0026#34;success\u0026#34;)) }.recoverTotal { e =\u0026gt; \/\/ NGの場合はバリデーションエラーを返す  BadRequest(Json."
   }
 </script>
 
@@ -133,103 +128,68 @@ def create = DBAction.transaction(parse.json) { implicit rs =&gt; rs.body.valida
         </ul>
 
         <div class="article-body">
-          
-
-<p>ユーザ情報をJSONで受け取り、登録もしくは更新を行います。</p>
-
+          <p>ユーザ情報をJSONで受け取り、登録もしくは更新を行います。</p>
 <h2 id="readsの定義">Readsの定義</h2>
-
 <p><code>JsonController</code>にユーザ情報を受け取るためのケースクラスと、JSONからそのケースクラスに変換するための<code>Reads</code>を定義します。</p>
-
-<pre><code class="language-scala">object JsonController extends Controller {
-  ...
-  // ユーザ情報を受け取るためのケースクラス
-  case class UserForm(id: Option[Long], name: String, companyId: Option[Int])
-  // JSONをUserFormに変換するためのReadsを定義
-  implicit val userFormReads = Json.reads[UserForm]
-  ...
-</code></pre>
-
-<h2 id="コントローラ">コントローラ</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">JsonController</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">{</span>
+  <span style="color:#f92672">...</span>
+  <span style="color:#75715e">// ユーザ情報を受け取るためのケースクラス
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserForm</span><span style="color:#f92672">(</span>id<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Option</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Long</span><span style="color:#f92672">],</span> name<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">String</span><span style="color:#f92672">,</span> companyId<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Option</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Int</span><span style="color:#f92672">])</span>
+  <span style="color:#75715e">// JSONをUserFormに変換するためのReadsを定義
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">implicit</span> <span style="color:#66d9ef">val</span> userFormReads <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>reads<span style="color:#f92672">[</span><span style="color:#66d9ef">UserForm</span><span style="color:#f92672">]</span>
+  <span style="color:#f92672">...</span>
+</code></pre></div><h2 id="コントローラ">コントローラ</h2>
 <p><code>JsonController</code>の<code>create</code>メソッドを以下のように実装します。</p>
-
 <p>JSONリクエストを受け取る場合は</p>
-
 <ul>
 <li><code>DBAction(parse.json) { ... }</code></li>
 <li><code>DBAction.transaction(parse.json) { ... }</code></li>
 </ul>
-
 <p>のようにアクションに<code>parse.json</code>を指定します。<code>rs.body.validate</code>メソッドでJSONをケースクラスに変換でき、変換に失敗した場合の処理を<code>recoverTotal</code>メソッドで行うことができます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> create <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">DBAction</span><span style="color:#f92672">.</span>transaction<span style="color:#f92672">(</span>parse<span style="color:#f92672">.</span>json<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> rs <span style="color:#66d9ef">=&gt;</span>
+  rs<span style="color:#f92672">.</span>body<span style="color:#f92672">.</span>validate<span style="color:#f92672">[</span><span style="color:#66d9ef">UserForm</span><span style="color:#f92672">].</span>map <span style="color:#f92672">{</span> form <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// OKの場合はユーザを登録
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> user <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">UsersRow</span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">,</span> form<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span> form<span style="color:#f92672">.</span>companyId<span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>insert<span style="color:#f92672">(</span>user<span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">Ok</span><span style="color:#f92672">(</span><span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>obj<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;result&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">))</span>
 
-<pre><code class="language-scala">def create = DBAction.transaction(parse.json) { implicit rs =&gt;
-  rs.body.validate[UserForm].map { form =&gt;
-    // OKの場合はユーザを登録
-    val user = UsersRow(0, form.name, form.companyId)
-    Users.insert(user)
-    Ok(Json.obj(&quot;result&quot; -&gt; &quot;success&quot;))
+  <span style="color:#f92672">}.</span>recoverTotal <span style="color:#f92672">{</span> e <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// NGの場合はバリデーションエラーを返す
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">BadRequest</span><span style="color:#f92672">(</span><span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>obj<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;result&#34;</span> <span style="color:#f92672">-&gt;</span><span style="color:#e6db74">&#34;failure&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;error&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">JsError</span><span style="color:#f92672">.</span>toFlatJson<span style="color:#f92672">(</span>e<span style="color:#f92672">)))</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>同様に<code>update</code>メソッドを以下のように実装します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> update <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">DBAction</span><span style="color:#f92672">.</span>transaction<span style="color:#f92672">(</span>parse<span style="color:#f92672">.</span>json<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">implicit</span> rs <span style="color:#66d9ef">=&gt;</span>
+  rs<span style="color:#f92672">.</span>body<span style="color:#f92672">.</span>validate<span style="color:#f92672">[</span><span style="color:#66d9ef">UserForm</span><span style="color:#f92672">].</span>map <span style="color:#f92672">{</span> form <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// OKの場合はユーザ情報を更新
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> user <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">UsersRow</span><span style="color:#f92672">(</span>form<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>get<span style="color:#f92672">,</span> form<span style="color:#f92672">.</span>name<span style="color:#f92672">,</span> form<span style="color:#f92672">.</span>companyId<span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">Users</span><span style="color:#f92672">.</span>filter<span style="color:#f92672">(</span>t <span style="color:#66d9ef">=&gt;</span> t<span style="color:#f92672">.</span>id <span style="color:#f92672">===</span> user<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>bind<span style="color:#f92672">).</span>update<span style="color:#f92672">(</span>user<span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">Ok</span><span style="color:#f92672">(</span><span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>obj<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;result&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">))</span>
 
-  }.recoverTotal { e =&gt;
-    // NGの場合はバリデーションエラーを返す
-    BadRequest(Json.obj(&quot;result&quot; -&gt;&quot;failure&quot;, &quot;error&quot; -&gt; JsError.toFlatJson(e)))
-  }
-}
-</code></pre>
-
-<p>同様に<code>update</code>メソッドを以下のように実装します。</p>
-
-<pre><code class="language-scala">def update = DBAction.transaction(parse.json) { implicit rs =&gt;
-  rs.body.validate[UserForm].map { form =&gt;
-    // OKの場合はユーザ情報を更新
-    val user = UsersRow(form.id.get, form.name, form.companyId)
-    Users.filter(t =&gt; t.id === user.id.bind).update(user)
-    Ok(Json.obj(&quot;result&quot; -&gt; &quot;success&quot;))
-
-  }.recoverTotal { e =&gt;
-    // NGの場合はバリデーションエラーを返す
-    BadRequest(Json.obj(&quot;result&quot; -&gt;&quot;failure&quot;, &quot;error&quot; -&gt; JsError.toFlatJson(e)))
-  }
-}
-</code></pre>
-
-<blockquote>
+  <span style="color:#f92672">}.</span>recoverTotal <span style="color:#f92672">{</span> e <span style="color:#66d9ef">=&gt;</span>
+    <span style="color:#75715e">// NGの場合はバリデーションエラーを返す
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">BadRequest</span><span style="color:#f92672">(</span><span style="color:#a6e22e">Json</span><span style="color:#f92672">.</span>obj<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;result&#34;</span> <span style="color:#f92672">-&gt;</span><span style="color:#e6db74">&#34;failure&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;error&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">JsError</span><span style="color:#f92672">.</span>toFlatJson<span style="color:#f92672">(</span>e<span style="color:#f92672">)))</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><blockquote>
 <p><strong>POINT</strong></p>
-
 <ul>
 <li><code>parse.json</code>はボディパーサと呼ばれるもので、リクエストボディの処理方法を決めるものです</li>
 </ul>
 </blockquote>
-
 <h2 id="実行">実行</h2>
-
 <p>コマンドラインから以下のコマンドを実行してユーザ情報を登録・更新できることを確認しましょう。</p>
-
 <p>登録：</p>
-
 <pre><code>curl -H &quot;Content-type: application/json&quot; -XPOST -d '{&quot;name&quot;:&quot;TestUser&quot;, &quot;companyId&quot;:1}' http://localhost:9000/json/create
-</code></pre>
-
-<p>更新：</p>
-
+</code></pre><p>更新：</p>
 <pre><code>curl -H &quot;Content-type: application/json&quot; -XPOST -d '{&quot;id&quot;:1, &quot;name&quot;:&quot;TestUser&quot;, &quot;companyId&quot;:1}' http://localhost:9000/json/update
-</code></pre>
-
-<p>いずれの場合も成功すると以下のJSONが返却されます。</p>
-
-<pre><code class="language-json">{&quot;result&quot;:&quot;success&quot;}
-</code></pre>
-
-<p>エラー時のレスポンスを確認するために、以下のように不正なJSONを送信してみましょう（プロパティ名が<code>name</code>ではなく<code>userName</code>になっている）。</p>
-
+</code></pre><p>いずれの場合も成功すると以下のJSONが返却されます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;result&#34;</span>:<span style="color:#e6db74">&#34;success&#34;</span>}
+</code></pre></div><p>エラー時のレスポンスを確認するために、以下のように不正なJSONを送信してみましょう（プロパティ名が<code>name</code>ではなく<code>userName</code>になっている）。</p>
 <pre><code>curl -H &quot;Content-type: application/json&quot; -XPOST -d '{&quot;userName&quot;:&quot;TestUser&quot;}' http://localhost:9000/json/create
-</code></pre>
-
-<p>すると以下のようにエラー情報を含むJSONが返却されます。</p>
-
-<pre><code class="language-json">{&quot;result&quot;:&quot;failure&quot;,&quot;error&quot;:{&quot;obj.name&quot;:[{&quot;msg&quot;:&quot;error.path.missing&quot;,&quot;args&quot;:[]}]}}
-</code></pre>
-
+</code></pre><p>すると以下のようにエラー情報を含むJSONが返却されます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;result&#34;</span>:<span style="color:#e6db74">&#34;failure&#34;</span>,<span style="color:#f92672">&#34;error&#34;</span>:{<span style="color:#f92672">&#34;obj.name&#34;</span>:[{<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;error.path.missing&#34;</span>,<span style="color:#f92672">&#34;args&#34;</span>:[]}]}}
+</code></pre></div>
           <hr>
           <div class="nav">
           

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>IDEの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="プラグインのインストール Java7以降 &#43; Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。Eclipseの場合： メニュー[Help]→[Install New Software&amp;hellip;]→[Add&amp;hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site  全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合： メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&amp;hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。プロジェクトのインポート Eclipseの場合：play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。activator eclipse  build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要がありますIntelliJの場合：IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&amp;hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。">
+<meta name="description" content="プラグインのインストール Java7以降 &#43; Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。Eclipseの場合： メニュー[Help]→[Install New Software&amp;hellip;]→[Add&amp;hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site   全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合： メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&amp;hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。プロジェクトのインポート Eclipseの場合：play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。activator eclipse build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要がありますIntelliJの場合：IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&amp;hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。">
 
 <meta property="og:title" content="IDEの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.3-slick2.1/preparation_of_ide.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="プラグインのインストール Java7以降 &#43; Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。Eclipseの場合： メニュー[Help]→[Install New Software&amp;hellip;]→[Add&amp;hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site  全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合： メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&amp;hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。プロジェクトのインポート Eclipseの場合：play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。activator eclipse  build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要がありますIntelliJの場合：IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&amp;hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。">
+<meta property="og:description" content="プラグインのインストール Java7以降 &#43; Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。Eclipseの場合： メニュー[Help]→[Install New Software&amp;hellip;]→[Add&amp;hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site   全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合： メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&amp;hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。プロジェクトのインポート Eclipseの場合：play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。activator eclipse build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要がありますIntelliJの場合：IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&amp;hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.3-slick2.1/preparation_of_ide.html">
 <meta name="twitter:title" content="IDEの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="プラグインのインストール Java7以降 &#43; Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。Eclipseの場合： メニュー[Help]→[Install New Software&amp;hellip;]→[Add&amp;hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site  全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合： メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&amp;hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。プロジェクトのインポート Eclipseの場合：play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。activator eclipse  build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要がありますIntelliJの場合：IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&amp;hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。">
+<meta name="twitter:description" content="プラグインのインストール Java7以降 &#43; Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。Eclipseの場合： メニュー[Help]→[Install New Software&amp;hellip;]→[Add&amp;hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site   全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合： メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&amp;hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。プロジェクトのインポート Eclipseの場合：play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。activator eclipse build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要がありますIntelliJの場合：IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&amp;hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "IDEの準備 - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "IDEの準備 - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,31 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "プラグインのインストール Java7以降 + Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。
-それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。
-Eclipseの場合：
- メニュー[Help]→[Install New Software&hellip;]→[Add&hellip;]をクリックして以下を入力  Name: Scala IDE Location: http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site  全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合：
- メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。
-プロジェクトのインポート Eclipseの場合：
-play2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。
-activator eclipse  build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要があります
-IntelliJの場合：
-IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。
-インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。
-build.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。
-「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。"
+    "description": "プラグインのインストール Java7以降 \u002b Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。\nそれぞれのIDEにScalaで開発を行うためのプラグインをインストールします。\nEclipseの場合：\n メニュー[Help]→[Install New Software\u0026hellip;]→[Add\u0026hellip;]をクリックして以下を入力  Name: Scala IDE Location: http:\/\/download.scala-ide.org\/sdk\/lithium\/e44\/scala211\/stable\/site   全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック あとはウィザードに従う  IntelliJの場合：\n メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin\u0026hellip;]をクリック [Scala]を選択し、右クリック[Download and Install]をクリック  ※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。\nプロジェクトのインポート Eclipseの場合：\nplay2-hands-onディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。\nactivator eclipse build.sbtを編集してライブラリを追加した場合、再度activator eclipseを実行する必要があります\nIntelliJの場合：\nIntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。\nインポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New\u0026hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。\nbuild.sbtを編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。\n「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。"
   }
 </script>
 
@@ -140,61 +128,38 @@ build.sbtを編集してライブラリを追加した場合、ウィンドウ�
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="プラグインのインストール">プラグインのインストール</h2>
-
+          <h2 id="プラグインのインストール">プラグインのインストール</h2>
 <p>Java7以降 + Eclipse or IntelliJの環境は構築済みとします。また、ファイルのエンコードはUTF-8にしておいてください。</p>
-
 <p>それぞれのIDEにScalaで開発を行うためのプラグインをインストールします。</p>
-
 <p><strong>Eclipseの場合：</strong></p>
-
 <ul>
 <li>メニュー[Help]→[Install New Software&hellip;]→[Add&hellip;]をクリックして以下を入力
-
 <ul>
 <li>Name: Scala IDE</li>
 <li>Location: <a href="http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site">http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site</a></li>
-</ul></li>
+</ul>
+</li>
 <li>全部チェックを入れて（Sourcesは外してもOK）、[Next]をクリック</li>
 <li>あとはウィザードに従う</li>
 </ul>
-
 <p><strong>IntelliJの場合：</strong></p>
-
 <ul>
 <li>メニュー[IntelliJ IDEA]→[Preferences]→[Plugins]→[Install JetBrains plugin&hellip;]をクリック</li>
 <li>[Scala]を選択し、右クリック[Download and Install]をクリック</li>
 </ul>
-
 <p>※IntelliJ Ultimate EditionはPlayプラグインを使うことができ、PlayプロジェクトをIntelliJで作成したり、HTMLテンプレートや設定ファイルなどを編集するためのエディタが追加されます。</p>
-
 <h2 id="プロジェクトのインポート">プロジェクトのインポート</h2>
-
 <p><strong>Eclipseの場合：</strong></p>
-
 <p><code>play2-hands-on</code>ディレクトリで以下のコマンドを実行し、IDE用の設定ファイルを生成します。その後、IDEにインポートします。</p>
-
 <pre><code>activator eclipse
-</code></pre>
-
-<p><code>build.sbt</code>を編集してライブラリを追加した場合、再度<code>activator eclipse</code>を実行する必要があります</p>
-
+</code></pre><p><code>build.sbt</code>を編集してライブラリを追加した場合、再度<code>activator eclipse</code>を実行する必要があります</p>
 <p><strong>IntelliJの場合：</strong></p>
-
 <p>IntelliJのScalaプラグインはSBT（Activator）プロジェクトをネイティブサポートしており、「File」メニューから「Open」を選択し、Play2プロジェクトのルートディレクトリを選択するとSBTプロジェクトとしてインポートすることができます。</p>
-
-<p><img src="../images/play2.3-slick2.1/open_project_intellij1.png" alt="プロジェクトのインポート(1)" /></p>
-
+<p><img src="../images/play2.3-slick2.1/open_project_intellij1.png" alt="プロジェクトのインポート(1)"></p>
 <p>インポートする際に以下のダイアログが表示されます。初回は「Project SDK」が未選択の状態になっているかもしれません。「New&hellip;」をクリックしてJDKがインストールされているディレクトリを選択してから「OK」をクリックしてください。</p>
-
-<p><img src="../images/play2.3-slick2.1/open_project_intellij2.png" alt="プロジェクトのインポート(2)" /></p>
-
+<p><img src="../images/play2.3-slick2.1/open_project_intellij2.png" alt="プロジェクトのインポート(2)"></p>
 <p><code>build.sbt</code>を編集してライブラリを追加した場合、ウィンドウ右上に以下のようなメッセージが表示されます。</p>
-
-<p><img src="../images/play2.3-slick2.1/re-import_project.png" alt="プロジェクトのリフレッシュ" /></p>
-
+<p><img src="../images/play2.3-slick2.1/re-import_project.png" alt="プロジェクトのリフレッシュ"></p>
 <p>「Refresh」を選択するとプロジェクトが再インポートされ、ライブラリが自動的にインターネット経由でダウンロードされクラスパスに追加されます。また、「Enable auto-import」を選択するとbuild.sbtを変更するたびに自動的に再インポートされるようになります（プロジェクトのインポート時に自動インポートを有効にしておくことも可能です）。</p>
 
           <hr>

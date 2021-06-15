@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="theme-color" content="#263238">
 
-<meta name="generator" content="Hugo 0.42.2" />
+<meta name="generator" content="Hugo 0.80.0" />
 
 <link rel="shortcut icon" href="https://bizreach-inc.github.io/play2-hands-on/images/favicon.ico" />
 <link rel="apple-touch-icon" href="https://bizreach-inc.github.io/play2-hands-on/images/logo.png">
@@ -23,21 +23,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Tips - Play2 &#43; Slick / ScalikeJDBCハンズオン</title>
     
-<meta name="description" content="Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します  Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました  Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide   Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください   IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf  IDEAの外観を変更  スキンの変更（背景を黒に） [Appearance]→[Theme]の箇所を&amp;rdquo;Default&amp;rdquo;から&amp;rdquo;Darcula&amp;rdquo;に変更  IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります [File]→[Project Structure&amp;hellip;]からインストール済みのJDKを選択してください  build.sbtを変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&amp;hellip;」でIntelliJのキャッシュをクリアしてみてください   ##その他">
+<meta name="description" content="Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します   Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました   Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide    Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください    IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf   IDEAの外観を変更  スキンの変更（背景を黒に）  [Appearance]→[Theme]の箇所を&amp;quot;Default&amp;quot;から&amp;quot;Darcula&amp;quot;に変更     IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります  [File]→[Project Structure&amp;hellip;]からインストール済みのJDKを選択してください    build.">
 
 <meta property="og:title" content="Tips - Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.4-slick3.0/tips.html">
 <meta property="og:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 <meta property="og:site_name" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta property="og:description" content="Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します  Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました  Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide   Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください   IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf  IDEAの外観を変更  スキンの変更（背景を黒に） [Appearance]→[Theme]の箇所を&amp;rdquo;Default&amp;rdquo;から&amp;rdquo;Darcula&amp;rdquo;に変更  IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります [File]→[Project Structure&amp;hellip;]からインストール済みのJDKを選択してください  build.sbtを変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&amp;hellip;」でIntelliJのキャッシュをクリアしてみてください   ##その他">
+<meta property="og:description" content="Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します   Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました   Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide    Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください    IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf   IDEAの外観を変更  スキンの変更（背景を黒に）  [Appearance]→[Theme]の箇所を&amp;quot;Default&amp;quot;から&amp;quot;Darcula&amp;quot;に変更     IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります  [File]→[Project Structure&amp;hellip;]からインストール済みのJDKを選択してください    build.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="Play2 &#43; Slick / ScalikeJDBCハンズオン">
 <meta name="twitter:url" content="https://bizreach-inc.github.io/play2-hands-on/play2.4-slick3.0/tips.html">
 <meta name="twitter:title" content="Tips - Play2 &#43; Slick / ScalikeJDBCハンズオン">
-<meta name="twitter:description" content="Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します  Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました  Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide   Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください   IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf  IDEAの外観を変更  スキンの変更（背景を黒に） [Appearance]→[Theme]の箇所を&amp;rdquo;Default&amp;rdquo;から&amp;rdquo;Darcula&amp;rdquo;に変更  IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります [File]→[Project Structure&amp;hellip;]からインストール済みのJDKを選択してください  build.sbtを変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&amp;hellip;」でIntelliJのキャッシュをクリアしてみてください   ##その他">
+<meta name="twitter:description" content="Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します   Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました   Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide    Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください    IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf   IDEAの外観を変更  スキンの変更（背景を黒に）  [Appearance]→[Theme]の箇所を&amp;quot;Default&amp;quot;から&amp;quot;Darcula&amp;quot;に変更     IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります  [File]→[Project Structure&amp;hellip;]からインストール済みのJDKを選択してください    build.">
 <meta name="twitter:image" content="https://bizreach-inc.github.io/play2-hands-on/images/default.png">
 
 
@@ -47,12 +47,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://bizreach-inc.github.io/play2-hands-on/"
+      "@id":"https:\/\/bizreach-inc.github.io\/play2-hands-on\/"
     },
-    "headline": "Tips - Play2 &#43; Slick / ScalikeJDBCハンズオン",
+    "headline": "Tips - Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
     "image": {
       "@type": "ImageObject",
-      "url": "https://bizreach-inc.github.io/play2-hands-on/images/default.png",
+      "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,19 +60,19 @@
     "dateModified": "0001-01-01T00:00:00JST",
     "author": {
       "@type": "Person",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン"
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Play2 &#43; Slick / ScalikeJDBCハンズオン",
+      "name": "Play2 \u002b Slick \/ ScalikeJDBCハンズオン",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bizreach-inc.github.io/play2-hands-on/images/logo.png",
+        "url": "https:\/\/bizreach-inc.github.io\/play2-hands-on\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します  Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME/.ivy2ディレクトリ配下を使うようになりました  Play公式サイトのドキュメントは https://www.playframework.com/documentation/2.5.x/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide   Slick  https://github.com/bizreach-inc/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http://scala-ide.org/download/current.html を参照してください   IntelliJ IDEA  キーボードショートカット  (Windows) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf (Mac) http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf  IDEAの外観を変更  スキンの変更（背景を黒に） [Appearance]→[Theme]の箇所を&rdquo;Default&rdquo;から&rdquo;Darcula&rdquo;に変更  IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります [File]→[Project Structure&hellip;]からインストール済みのJDKを選択してください  build.sbtを変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&hellip;」でIntelliJのキャッシュをクリアしてみてください   ##その他"
+    "description": "Play2  playコマンド実行時のVMオプションの設定  ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数JAVA_OPTSを使用します   Playが使用するローカルリポジトリ  以前のバージョンのPlayはPLAY_HOME\/repositoryディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準のHOME\/.ivy2ディレクトリ配下を使うようになりました   Play公式サイトのドキュメントは https:\/\/www.playframework.com\/documentation\/2.5.x\/Home にあります（2.5.x向けのドキュメントは日本語には未翻訳です） Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください  Play 2.5 Migration Guide    Slick  https:\/\/github.com\/bizreach-inc\/slick-reference でSlickのリファレンスを公開しています Slick 2.xから3.0へのマイグレーションについては http:\/\/slick.typesafe.com\/doc\/3.0.0\/upgrade.html#upgrade-from-2-1-to-3-0 を参照してください  ScalaIDE  Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています  最新情報は http:\/\/scala-ide.org\/download\/current.html を参照してください    IntelliJ IDEA  キーボードショートカット  (Windows) http:\/\/www.jetbrains.com\/idea\/docs\/IntelliJIDEA_ReferenceCard.pdf (Mac) http:\/\/www.jetbrains.com\/idea\/docs\/IntelliJIDEA_ReferenceCard_Mac.pdf   IDEAの外観を変更  スキンの変更（背景を黒に）  [Appearance]→[Theme]の箇所を\u0026quot;Default\u0026quot;から\u0026quot;Darcula\u0026quot;に変更     IntelliJ上でクラスパスが解決できない場合  StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります  [File]→[Project Structure\u0026hellip;]からインストール済みのJDKを選択してください    build."
   }
 </script>
 
@@ -128,84 +128,79 @@
         </ul>
 
         <div class="article-body">
-          
-
-<h2 id="play2">Play2</h2>
-
+          <h2 id="play2">Play2</h2>
 <ul>
 <li>playコマンド実行時のVMオプションの設定
-
 <ul>
 <li>ヒープ設定やプロキシ設定などJVMの起動オプションを設定するには環境変数<code>JAVA_OPTS</code>を使用します</li>
-</ul></li>
+</ul>
+</li>
 <li>Playが使用するローカルリポジトリ
-
 <ul>
 <li>以前のバージョンのPlayは<code>PLAY_HOME/repository</code>ディレクトリ配下に独自のローカルリポジトリとキャッシュを持っていましたが、Play 2.3ではSBT標準の<code>HOME/.ivy2</code>ディレクトリ配下を使うようになりました</li>
-</ul></li>
+</ul>
+</li>
 <li>Play公式サイトのドキュメントは <a href="https://www.playframework.com/documentation/2.5.x/Home">https://www.playframework.com/documentation/2.5.x/Home</a> にあります（2.5.x向けのドキュメントは日本語には未翻訳です）</li>
 <li>Play 2.5以前から2.5へのマイグレーションについては以下のドキュメントを参照してください
-
 <ul>
 <li><a href="https://www.playframework.com/documentation/2.5.x/Migration25">Play 2.5 Migration Guide</a></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="slick">Slick</h2>
-
 <ul>
 <li><a href="https://github.com/bizreach-inc/slick-reference">https://github.com/bizreach-inc/slick-reference</a> でSlickのリファレンスを公開しています</li>
 <li>Slick 2.xから3.0へのマイグレーションについては <a href="http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0">http://slick.typesafe.com/doc/3.0.0/upgrade.html#upgrade-from-2-1-to-3-0</a> を参照してください</li>
 </ul>
-
 <h2 id="scalaide">ScalaIDE</h2>
-
 <ul>
 <li>Scala IDEはEclipseのバージョン、Scalaのバージョンにあわせて更新サイトが用意されています
-
 <ul>
 <li>最新情報は <a href="http://scala-ide.org/download/current.html">http://scala-ide.org/download/current.html</a> を参照してください</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="intellij-idea">IntelliJ IDEA</h2>
-
 <ul>
 <li>キーボードショートカット
-
 <ul>
 <li>(Windows) <a href="http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf">http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard.pdf</a></li>
 <li>(Mac) <a href="http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf">http://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf</a></li>
-</ul></li>
-<li>IDEAの外観を変更
-
-<ul>
-<li>スキンの変更（背景を黒に）</li>
-<li>[Appearance]→[Theme]の箇所を&rdquo;Default&rdquo;から&rdquo;Darcula&rdquo;に変更</li>
-</ul></li>
-<li>IntelliJ上でクラスパスが解決できない場合
-
-<ul>
-<li>StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります</li>
-<li>[File]→[Project Structure&hellip;]からインストール済みのJDKを選択してください
-<img src="../images/play2.4-slick3.0/idea_jdk.png" alt="JDKを選択" /></li>
-<li><code>build.sbt</code>を変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&hellip;」でIntelliJのキャッシュをクリアしてみてください</li>
-</ul></li>
 </ul>
-
+</li>
+<li>IDEAの外観を変更
+<ul>
+<li>スキンの変更（背景を黒に）
+<ul>
+<li>[Appearance]→[Theme]の箇所を&quot;Default&quot;から&quot;Darcula&quot;に変更</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IntelliJ上でクラスパスが解決できない場合
+<ul>
+<li>StringなどJavaの基本的な型が解決できずエラーになってしまう場合は実行した直後はJDKが選択されていない可能性があります
+<ul>
+<li>[File]→[Project Structure&hellip;]からインストール済みのJDKを選択してください
+<img src="../images/play2.4-slick3.0/idea_jdk.png" alt="JDKを選択"></li>
+</ul>
+</li>
+<li><code>build.sbt</code>を変更してもクラスパスが解決されないことがありますが、その場合は「File」→「Invalidate Caches / Restart&hellip;」でIntelliJのキャッシュをクリアしてみてください</li>
+</ul>
+</li>
+</ul>
 <p>##その他</p>
-
 <ul>
 <li>Emacsユーザの方はScalaの開発環境としてEnsimeを利用できます
-
 <ul>
 <li><a href="http://qiita.com/saito400/items/7ece94138ad76e091229">http://qiita.com/saito400/items/7ece94138ad76e091229</a></li>
-</ul></li>
+</ul>
+</li>
 <li>vimユーザの方はScala開発環境としてEclim + ScalaIDEを利用できます
-
 <ul>
 <li><a href="http://qiita.com/pecorarista/items/1aa7575aa40077d55b53">http://qiita.com/pecorarista/items/1aa7575aa40077d55b53</a></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
           <hr>
